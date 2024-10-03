@@ -7,6 +7,7 @@ const articlesRef = collection(db, 'articles');
 const storage = getStorage(); // Get a reference to the storage
 
 // Function to upload an article
+// Function to upload an article
 export const uploadArticle = async (articleData, file) => {
   try {
     // Create a storage reference
@@ -18,10 +19,11 @@ export const uploadArticle = async (articleData, file) => {
     // Get the file's download URL
     const fileURL = await getDownloadURL(storageRef);
 
-    // Add the article data to Firestore, including the file URL
+    // Add the article data to Firestore, including the file URL and the current date
     const articleWithFile = {
       ...articleData,
       fileURL: fileURL,
+      date: new Date().toISOString(), // Add the current date
     };
     
     await addDoc(articlesRef, articleWithFile);
@@ -32,6 +34,7 @@ export const uploadArticle = async (articleData, file) => {
     return { success: false, message: `Error uploading article: ${error.message}` };
   }
 };
+
 
 // Function to fetch articles
 export const fetchArticles = async () => {

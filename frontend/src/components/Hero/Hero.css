@@ -87,3 +87,61 @@ body, html {
     text-align: center;
     transition: opacity 0.5s ease-in-out;
   }
+
+  /* Uploaded Files List */
+#fileList {
+  display: flex; /* Use flexbox to arrange items */
+  flex-wrap: wrap; /* Allow wrapping to new lines */
+  justify-content: center; /* Center the boxes */
+  margin-top: 20px; /* Space above the file list */
+}
+
+/* Individual File Box */
+.file-box {
+  background-color: #2a2a2a; /* Background color for file box */
+  border: 1px solid #3e3e3e; /* Light border */
+  border-radius: 8px; /* Rounded corners */
+  margin: 10px; /* Margin around each box */
+  padding: 10px; /* Inner padding */
+  width: 220px; /* Fixed width for consistency */
+  text-align: center; /* Center align text */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  transition: transform 0.2s; /* Smooth scaling on hover */
+}
+
+.file-box:hover {
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+/* Thumbnail Image */
+.file-thumbnail {
+  width: 100%; /* Full width for thumbnails */
+  height: auto; /* Auto height to maintain aspect ratio */
+  max-height: 120px; /* Limit max height for consistency */
+  object-fit: cover; /* Cover the box without distortion */
+  border-radius: 4px; /* Rounded corners for thumbnail */
+}
+
+/* File Details */
+.file-details {
+  margin-top: 10px; /* Space above details */
+  color: #e0e0e0; /* Light text color for details */
+}
+
+.file-details a {
+  color: #bb86fc; /* Link color */
+  text-decoration: none; /* No underline */
+}
+
+.file-details a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+.file-author {
+  font-weight: bold; /* Bold author name */
+}
+
+.file-date {
+  font-size: 14px; /* Smaller font for date */
+  color: #a0a0a0; /* Light gray color for date */
+}
