@@ -84,13 +84,16 @@ const Hero = () => {
       )}
 
       <h1 className="hero-title">Uploaded Files</h1>
-      <div id="fileList">
+      <div id="fileList" className="file-list">
         {uploadedFiles.map((article) => (
-          <div key={article.id}>
-            <a href={article.fileURL} target="_blank" rel="noopener noreferrer">
-              {article.author}'s File
-            </a>
-            {/* Add more article details if necessary */}
+          <div key={article.id} className="file-box">
+            <img src={"https://picsum.photos/200/300"} alt={`${article.author}'s thumbnail`} className="file-thumbnail" />
+            <div className="file-details">
+              <a href={article.fileURL} target="_blank" rel="noopener noreferrer">
+                Author : {article.author}
+              </a>
+              <p>Uploaded on : {new Date(article.date).toLocaleDateString()}</p>
+            </div>
           </div>
         ))}
       </div>
