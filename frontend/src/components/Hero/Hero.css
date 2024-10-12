@@ -1,147 +1,25 @@
-/* Hero.css */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #121212;
-    color: #ffffff;
-    height: 100%;
-    width: 100%;
-  }
-  
-  .hero-section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #1f1f1f;
-  }
-  
-  .hero-title {
-    font-size: 48px;
-    padding-top: 60px;
-    margin-bottom: 20px;
-    color: #bb86fc;
-  }
-  
-  .hero-form {
-    width: 100%;
-    max-width: 500px;
-    background-color: #2a2a2a;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .hero-form label {
-    font-size: 18px;
-    color: #e0e0e0;
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  .hero-form input[type="file"],
-  .hero-form input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #3e3e3e;
-    border-radius: 4px;
-    background-color: #3e3e3e;
-    color: #ffffff;
-  }
-  
-  .hero-form input::placeholder {
-    color: #a0a0a0;
-  }
-  
-  .hero-form button {
-    width: 100%;
-    padding: 12px;
-    background-color: #bb86fc;
-    border: none;
-    color: #ffffff;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .hero-form button:hover {
-    background-color: #3700b3;
-  }
-  
-  #status, #fileList {
-    margin-top: 20px;
-    font-size: 16px;
-    color: #e0e0e0;
-  }
-  
-  .popup-message {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #4caf50; /* Green background */
-    color: #ffffff; /* White text */
-    border-radius: 5px;
-    text-align: center;
-    transition: opacity 0.5s ease-in-out;
-  }
-
-  /* Uploaded Files List */
-#fileList {
-  display: flex; /* Use flexbox to arrange items */
-  flex-wrap: wrap; /* Allow wrapping to new lines */
-  justify-content: center; /* Center the boxes */
-  margin-top: 20px; /* Space above the file list */
+.hero-section {
+  display: flex;
+  margin-top: 80px;
 }
 
-/* Individual File Box */
-.file-box {
-  background-color: #2a2a2a; /* Background color for file box */
-  border: 1px solid #3e3e3e; /* Light border */
-  border-radius: 8px; /* Rounded corners */
-  margin: 10px; /* Margin around each box */
-  padding: 10px; /* Inner padding */
-  width: 220px; /* Fixed width for consistency */
-  text-align: center; /* Center align text */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-  transition: transform 0.2s; /* Smooth scaling on hover */
+.sidebar {
+  width: min(20%,200px); /* Sidebar occupies 30% of the width */
+  background-color: #007bff; /* Blue background */
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.file-box:hover {
-  transform: scale(1.05); /* Slightly increase size on hover */
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap:1.25rem;
 }
 
-/* Thumbnail Image */
-.file-thumbnail {
-  width: 100%; /* Full width for thumbnails */
-  height: auto; /* Auto height to maintain aspect ratio */
-  max-height: 120px; /* Limit max height for consistency */
-  object-fit: cover; /* Cover the box without distortion */
-  border-radius: 4px; /* Rounded corners for thumbnail */
+.main-content {
+  height: 100%;
+  width: 80%; /* Main content occupies 70% of the width */
+  background-color: #f0f0f0;
 }
 
-/* File Details */
-.file-details {
-  margin-top: 10px; /* Space above details */
-  color: #e0e0e0; /* Light text color for details */
-}
-
-.file-details a {
-  color: #bb86fc; /* Link color */
-  text-decoration: none; /* No underline */
-}
-
-.file-details a:hover {
-  text-decoration: underline; /* Underline on hover */
-}
-
-.file-author {
-  font-weight: bold; /* Bold author name */
-}
-
-.file-date {
-  font-size: 14px; /* Smaller font for date */
-  color: #a0a0a0; /* Light gray color for date */
-}
