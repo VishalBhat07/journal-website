@@ -1,16 +1,35 @@
 // LoginModal.js
 import React, { useState } from 'react';
 import './LoginModal.css';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginModal = ({ onClose, onSignUpClick }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = (e) => {
-    e.preventDefault();
-    // Handle login logic here
-    console.log('Login:', { email, password });
-    onClose(); // Close the modal after login (optional)
+    e.preventDefault();  // Prevent default form submission behavior
+  
+    const auth = getAuth();  // Initialize Firebase authentication
+  
+    // Use Firebase createUserWithEmailAndPassword method
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed up successfully
+        const user = userCredential.user;
+        console.log('User Logged In:', user);  // Log user details if needed
+  
+        onClose();  // Close the modal after successful sign up (optional)
+      })
+      .catch((error) => {
+        // Handle sign-up errors
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error('Sign Up Error:', errorCode, errorMessage);  // Log error details
+        alert("Invalid credentials");
+      });
+  
+    console.log('Login in:', { email, password });  // Debugging: log form inputs
   };
 
   return (

@@ -1,0 +1,16 @@
+.nav-option {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 5%;
+}
+
+.nav-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 10px;
+}
+
+.nav-label {
+  font-size: 16px;
+}

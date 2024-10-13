@@ -1,17 +1,37 @@
 // SignUpModal.js
 import React, { useState } from 'react';
 import './SignUpModal.css';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 
 const SignUpModal = ({ onClose, onLoginClick }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSignUp = (e) => {
-    e.preventDefault();
-    // Handle sign up logic here
-    console.log('Sign Up:', { email, password });
-    onClose(); // Close the modal after sign up (optional)
+    e.preventDefault();  // Prevent default form submission behavior
+  
+    const auth = getAuth();  // Initialize Firebase authentication
+  
+    // Use Firebase createUserWithEmailAndPassword method
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed up successfully
+        const user = userCredential.user;
+        console.log('User Signed Up:', user);  // Log user details if needed
+  
+        onClose();  // Close the modal after successful sign up (optional)
+      })
+      .catch((error) => {
+        // Handle sign-up errors
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error('Sign Up Error:', errorCode, errorMessage);  // Log error details
+      });
+  
+    console.log('Sign Up:', { email, password });  // Debugging: log form inputs
   };
+  
 
   return (
     <div className="modal-overlay">

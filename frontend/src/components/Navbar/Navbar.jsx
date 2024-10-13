@@ -2,7 +2,7 @@
 import React from 'react';
 import './Navbar.css';
 
-const Navbar = ({ onSignUpClick, onLoginClick }) => {
+const Navbar = ({ onSignUpClick }) => {
   return (
     <div className="navbar">
       <div className="navbar-logo">My Website</div>
@@ -14,7 +14,6 @@ const Navbar = ({ onSignUpClick, onLoginClick }) => {
       </div>
       <div className='navbar-btns'>
         <button className="navbar-btn" onClick={onSignUpClick}>Sign Up</button>
-        <button className="navbar-btn" onClick={onLoginClick}>Login</button>
       </div>
     </div>
   );
