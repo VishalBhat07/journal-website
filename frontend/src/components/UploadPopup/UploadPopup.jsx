@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
-import { uploadArticle } from '../../articleService'; // Import functions
+import { uploadArticle } from '../../articleService.js'; // Import functions
 import './UploadPopup.css'; // Add your modal CSS styles here
 
 const UploadPopup = ({ isOpen, onClose }) => {
   const [author, setAuthor] = useState('');
   const [file, setFile] = useState(null);
+  const [title, setTitle] = useState(''); // New state for title
   const [successMessage, setSuccessMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
 
-    // Check if author and file are provided
-    if (!author || !file) {
-      setSuccessMessage('Please provide author name and a file.');
+    // Check if author, title, and file are provided
+    if (!author || !title || !file) {
+      setSuccessMessage('Please provide author name, title, and a file.');
       return;
     }
 
     const articleData = {
       author: author,
+      title: title, // Include title in the article data
       // Add other fields as necessary, like date and pages if required
     };
 
@@ -41,6 +43,7 @@ const UploadPopup = ({ isOpen, onClose }) => {
   const resetForm = () => {
     setAuthor('');
     setFile(null);
+    setTitle(''); // Reset title state
   };
 
   return (
@@ -61,6 +64,14 @@ const UploadPopup = ({ isOpen, onClose }) => {
                 setFile(e.target.files[0]); // Set selected file
               }}
             />
+            <label htmlFor="title">Title:</label> {/* New label for title */}
+            <input
+              type="text"
+              id="titleInput" // Add an id for the title input
+              value={title} // Bind the title state
+              onChange={(e) => setTitle(e.target.value)} // Set title
+              required
+            />
 
             <label htmlFor="author">Author Name:</label>
             <input
@@ -70,6 +81,8 @@ const UploadPopup = ({ isOpen, onClose }) => {
               onChange={(e) => setAuthor(e.target.value)} // Set author name
               required
             />
+
+
 
             <button type="submit">Upload</button>
           </form>

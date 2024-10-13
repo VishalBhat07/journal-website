@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@coreui/coreui": "^5.1.2",
+    "@coreui/react": "^5.4.0",
     "@fortawesome/fontawesome-free": "^6.6.0",
+    "@material-tailwind/react": "^2.1.10",
     "dotenv": "^16.4.5",
     "firebase": "^10.14.1",
     "mdb-react-ui-kit": "^9.0.0",
