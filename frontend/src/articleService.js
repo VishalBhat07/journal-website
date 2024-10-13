@@ -7,7 +7,6 @@ const articlesRef = collection(db, 'articles');
 const storage = getStorage(); // Get a reference to the storage
 
 // Function to upload an article
-// Function to upload an article
 export const uploadArticle = async (articleData, file) => {
   try {
     // Create a storage reference
@@ -19,10 +18,14 @@ export const uploadArticle = async (articleData, file) => {
     // Get the file's download URL
     const fileURL = await getDownloadURL(storageRef);
 
+    // Calculate file size in MB
+    const fileSize = (file.size / (1024 * 1024)).toFixed(2) + ' MB'; // Convert bytes to MB
+
     // Add the article data to Firestore, including the file URL and the current date
     const articleWithFile = {
       ...articleData,
       fileURL: fileURL,
+      size: fileSize, // Add file size
       date: new Date().toISOString(), // Add the current date
     };
     
@@ -35,10 +38,14 @@ export const uploadArticle = async (articleData, file) => {
   }
 };
 
-
 // Function to fetch articles
 export const fetchArticles = async () => {
-  const articlesSnapshot = await getDocs(articlesRef);
-  const articlesList = articlesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-  return articlesList;
+  try {
+    const articlesSnapshot = await getDocs(articlesRef);
+    const articlesList = articlesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    return articlesList;
+  } catch (error) {
+    console.error("Error fetching articles: ", error);
+    return []; // Return an empty array on error
+  }
 };

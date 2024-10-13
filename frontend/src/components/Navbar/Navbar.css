@@ -1,65 +1,50 @@
 /* Navbar.css */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #121212;
-    color: #ffffff;
-    height: 100%;
-    width: 100%;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #1f1f1f;
-    padding: 20px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  .navbar-logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #e0e0e0;
-  }
-  
-  .navbar-menu {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .navbar-menu a {
-    color: #e0e0e0;
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar-menu a:hover {
-    color: #bb86fc;
-  }
+.navbar {
+  display: flex;
+  margin: 0;
+  justify-content: space-between; /* Allows space between logo and button */
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: white; /* White background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  font-family: Arial, sans-serif;
+  position: relative;
+}
 
-  .navbar-btns{
-    display: flex;
-    gap: 20px;
+.navbar-logo {
+  font-size: 2rem; /* Larger logo */
+  font-weight: bold;
+  color: #007bff; /* Adjust color to fit your theme */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* Center the logo */
+  padding-top: 10px;
+}
+
+.navbar-btns {
+  margin-left: 90%; /* Aligns the button to the right */
+}
+
+.navbar-btn {
+  background-color: #007bff; /* Blue button background */
+  color: white;
+  padding: 0.5rem 1rem;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+@media (max-width: 768px) {
+  .navbar-logo {
+    position: relative; /* Remove absolute centering for mobile */
+    left: auto;
+    transform: none;
   }
-  
-  .navbar-btn {
-    background-color: #bb86fc;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .navbar-btn:hover {
-    background-color: #3700b3;
-  }
-  
+}

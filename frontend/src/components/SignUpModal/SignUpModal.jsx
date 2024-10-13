@@ -1,46 +1,45 @@
-// SignUpModal.js
 import React, { useState } from 'react';
-import './SignUpModal.css';
+import '../LoginModal/LoginModal.css';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
 
 const SignUpModal = ({ onClose, onLoginClick }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false); // Add loading state
 
   const handleSignUp = (e) => {
-    e.preventDefault();  // Prevent default form submission behavior
-  
-    const auth = getAuth();  // Initialize Firebase authentication
-  
-    // Use Firebase createUserWithEmailAndPassword method
+    e.preventDefault();
+    setIsLoading(true); // Set loading state to true
+    const auth = getAuth();
+
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed up successfully
         const user = userCredential.user;
-        console.log('User Signed Up:', user);  // Log user details if needed
-  
-        onClose();  // Close the modal after successful sign up (optional)
+        console.log('User Signed Up:', user); // Log user details
+        console.log('Sign Up Successful!'); // Print a success message in the console
+        alert('Sign Up Successful!');
+        onClose();
       })
       .catch((error) => {
-        // Handle sign-up errors
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.error('Sign Up Error:', errorCode, errorMessage);  // Log error details
+        console.error('Sign Up Error:', errorCode, errorMessage);
+        alert(errorMessage);
+      })
+      .finally(() => {
+        setIsLoading(false); // Reset loading state
       });
-  
-    console.log('Sign Up:', { email, password });  // Debugging: log form inputs
   };
-  
 
   return (
     <div className="modal-overlay">
       <div className="modal-content">
         <button className="close-btn" onClick={onClose}>×</button>
-        <h2>Sign Up</h2>
-        <form onSubmit={handleSignUp}>
-          <label htmlFor="email">Email:</label>
+        <h2 className="modal-title">Sign Up</h2>
+        <form className="modal-form" onSubmit={handleSignUp}>
+          <label className="modal-label" htmlFor="email">Email:</label>
           <input
+            className="modal-input"
             type="email"
             id="email"
             value={email}
@@ -48,8 +47,9 @@ const SignUpModal = ({ onClose, onLoginClick }) => {
             required
           />
 
-          <label htmlFor="password">Password:</label>
+          <label className="modal-label" htmlFor="password">Password:</label>
           <input
+            className="modal-input"
             type="password"
             id="password"
             value={password}
@@ -57,11 +57,13 @@ const SignUpModal = ({ onClose, onLoginClick }) => {
             required
           />
 
-          <button type="submit">Sign Up</button>
+          <button className="modal-button" type="submit" disabled={isLoading}>
+            {isLoading ? 'Signing Up...' : 'Sign Up'}
+          </button>
         </form>
-        <p>
+        <p className="modal-text">
           Already have an account? 
-          <span onClick={onLoginClick} style={{ cursor: 'pointer', color: '#bb86fc' }}> Login</span>
+          <span className="modal-login" onClick={onLoginClick}> Login</span>
         </p>
       </div>
     </div>

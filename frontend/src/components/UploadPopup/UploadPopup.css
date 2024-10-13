@@ -1,0 +1,109 @@
+.upload-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it sits above other elements */
+  }
+  
+  .upload-modal-content {
+    background-color: #ffffff; /* Solid white background for the modal */
+    color: #000000; /* Black text color */
+    padding: 40px; /* More padding for a spacious feel */
+    border-radius: 6px; /* Reduced border radius */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    width: 90%; /* Responsive width */
+    max-width: 500px; /* Max width for larger screens */
+    position: relative; /* Position relative for the close button */
+  }
+  
+  .upload-modal-header {
+    display: flex; /* Align title and close icon */
+    justify-content: space-between; /* Space between title and close icon */
+    align-items: center; /* Center vertically */
+  }
+  
+  .upload-close-icon {
+    background: none; /* No background */
+    border: none; /* No border */
+    color: #ff5b5b; /* Red color for close button for visibility */
+    font-size: 24px; /* Font size */
+    cursor: pointer; /* Pointer cursor */
+    transition: color 0.3s ease; /* Smooth color transition */
+    margin-left: 10px; /* Space from the title */
+  }
+  
+  .upload-close-icon:hover {
+    color: #d9534f; /* Darker red on hover */
+  }
+  
+  .upload-hero-title {
+    margin-bottom: 25px; /* Space below the title */
+    font-size: 26px; /* Larger font for the title */
+    color: #007BFF; /* Blue color for the title */
+    text-align: left; /* Align title to the left */
+  }
+  
+  .upload-hero-form {
+    display: flex;
+    flex-direction: column; /* Stack the form elements */
+  }
+  
+  .upload-hero-form label {
+    margin-bottom: 5px; /* Space below the label */
+    font-size: 16px; /* Font size for labels */
+    color: #333333; /* Darker text for labels */
+  }
+  
+  .upload-hero-form input[type="file"],
+  .upload-hero-form input[type="text"],
+  .upload-hero-form input[type="date"],
+  .upload-hero-form textarea {
+    padding: 12px; /* More padding for input fields */
+    margin-bottom: 15px; /* Space between inputs */
+    border: 1px solid #007BFF; /* Blue border color */
+    border-radius: 4px; /* Reduced border radius */
+    background-color: #f7f7f7; /* Light background color for inputs */
+    color: #000000; /* Black text color */
+    transition: border-color 0.3s ease; /* Smooth transition */
+  }
+  
+  .upload-hero-form textarea {
+    resize: vertical; /* Allow vertical resizing of the textarea */
+    min-height: 80px; /* Minimum height for the textarea */
+  }
+  
+  .upload-hero-form input[type="file"]:focus,
+  .upload-hero-form input[type="text"]:focus,
+  .upload-hero-form input[type="date"]:focus,
+  .upload-hero-form textarea:focus {
+    border-color: #0056b3; /* Darker blue on focus */
+    outline: none; /* Remove default outline */
+  }
+  
+  .upload-hero-form button {
+    padding: 12px; /* More padding for buttons */
+    border: none; /* No border */
+    border-radius: 4px; /* Reduced border radius */
+    background-color: #007BFF; /* Blue button color */
+    color: #ffffff; /* White button text color */
+    cursor: pointer; /* Pointer cursor */
+    font-size: 16px; /* Font size for buttons */
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+  
+  .upload-hero-form button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  .upload-popup-message {
+    margin-top: 15px; /* Space above the message */
+    color: green; /* Green color for success messages */
+    text-align: center; /* Center the message */
+  }
+  

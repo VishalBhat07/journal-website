@@ -1,21 +1,45 @@
-// Navbar.jsx
-import React from 'react';
-import './Navbar.css';
+// src/components/Navbar.jsx
+import React, { useEffect, useState } from 'react';
+import { auth } from '../../firebaseConfig.js';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import './Navbar.css'; // Ensure this path is correct
 
 const Navbar = ({ onSignUpClick }) => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        alert('You have signed out successfully.');
+      })
+      .catch((error) => {
+        console.error('Sign Out Error:', error);
+      });
+  };
+
   return (
-    <div className="navbar">
-      <div className="navbar-logo">My Website</div>
-      <div className="navbar-menu">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
+    <nav className="navbar">
+      <h1 className="navbar-logo">Mechanical Dept of RVCE</h1>
+      <div className="navbar-btns">
+        {user ? (
+          <button className="navbar-btn" onClick={handleSignOut}>
+            Sign Out
+          </button>
+        ) : (
+          <button className="navbar-btn" onClick={onSignUpClick}>
+            Sign Up
+          </button>
+        )}
       </div>
-      <div className='navbar-btns'>
-        <button className="navbar-btn" onClick={onSignUpClick}>Sign Up</button>
-      </div>
-    </div>
+    </nav>
   );
 };
 

@@ -1,0 +1,22 @@
+/* NavOption.css */
+.nav-option {
+  display: flex;
+  align-items: center; /* Center align icon and text */
+  padding: 10px; /* Padding for clickable area */
+  gap: 5%; /* Space between icon and text */
+  text-decoration: none; /* Ensure no text decoration */
+  color: white; /* Set text color to white */
+  cursor: pointer; /* Change cursor on hover */
+  /* Removed the transition for hover effects */
+}
+
+.nav-icon {
+  height: 1.5rem; /* Icon size */
+  width: 1.5rem; /* Icon size */
+  margin-right: 10px; /* Space between icon and text */
+}
+
+.nav-label {
+  font-size: 16px; /* Font size for label */
+  text-decoration: none; /* Ensure no text decoration */
+}
