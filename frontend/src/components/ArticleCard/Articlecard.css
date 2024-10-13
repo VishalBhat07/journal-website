@@ -1,0 +1,34 @@
+/* ArticleCard.css */
+.article-card {
+    background-color: #f9f9f9; /* Light background for the card */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Padding inside the card */
+    margin: 10px 0; /* Margin between cards */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    width: 50%;
+  }
+  
+  .article-author {
+    font-size: 1.5rem; /* Larger font for author name */
+    margin: 0 0 10px; /* Margin below the author name */
+  }
+  
+  .article-date,
+  .article-size {
+    font-size: 1rem; /* Standard font size */
+    margin: 5px 0; /* Margin between details */
+  }
+  
+  .article-link {
+    color: #007bff; /* Link color */
+    text-decoration: none; /* Remove underline */
+    margin-top: 10px; /* Space above link */
+  }
+  
+  .article-link:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  

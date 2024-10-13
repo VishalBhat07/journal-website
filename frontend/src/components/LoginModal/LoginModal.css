@@ -1,11 +1,10 @@
-/* Modal.css */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8); /* Dark background with transparency */
+  background-color: #ffffff; /* Solid black overlay */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,70 +12,89 @@
 }
 
 .modal-content {
-  background-color: #1f1f1f; /* Dark background for the modal */
-  color: #ffffff; /* White text color */
-  padding: 30px;
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  width: 400px; /* Set a fixed width for the modal */
-  max-width: 90%; /* Responsive width */
+  background-color: #ffffff; /* Solid white background for the modal */
+  color: #000000; /* Black text color */
+  padding: 40px; /* More padding for a spacious feel */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  width: 90%; /* Responsive width */
+  max-width: 400px; /* Max width for larger screens */
+  position: relative; /* Position relative for the close button */
 }
 
 .close-btn {
   background: none;
   border: none;
-  color: #bb86fc; /* Close button color */
+  color: #ff5b5b; /* Red color for close button for visibility */
   font-size: 24px;
   position: absolute;
-  top: 10px;
+  top: 15px;
   right: 15px;
   cursor: pointer;
 }
 
-h2 {
-  margin-bottom: 20px;
-  font-size: 24px; /* Larger font for the title */
+.modal-title {
+  margin-bottom: 25px; /* Space below the title */
+  font-size: 26px; /* Larger font for the title */
+  color: #007BFF; /* Blue color for the title */
+  text-align: center; /* Center title text */
 }
 
-form {
+.modal-form {
   display: flex;
   flex-direction: column; /* Stack the form elements */
 }
 
-label {
+.modal-label {
   margin-bottom: 5px;
   font-size: 16px; /* Font size for labels */
+  color: #333333; /* Darker text for labels */
 }
 
-input {
-  padding: 10px;
+.modal-input {
+  padding: 12px; /* More padding for input fields */
   margin-bottom: 15px; /* Space between inputs */
-  border: 1px solid #bb86fc; /* Border color */
-  border-radius: 4px; /* Slightly rounded corners */
-  background-color: #2e2e2e; /* Input background color */
-  color: #ffffff; /* Input text color */
+  border: 1px solid #007BFF; /* Blue border color */
+  border-radius: 6px; /* Slightly rounded corners */
+  background-color: #f7f7f7; /* Light background color for inputs */
+  color: #000000; /* Black text color */
+  transition: border-color 0.3s ease; /* Smooth transition */
 }
 
-input:focus {
-  border-color: #3700b3; /* Change border color on focus */
+.modal-input:focus {
+  border-color: #0056b3; /* Darker blue on focus */
   outline: none; /* Remove default outline */
 }
 
-button {
-  padding: 10px;
+.modal-button {
+  padding: 12px; /* More padding for buttons */
   border: none;
-  border-radius: 4px;
-  background-color: #bb86fc; /* Button color */
-  color: #ffffff; /* Button text color */
+  border-radius: 6px; /* Slightly rounded corners */
+  background-color: #007BFF; /* Blue button color */
+  color: #ffffff; /* White button text color */
   cursor: pointer;
+  font-size: 16px; /* Font size for buttons */
   transition: background-color 0.3s ease; /* Smooth transition */
 }
 
-button:hover {
-  background-color: #3700b3; /* Darker button color on hover */
-}
-
-p {
+.modal-text {
   margin-top: 15px; /* Space above the paragraph */
   text-align: center; /* Center the text */
+}
+
+/* Updated to make the login link look like a button */
+.modal-login {
+  cursor: pointer;
+  color: #bb86fc; /* Purple color for the login link */
+  text-decoration: underline; /* Underline for better visibility */
+  font-size: 16px; /* Font size for better visibility */
+}
+
+.modal-login:hover {
+  color: #9e00e8; /* Darker purple on hover */
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 10px; /* Space below the error message */
 }
