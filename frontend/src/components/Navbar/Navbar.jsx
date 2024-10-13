@@ -1,6 +1,6 @@
 // src/components/Navbar.jsx
 import React, { useEffect, useState } from 'react';
-import { auth } from '../../firebaseConfig.js';
+import { auth } from '../../../../backend/firebaseConfig';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import './Navbar.css'; // Ensure this path is correct
 
