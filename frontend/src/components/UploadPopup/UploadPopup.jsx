@@ -4,22 +4,27 @@ import './UploadPopup.css'; // Add your modal CSS styles here
 
 const UploadPopup = ({ isOpen, onClose }) => {
   const [author, setAuthor] = useState('');
+  const [title, setTitle] = useState(''); // New state for title
   const [file, setFile] = useState(null);
   const [successMessage, setSuccessMessage] = useState('');
+  const [isUploading, setIsUploading] = useState(false); // New state for upload status
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
 
-    // Check if author and file are provided
-    if (!author || !file) {
-      setSuccessMessage('Please provide author name and a file.');
+    // Check if author, title, and file are provided
+    if (!author || !title || !file) {
+      setSuccessMessage('Please provide author name, title, and a file.');
       return;
     }
 
     const articleData = {
       author: author,
+      title: title, // Include title in the articleData
       // Add other fields as necessary, like date and pages if required
     };
+
+    setIsUploading(true); // Set uploading state to true
 
     // Attempt to upload the article
     try {
@@ -35,11 +40,14 @@ const UploadPopup = ({ isOpen, onClose }) => {
     } catch (error) {
       setSuccessMessage('Error uploading file: ' + error.message);
       console.error("Upload error:", error); // Log the error for debugging
+    } finally {
+      setIsUploading(false); // Reset uploading state to false
     }
   };
 
   const resetForm = () => {
     setAuthor('');
+    setTitle(''); // Reset title field
     setFile(null);
   };
 
@@ -71,7 +79,18 @@ const UploadPopup = ({ isOpen, onClose }) => {
               required
             />
 
-            <button type="submit">Upload</button>
+            <label htmlFor="title">Title:</label> {/* New input field for title */}
+            <input
+              type="text"
+              id="titleInput"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)} // Set title
+              required
+            />
+
+            <button type="submit" disabled={isUploading}>
+              {isUploading ? 'Uploading...' : 'Upload'}
+            </button>
           </form>
 
           {successMessage && (
