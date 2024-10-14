@@ -94,6 +94,7 @@
     color: #ffffff; /* White button text color */
     cursor: pointer; /* Pointer cursor */
     font-size: 16px; /* Font size for buttons */
+    margin-top: 10px;
     transition: background-color 0.3s ease; /* Smooth transition */
   }
   
