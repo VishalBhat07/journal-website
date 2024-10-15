@@ -4,7 +4,6 @@ import Hero from '../src/components/Hero/Hero.jsx';
 import Footer from '../src/components/Footer/Footer.jsx';
 import SignUpModal from '../src/components/SignUpModal/SignUpModal.jsx';
 import LoginModal from '../src/components/LoginModal/LoginModal.jsx';
-import ImageCarousel from '../src/components/ImageCarousel/ImageCarousel.jsx';
 
 import { useState } from 'react';
 
@@ -36,7 +35,6 @@ function App() {
     <>
       <Navbar onSignUpClick={handleSignUpClick} />
       <Hero />
-      <ImageCarousel/>
       <Footer />
       
       {isSignUpOpen && (

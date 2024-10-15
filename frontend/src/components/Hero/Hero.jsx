@@ -5,7 +5,7 @@ import JournalCard from '../JournalCard/JournalCard';
 import ArticleCard from '../ArticleCard/ArticleCard'; // Import the ArticleCard component
 import { fetchArticles } from '../../articleService'; // Import fetchArticles function
 import { getAuth, onAuthStateChanged } from "firebase/auth"; // Import necessary Firebase functions
-
+import ImageCarousel from "../ImageCarousel/ImageCarousel";
 // Importing SVG icons
 import HomeIcon from '../../assets/home.svg';
 import AboutIcon from '../../assets/about.svg';

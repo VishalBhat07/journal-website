@@ -3,14 +3,19 @@ import { db } from './firebaseConfig';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
-const articlesRef = collection(db, 'articles');
 const storage = getStorage(); // Get a reference to the storage
+
+const volumeNo = "24";  // Simpler format for volume
+const issueNo = "2";    // Simpler format for issue
+
+// Firestore reference, reflecting the folder structure in Firestore as well
+const articlesRef = collection(db, `${volumeNo}/${issueNo}/articles`);
 
 // Function to upload an article
 export const uploadArticle = async (articleData, file) => {
   try {
-    // Create a storage reference
-    const storageRef = ref(storage, `articles/${file.name}`);
+    // Create the correct folder structure `24/2/articles/filename` for Firebase Storage
+    const storageRef = ref(storage, `${volumeNo}/${issueNo}/articles/${file.name}`);
     
     // Upload the file to Firebase Storage
     await uploadBytes(storageRef, file);

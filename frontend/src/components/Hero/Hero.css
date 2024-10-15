@@ -10,10 +10,11 @@
   color: white;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
-  /* Removed border-radius to eliminate rounded corners */
   box-sizing: border-box;
+  position: sticky; /* Ensures the sidebar sticks */
+  top: 0; /* Ensure it sticks when it reaches the top of the viewport */
+  height: 100vh; /* Optional: if you want it to be full height of the viewport */
 }
-
 .sidebar nav {
   display: flex;
   flex-direction: column;

@@ -7,6 +7,7 @@ const UploadPopup = ({ isOpen, onClose }) => {
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState(''); // New state for title
   const [successMessage, setSuccessMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false); // New state to track form submission
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
@@ -23,6 +24,8 @@ const UploadPopup = ({ isOpen, onClose }) => {
       // Add other fields as necessary, like date and pages if required
     };
 
+    setIsSubmitting(true); // Disable the form during submission
+
     // Attempt to upload the article
     try {
       const response = await uploadArticle(articleData, file);
@@ -37,6 +40,8 @@ const UploadPopup = ({ isOpen, onClose }) => {
     } catch (error) {
       setSuccessMessage('Error uploading file: ' + error.message);
       console.error("Upload error:", error); // Log the error for debugging
+    } finally {
+      setIsSubmitting(false); // Re-enable the form after submission
     }
   };
 
@@ -64,12 +69,12 @@ const UploadPopup = ({ isOpen, onClose }) => {
                 setFile(e.target.files[0]); // Set selected file
               }}
             />
-            <label htmlFor="title">Title:</label> {/* New label for title */}
+            <label htmlFor="title">Title:</label>
             <input
               type="text"
-              id="titleInput" // Add an id for the title input
-              value={title} // Bind the title state
-              onChange={(e) => setTitle(e.target.value)} // Set title
+              id="titleInput"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
               required
             />
 
@@ -78,13 +83,13 @@ const UploadPopup = ({ isOpen, onClose }) => {
               type="text"
               id="authorInput"
               value={author}
-              onChange={(e) => setAuthor(e.target.value)} // Set author name
+              onChange={(e) => setAuthor(e.target.value)}
               required
             />
 
-
-
-            <button type="submit">Upload</button>
+            <button type="submit" id="submit-btn" disabled={isSubmitting}>
+              {isSubmitting ? 'Uploading...' : 'Upload'}
+            </button>
           </form>
 
           {successMessage && (
