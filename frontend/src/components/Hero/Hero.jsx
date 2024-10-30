@@ -3,7 +3,7 @@ import './Hero.css';
 import NavButton from '../NavOption/NavOption';
 import JournalCard from '../JournalCard/JournalCard';
 import ArticleCard from '../ArticleCard/ArticleCard'; // Import the ArticleCard component
-import { fetchArticles } from '../../../../backend/articleService'; // Import fetchArticles function
+import { fetchArticles } from '../../articleService'; // Import fetchArticles function
 import { getAuth, onAuthStateChanged } from "firebase/auth"; // Import necessary Firebase functions
 
 // Importing SVG icons

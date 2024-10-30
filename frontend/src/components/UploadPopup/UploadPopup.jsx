@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { uploadArticle } from '../../../../backend/articleService'; // Import functions
+import { uploadArticle } from '../../articleService'; // Import functions
 import './UploadPopup.css'; // Add your modal CSS styles here
 
 const UploadPopup = ({ isOpen, onClose }) => {
