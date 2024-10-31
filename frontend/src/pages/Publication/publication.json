@@ -1,0 +1,157 @@
+[
+    {
+        "title": "Initial Submission and Editorial Check",
+        "content": [
+            {
+                "type": "text",
+                "value": "Author Submission: Authors submit their manuscript through the journal’s submission platform, ensuring it adheres to the journal’s guidelines."
+            },
+            {
+                "type": "text",
+                "value": "Editorial Assessment: The journal's editorial team reviews the submission for compliance with formatting and scope guidelines. Check for completeness, originality, and whether the paper fits the journal's focus. If the manuscript does not meet these criteria, it may be rejected at this stage."
+            }
+        ]
+    },
+    {
+        "title": "Plagiarism Check",
+        "content": [
+            {
+                "type": "text",
+                "value": "The manuscript is checked for plagiarism using software tools to ensure the content is original and properly cited."
+            }
+        ]
+    },
+    {
+        "title": "Assignment to an Editor",
+        "content": [
+            {
+                "type": "text",
+                "value": "If the manuscript passes the initial screening, it is assigned to an editor, often a subject matter expert in the field. The editor evaluates the manuscript's scientific merit and decides whether it should proceed to the peer review stage."
+            }
+        ]
+    },
+    {
+        "title": "Selection of Reviewers",
+        "content": [
+            {
+                "type": "text",
+                "value": "Identifying Reviewers: The editor selects two or more independent reviewers (usually experts in the same field) to assess the manuscript."
+            }
+        ]
+    },
+    {
+        "title": "Peer Review Process",
+        "content": [
+            {
+                "type": "text",
+                "value": "Double-Blind or Single-Blind Review: Most journals use either a double-blind review process (where both the authors and reviewers remain anonymous to each other)."
+            },
+            {
+                "type": "list",
+                "value": [
+                    "Relevance: Is the paper relevant to the journal’s scope and audience?",
+                    "Originality: Does the manuscript contribute new and valuable knowledge to the field?",
+                    "Methodology: Are the research methods robust and appropriate?",
+                    "Clarity: Is the manuscript clearly written and well-organized?",
+                    "References: Are the references relevant and sufficient?",
+                    "Conclusions: Are the results supported by the data and logical reasoning?"
+                ]
+            },
+            {
+                "type": "text",
+                "value": "Feedback: Reviewers provide detailed feedback, highlighting strengths, weaknesses, suggestions for improvement, and whether they recommend the manuscript for publication, revision, or rejection."
+            }
+        ]
+    },
+    {
+        "title": "Reviewer's Decision and Recommendations",
+        "content": [
+            {
+                "type": "text",
+                "value": "Based on the feedback, reviewers recommend one of the following:"
+            },
+            {
+                "type": "list",
+                "value": [
+                    "Accept as is: The manuscript is ready for publication with no or minor revisions.",
+                    "Minor Revisions: The manuscript needs minor changes but is likely to be accepted after revision.",
+                    "Major Revisions: The manuscript requires substantial improvements before it can be considered again.",
+                    "Reject: The manuscript is not suitable for the journal and should not be published."
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Editorial Decision",
+        "content": [
+            {
+                "type": "text",
+                "value": "Editor Review: The editor evaluates the reviewers’ comments and makes the final decision:"
+            },
+            {
+                "type": "list",
+                "value": [
+                    "Accept: The manuscript is accepted for publication with or without revisions.",
+                    "Revise and Resubmit: The author is asked to make minor or major revisions, based on reviewer comments, and resubmit the manuscript for further evaluation.",
+                    "Reject: The manuscript is not suitable for publication and is rejected. Authors may receive feedback to help them improve the manuscript for submission to another journal."
+                ]
+            },
+            {
+                "type": "text",
+                "value": "In case of conflicting reviewer feedback, the editor may invite an additional reviewer or make a judgment based on the combined feedback."
+            }
+        ]
+    },
+    {
+        "title": "Revision Process",
+        "content": [
+            {
+                "type": "text",
+                "value": "Author Revisions: If revisions are required, the authors make the necessary changes and submit the revised manuscript. They also provide a detailed response to each reviewer’s comment, explaining how they addressed the issues raised."
+            },
+            {
+                "type": "text",
+                "value": "Second Review (if needed): The revised manuscript may be sent back to the reviewers to ensure the changes have been adequately addressed."
+            }
+        ]
+    },
+    {
+        "title": "Final Decision",
+        "content": [
+            {
+                "type": "text",
+                "value": "After the revision is reviewed, the editor makes the final decision to either:"
+            },
+            {
+                "type": "list",
+                "value": [
+                    "Accept the manuscript for publication.",
+                    "Request further revisions.",
+                    "Reject the manuscript if it still does not meet the journal’s standards."
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Proofreading and Publication",
+        "content": [
+            {
+                "type": "text",
+                "value": "Once accepted, the manuscript goes through a final proofreading and formatting stage. The authors may be asked to review the proofs to ensure accuracy before publication."
+            },
+            {
+                "type": "text",
+                "value": "The manuscript is then published in an upcoming issue or as part of an online early publication."
+            }
+        ]
+    },
+    {
+        "title": "Post-Publication",
+        "content": [
+            {
+                "type": "text",
+                "value": "Corrections and Retractions: If any errors or ethical issues are discovered post-publication, the journal may issue corrections or, in severe cases, retract the article."
+            }
+        ]
+    }
+]
