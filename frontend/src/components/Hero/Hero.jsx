@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Hero.css';
-import NavButton from '../NavOption/NavOption';
 import JournalCard from '../JournalCard/JournalCard';
 import ArticleCard from '../ArticleCard/ArticleCard'; // Import the ArticleCard component
 import { fetchArticles } from '../../articleService'; // Import fetchArticles function
 import { getAuth, onAuthStateChanged } from "firebase/auth"; // Import necessary Firebase functions
-
-// Importing SVG icons
-import HomeIcon from '../../assets/home.svg';
-import AboutIcon from '../../assets/about.svg';
-import ContactIcon from '../../assets/contact.svg';
-import UploadIcon from '../../assets/upload.svg';
-import FilesIcon from '../../assets/files.svg';
+import Sidebar from "../../components/Sidebar/Sidebar"
 import UploadPopup from '../UploadPopup/UploadPopup'; // Import your upload pop-up component
 import LoginModal from '../LoginModal/LoginModal'; // Import your login modal
 
@@ -66,15 +59,7 @@ const Hero = () => {
 
   return (
     <div className="hero-section">
-      <div className="sidebar">
-        <nav>
-          <NavButton icon={HomeIcon} label="Home" onClick={handleHomeClick} />
-          <NavButton icon={AboutIcon} label="About" />
-          <NavButton icon={ContactIcon} label="Contact" />
-          <NavButton icon={UploadIcon} label="Upload" onClick={handleUploadClick} />
-          <NavButton icon={FilesIcon} label="Files" onClick={handleFilesClick} /> {/* Handle files button click */}
-        </nav>
-      </div>
+        <Sidebar/>
       <div className="main-content">
         {mainContent} {/* Render the current main content */}
       </div>

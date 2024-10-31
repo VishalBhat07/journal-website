@@ -12,6 +12,11 @@
 }
 
 .navbar-logo {
+ height: 100px;
+ width: 350px;
+}
+
+.navbar-title {
   font-size: 2rem; /* Larger logo */
   font-weight: bold;
   color: #007bff; /* Adjust color to fit your theme */
@@ -19,10 +24,6 @@
   left: 50%;
   transform: translateX(-50%); /* Center the logo */
   padding-top: 10px;
-}
-
-.navbar-btns {
-  margin-left: 90%; /* Aligns the button to the right */
 }
 
 .navbar-btn {
