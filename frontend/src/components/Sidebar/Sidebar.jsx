@@ -4,7 +4,7 @@ const Sidebar = () => {
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 bg-light"
-      style={{ width: "280px", height: "100vh" }}
+      style={{ width: "220px", height: "100vh" }}
     >
 
       <ul className="nav nav-pills flex-column mb-auto">

@@ -10,18 +10,19 @@
     color: #333;
   }
   
-  .container {
+  .hero-container {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    margin: 10px;
-    max-width: 1200px;
+    width: 950px;
+    padding: 10px;
   }
   
   .left-column {
-    width: 30%;
+    width: 40%;
     background-color: #ffffff;
     padding: 20px;
+    margin-right: 10px;
     text-align: center;
     border-right: 1px solid #ccc;
   }
@@ -40,6 +41,7 @@
     width: 65%;
     padding: 20px;
     background-color: #fff;
+    margin-left: 10px;
   }
   
   h1 {
