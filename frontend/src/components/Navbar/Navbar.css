@@ -1,41 +1,44 @@
 /* Navbar.css */
 .navbar {
   display: flex;
-  margin: 0;
   justify-content: space-between; /* Allows space between logo and button */
   align-items: center;
-  padding: 1rem 2rem;
   background-color: white; /* White background */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   font-family: Arial, sans-serif;
   position: relative;
+  background-image: url('../../assets/dome.jpg');
+  padding: 0;
+  margin: 0;
 }
 
 .navbar-logo {
- height: 100px;
- width: 350px;
+  height: 140px; /* Height of the logo */
+  width: 350px;  /* Width of the logo */
+  padding: 0;
+  margin: 0;
 }
 
 .navbar-title {
-  font-size: 2rem; /* Larger logo */
+  font-size: 2rem; /* Font size for title */
   font-weight: bold;
-  color: #007bff; /* Adjust color to fit your theme */
+  color: white; /* Adjust color to fit your theme */
   position: absolute;
   left: 50%;
-  transform: translateX(-50%); /* Center the logo */
+  transform: translateX(-50%); /* Center the title */
   padding-top: 10px;
 }
 
 .navbar-btn {
   background-color: #007bff; /* Blue button background */
-  color: white;
+  color: white; /* Button text color */
   padding: 0.5rem 1rem;
-  border: 2px solid #007bff;
-  border-radius: 5px;
-  cursor: pointer;
+  border: 2px solid #007bff; /* Border color matching the button */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
   font-size: 1rem;
   font-weight: bold;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover */
 }
 
 .navbar-btn:hover {
@@ -46,6 +49,6 @@
   .navbar-logo {
     position: relative; /* Remove absolute centering for mobile */
     left: auto;
-    transform: none;
+    transform: none; /* Reset transformation */
   }
 }

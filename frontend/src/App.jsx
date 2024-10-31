@@ -1,10 +1,13 @@
-import './App.css';
-import Navbar from '../src/components/Navbar/Navbar.jsx';
-import Hero from '../src/components/Hero/Hero.jsx';
-import Footer from '../src/components/Footer/Footer.jsx';
-import SignUpModal from '../src/components/SignUpModal/SignUpModal.jsx';
-import LoginModal from '../src/components/LoginModal/LoginModal.jsx';
-import { useState } from 'react';
+import "./App.css";
+import Navbar from "../src/components/Navbar/Navbar.jsx";
+import Hero from "../src/components/Hero/Hero.jsx";
+import Footer from "../src/components/Footer/Footer.jsx";
+import SignUpModal from "../src/components/SignUpModal/SignUpModal.jsx";
+import LoginModal from "../src/components/LoginModal/LoginModal.jsx";
+import { useState } from "react";
+import Sidebar from "./components/Sidebar/Sidebar.jsx";
+import QuickLinks from "../src/components/QuickLinks/QuickLinks.jsx";
+import BankDetails from "../src/components/BankDetails/BankDetails.jsx";
 
 function App() {
   const [isSignUpOpen, setSignUpOpen] = useState(false);
@@ -33,19 +36,24 @@ function App() {
   return (
     <>
       <Navbar onSignUpClick={handleSignUpClick} />
-      <Hero />
+      <div className="hero-section">
+        <Sidebar />
+        <Hero />
+        <div className="right-section">
+          <QuickLinks />
+          <BankDetails />
+        </div>
+      </div>
+
       <Footer />
-      
+
       {isSignUpOpen && (
-        <SignUpModal 
-          onClose={closeSignUpModal} 
-          onLoginClick={openLoginModal} 
-        />
+        <SignUpModal onClose={closeSignUpModal} onLoginClick={openLoginModal} />
       )}
-      
+
       {isLoginOpen && (
-        <LoginModal 
-          onClose={closeLoginModal} 
+        <LoginModal
+          onClose={closeLoginModal}
           onSignUpClick={handleSignUpClick} // To switch back to Sign Up
         />
       )}

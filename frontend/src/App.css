@@ -5,3 +5,20 @@
     box-sizing: border-box;
   }
   
+  .hero-section {
+    display: flex;
+    min-height: 100vh; /* Ensures full viewport height */
+    /* Removed the gap to eliminate space between sidebar and main content */
+  }
+
+/* Right Section */
+.right-section {
+  width: 20%; /* Width for the right section */
+  padding: 20px; /* Padding for the right section */
+  background-color: #f8f9fa; /* White background */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  display: flex; /* Flex display for child components */
+  flex-direction: column; /* Stack child components vertically */
+  gap: 20px; /* Space between child components */
+}

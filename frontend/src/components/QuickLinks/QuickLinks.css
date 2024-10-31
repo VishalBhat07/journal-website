@@ -1,0 +1,34 @@
+.quick-links {
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Add some rounding to the corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.quick-links h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333; /* Ensure the header has a good contrast */
+}
+
+.quick-links ul {
+  list-style-type: none; /* Remove default list styling */
+  padding: 0; /* Remove padding */
+}
+
+.quick-links li {
+  margin: 10px 0; /* Space between list items */
+}
+
+.quick-links a {
+  color: #007BFF; /* Link color */
+  text-decoration: none; /* Remove underline */
+  font-size: 16px; /* Set link font size */
+  transition: color 0.3s ease; /* Smooth transition for hover */
+}
+
+.quick-links a:hover {
+  text-decoration: underline; /* Underline on hover */
+  color: #0056b3; /* Darken color on hover */
+}

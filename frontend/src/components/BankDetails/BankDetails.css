@@ -1,0 +1,27 @@
+.bank-details {
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.bank-details h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333; /* Ensure the header has a good contrast */
+}
+
+.bank-details ul {
+  list-style-type: none; /* Remove default list styling */
+  padding: 0; /* Remove padding */
+}
+
+.bank-details li {
+  margin: 10px 0; /* Space between list items */
+  font-size: 16px; /* Font size for list items */
+}
+
+.bank-details strong {
+  color: #007BFF; /* Color for labels */
+} 

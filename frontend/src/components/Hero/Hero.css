@@ -1,41 +1,7 @@
-.hero-section {
-  display: flex;
-  min-height: 100vh; /* Ensures full viewport height */
-  /* Removed the gap to eliminate space between sidebar and main content */
-}
-
-.sidebar {
-  width: min(20%, 200px); /* Sidebar occupies 20% of the width */
-  background-color: #007bff; /* Blue background */
-  color: white;
-  padding: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
-  /* Removed border-radius to eliminate rounded corners */
-  box-sizing: border-box;
-}
-
-.sidebar nav {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem; /* Space between navigation items */
-}
-
-.nav-button {
-  display: flex;
-  align-items: center; /* Center align icons and text */
-  padding: 10px; /* Padding for clickable area */
-  border-radius: 5px; /* Rounded button corners */
-  transition: background-color 0.3s; /* Smooth background color transition */
-}
-
-.nav-button:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Hover effect for buttons */
-}
-
 .main-content {
   flex-grow: 1; /* Main content expands to fill available space */
   background-color: #f0f0f0; /* Light gray background */
-  padding: 20px; /* Padding for content */
+  padding: 10px; /* Padding for content */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
 }

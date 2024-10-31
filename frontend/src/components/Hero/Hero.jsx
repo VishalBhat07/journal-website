@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import './Hero.css';
-import JournalCard from '../JournalCard/JournalCard';
-import ArticleCard from '../ArticleCard/ArticleCard'; // Import the ArticleCard component
-import { fetchArticles } from '../../articleService'; // Import fetchArticles function
+import React, { useState, useEffect } from "react";
+import "./Hero.css";
+import JournalCard from "../JournalCard/JournalCard";
+import ArticleCard from "../ArticleCard/ArticleCard"; // Import the ArticleCard component
+import { fetchArticles } from "../../articleService"; // Import fetchArticles function
 import { getAuth, onAuthStateChanged } from "firebase/auth"; // Import necessary Firebase functions
-import Sidebar from "../../components/Sidebar/Sidebar"
-import UploadPopup from '../UploadPopup/UploadPopup'; // Import your upload pop-up component
-import LoginModal from '../LoginModal/LoginModal'; // Import your login modal
+import Sidebar from "../../components/Sidebar/Sidebar";
+import UploadPopup from "../UploadPopup/UploadPopup"; // Import your upload pop-up component
+import LoginModal from "../LoginModal/LoginModal"; // Import your login modal
+import AcademicBenefits from "../../pages/AcademicBenefits";
+import AuthorGuidelines from "../../pages/AuthorGuidelines";
+import IndustryBenefits from "../../pages/IndustryBenefits";
 
 const Hero = () => {
   const [mainContent, setMainContent] = useState(<JournalCard />); // Default content
@@ -41,7 +44,10 @@ const Hero = () => {
     setArticles(fetchedArticles); // Update articles state
     setMainContent(
       <div className="articles-container">
-        <button onClick={handleHomeClick} className="back-to-home">Back to Home</button> {/* Button to go back to home */}
+        <button onClick={handleHomeClick} className="back-to-home">
+          Back to Home
+        </button>{" "}
+        {/* Button to go back to home */}
         {fetchedArticles.map((article) => (
           <ArticleCard article={article} key={article.id} /> // Render ArticleCard for each article
         ))}
@@ -58,17 +64,21 @@ const Hero = () => {
   };
 
   return (
-    <div className="hero-section">
-        <Sidebar/>
+    <>
       <div className="main-content">
-        {mainContent} {/* Render the current main content */}
+        {mainContent} {/*Render the current main content */}
+        {/* <AcademicBenefits/>
+        <AuthorGuidelines/>
+        <IndustryBenefits/> */}
       </div>
 
       {/* Render upload pop-up if open */}
-      {isUploadPopupOpen && <UploadPopup isOpen={isUploadPopupOpen} onClose={closeUploadPopup} />}
+      {isUploadPopupOpen && (
+        <UploadPopup isOpen={isUploadPopupOpen} onClose={closeUploadPopup} />
+      )}
       {/* Render login modal if open */}
       {isLoginOpen && <LoginModal onClose={closeLoginModal} />}
-    </div>
+    </>
   );
 };
 
