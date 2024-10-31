@@ -1,0 +1,41 @@
+/* AuthorGuidelines.css */
+
+.author-guidelines {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px; /* Sets consistent spacing between each child element */
+}
+
+.author-guidelines h3 {
+    font-weight: bold;
+    text-align: center; /* Center-aligns the heading */
+}
+
+.author-guidelines > div > p {
+    line-height: 1.6;
+    text-align: left; /* Left-aligns the description */
+    margin: 0;
+}
+
+.accordions-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows the children to wrap */
+    gap: 20px; /* Space between accordions */
+}
+
+/* Additional styles to ensure responsiveness */
+.accordion-section {
+    flex: 1 1 clamp(250px, 30%, 400px); /* Use flex-grow, flex-shrink, and responsive width */
+    max-width: 100%; /* Prevents overflow */
+    margin: 0; /* Reset margin */
+}
+.accordion-section > h4 {
+    text-align: center;
+}
+
+.accordion-body{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
