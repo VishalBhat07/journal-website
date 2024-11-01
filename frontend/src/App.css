@@ -7,12 +7,16 @@
   
   .hero-section {
     display: flex;
-    min-height: 100vh; /* Ensures full viewport height */
-    /* Removed the gap to eliminate space between sidebar and main content */
+    min-height: 100vh; 
+    width: 100%;
   }
+.hero-content{
+  width: 80%;
+}
+
 
 /* Right Section */
-.right-section {
+.right-content {
   width: 20%; /* Width for the right section */
   padding: 20px; /* Padding for the right section */
   background-color: #f8f9fa; /* White background */
