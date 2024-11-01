@@ -14,15 +14,14 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    width: 950px;
-    padding: 10px;
+    width: 100%;
+    gap: 10px;
   }
   
   .left-column {
-    width: 40%;
+    width: 30%;
     background-color: #ffffff;
     padding: 20px;
-    margin-right: 10px;
     text-align: center;
     border-right: 1px solid #ccc;
   }
@@ -38,10 +37,9 @@
   }
   
   .right-column {
-    width: 65%;
+    width: 70%;
     padding: 20px;
     background-color: #fff;
-    margin-left: 10px;
   }
   
   h1 {

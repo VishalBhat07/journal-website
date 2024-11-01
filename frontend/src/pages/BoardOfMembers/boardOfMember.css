@@ -1,0 +1,9 @@
+#advisory-board{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+#advisory-board > * {
+    width: 40%;
+} 

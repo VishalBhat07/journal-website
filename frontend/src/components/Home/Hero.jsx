@@ -4,7 +4,7 @@ import JournalCard from "../JournalCard/JournalCard";
 import ArticleCard from "../ArticleCard/ArticleCard"; // Import the ArticleCard component
 import { fetchArticles } from "../../articleService"; // Import fetchArticles function
 import { getAuth, onAuthStateChanged } from "firebase/auth"; // Import necessary Firebase functions
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Sidebar from "../Sidebar/Sidebar";
 import UploadPopup from "../UploadPopup/UploadPopup"; // Import your upload pop-up component
 import LoginModal from "../LoginModal/LoginModal"; // Import your login modal
 import AcademicBenefits from "../../pages/AcademicBenefits";
@@ -67,9 +67,9 @@ const Hero = () => {
     <>
       <div className="main-content">
         {mainContent} {/*Render the current main content */}
-        {/* <AcademicBenefits/>
+        <AcademicBenefits/>
         <AuthorGuidelines/>
-        <IndustryBenefits/> */}
+        <IndustryBenefits/>
       </div>
 
       {/* Render upload pop-up if open */}

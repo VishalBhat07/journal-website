@@ -14,22 +14,33 @@ const QuickLinks = () => {
         </li>
         <li>
           <strong>
-            <Link to="/author/author-guidelines">Author Guidelines</Link>
+            <Link to="/about/academic-benefits">Academic Benefits</Link>
+          </strong>
+        </li>
+        <li>
+        <li>
+          <strong>
+            <Link to="/about/industry-benefits">Industry benefits</Link>
+          </strong>
+        </li>
+          <strong>
+            <Link to="/author/author-guidelines">Author Guidelines and Responsibilities</Link>
           </strong>
         </li>
         <li>
           <strong>
-            <Link to="/author/author-guidelines">Benefits to Industry</Link>
+            <Link to="/author/peer-review-process">Publication Process</Link>
+          </strong>
+        </li>
+
+        <li>
+          <strong>
+            <Link to="/about/board-of-member">Board of Members</Link>
           </strong>
         </li>
         <li>
           <strong>
-            <Link to="/author/author-guidelines">Board of Member</Link>
-          </strong>
-        </li>
-        <li>
-          <strong>
-            <Link to="/author/author-guidelines">Call for Paper</Link>
+            <Link to="/author/call-for-paper">Call for Paper</Link>
           </strong>
         </li>
         <li>
@@ -37,6 +48,7 @@ const QuickLinks = () => {
             <Link to="/author/author-guidelines">Advertisement Tariff</Link>
           </strong>
         </li>
+
       </ul>
     </div>
   );
