@@ -1,5 +1,6 @@
-import React from 'react';
-import './QuickLinks.css'; // Make sure to create a CSS file for styles
+import React from "react";
+import "./QuickLinks.css"; // Make sure to create a CSS file for styles
+import { Link } from "react-router-dom";
 
 const QuickLinks = () => {
   return (
@@ -7,19 +8,34 @@ const QuickLinks = () => {
       <h2>Quick Links</h2>
       <ul>
         <li>
-          <a href="#home">Home</a>
+          <strong>
+            <Link to="/">Home</Link>
+          </strong>
         </li>
         <li>
-          <a href="#about">About Us</a>
+          <strong>
+            <Link to="/author/author-guidelines">Author Guidelines</Link>
+          </strong>
         </li>
         <li>
-          <a href="#services">Services</a>
+          <strong>
+            <Link to="/author/author-guidelines">Benefits to Industry</Link>
+          </strong>
         </li>
         <li>
-          <a href="#contact">Contact</a>
+          <strong>
+            <Link to="/author/author-guidelines">Board of Member</Link>
+          </strong>
         </li>
         <li>
-          <a href="#faq">FAQ</a>
+          <strong>
+            <Link to="/author/author-guidelines">Call for Paper</Link>
+          </strong>
+        </li>
+        <li>
+          <strong>
+            <Link to="/author/author-guidelines">Advertisement Tariff</Link>
+          </strong>
         </li>
       </ul>
     </div>

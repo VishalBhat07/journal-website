@@ -1,150 +1,128 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({ isLoggedIn }) => {
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 bg-light"
-      style={{ width: "220px", height: "100vh" }}
+      style={{ width: "230px", height: "82vh" }}
     >
-
       <ul className="nav nav-pills flex-column mb-auto">
         <li className="nav-item dropdown">
-          <a
-            href="#"
-            className="nav-link active dropdown-toggle"
-            id="homeDropdown"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+          <Link to="/" className="nav-link active">
             <svg className="bi me-2" width="16" height="16">
               <use xlinkHref="#home" />
             </svg>
             Home
-          </a>
-          <ul className="dropdown-menu" aria-labelledby="homeDropdown">
-            <li>
-              <a className="dropdown-item" href="#">
-                Overview
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Updates
-              </a>
-            </li>
-          </ul>
+          </Link>
         </li>
+
         <li className="nav-item dropdown">
-          <a
-            href="#"
+          <Link
+            to="#"
             className="nav-link link-dark dropdown-toggle"
             id="dashboardDropdown"
+            role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
             <svg className="bi me-2" width="16" height="16">
               <use xlinkHref="#speedometer2" />
             </svg>
-            Dashboard
-          </a>
+            About
+          </Link>
           <ul className="dropdown-menu" aria-labelledby="dashboardDropdown">
             <li>
-              <a className="dropdown-item" href="#">
-                Analytics
-              </a>
+              <Link className="dropdown-item" to="/about/academic-benefits">
+                Academic Benefits
+              </Link>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
-                Reports
-              </a>
+              <Link className="dropdown-item" to="/about/industry-benefits">
+                Industry Benefits
+              </Link>
+            </li>
+            <li>
+              <Link className="dropdown-item" to="/about/board-of-member">
+                Board of Member
+              </Link>
             </li>
           </ul>
         </li>
+
         <li className="nav-item dropdown">
-          <a
-            href="#"
+          <Link
+            to="#"
             className="nav-link link-dark dropdown-toggle"
-            id="ordersDropdown"
+            id="dashboardDropdown"
+            role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
             <svg className="bi me-2" width="16" height="16">
-              <use xlinkHref="#table" />
+              <use xlinkHref="#speedometer2" />
             </svg>
-            Orders
-          </a>
-          <ul className="dropdown-menu" aria-labelledby="ordersDropdown">
+            Authors Section
+          </Link>
+          <ul className="dropdown-menu" aria-labelledby="dashboardDropdown">
             <li>
-              <a className="dropdown-item" href="#">
-                New Order
-              </a>
+              <Link className="dropdown-item" to="/author/author-guidelines">
+                Author Guidelines
+              </Link>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
-                Order History
-              </a>
+              <Link
+                className="dropdown-item"
+                to="/author/author-responsibilities"
+              >
+                Author Responsibilities
+              </Link>
+            </li>
+            <li>
+              <Link className="dropdown-item" to="/author/peer-review-process">
+                Peer Review Process
+              </Link>
             </li>
           </ul>
         </li>
+
         <li className="nav-item dropdown">
-          <a
-            href="#"
+          <Link
+            to={isLoggedIn ? "/upload-article" : "/uploads" }
             className="nav-link link-dark dropdown-toggle"
-            id="productsDropdown"
-            data-bs-toggle="dropdown"
+            id="dashboardDropdown"
+            role="button"
             aria-expanded="false"
           >
             <svg className="bi me-2" width="16" height="16">
-              <use xlinkHref="#grid" />
+              <use xlinkHref="#speedometer2" />
             </svg>
-            Products
-          </a>
-          <ul className="dropdown-menu" aria-labelledby="productsDropdown">
-            <li>
-              <a className="dropdown-item" href="#">
-                Add Product
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Manage Products
-              </a>
-            </li>
-          </ul>
+            Upload Article
+          </Link>
         </li>
+
         <li className="nav-item dropdown">
-          <a
-            href="#"
+          <Link
+            to="/uploads"
             className="nav-link link-dark dropdown-toggle"
-            id="customersDropdown"
-            data-bs-toggle="dropdown"
+            id="dashboardDropdown"
+            role="button"
             aria-expanded="false"
           >
             <svg className="bi me-2" width="16" height="16">
-              <use xlinkHref="#people-circle" />
+              <use xlinkHref="#speedometer2" />
             </svg>
-            Customers
-          </a>
-          <ul className="dropdown-menu" aria-labelledby="customersDropdown">
-            <li>
-              <a className="dropdown-item" href="#">
-                New Customer
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Customer List
-              </a>
-            </li>
-          </ul>
+            Uploads
+          </Link>
         </li>
       </ul>
       <hr />
       <div className="dropdown">
-        <a
-          href="#"
+        <Link
+          to="#"
           className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
           id="dropdownUser2"
+          role="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
@@ -156,33 +134,33 @@ const Sidebar = () => {
             className="rounded-circle me-2"
           />
           <strong>mdo</strong>
-        </a>
+        </Link>
         <ul
           className="dropdown-menu text-small shadow"
           aria-labelledby="dropdownUser2"
         >
           <li>
-            <a className="dropdown-item" href="#">
+            <Link className="dropdown-item" to="/new-project">
               New project...
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="dropdown-item" href="#">
+            <Link className="dropdown-item" to="/settings">
               Settings
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="dropdown-item" href="#">
+            <Link className="dropdown-item" to="/profile">
               Profile
-            </a>
+            </Link>
           </li>
           <li>
             <hr className="dropdown-divider" />
           </li>
           <li>
-            <a className="dropdown-item" href="#">
+            <Link className="dropdown-item" to="/sign-out">
               Sign out
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
