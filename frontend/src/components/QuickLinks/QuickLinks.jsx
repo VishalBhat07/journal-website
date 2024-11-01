@@ -37,6 +37,7 @@ const QuickLinks = () => {
             <Link to="/author/author-guidelines">Advertisement Tariff</Link>
           </strong>
         </li>
+
       </ul>
     </div>
   );
