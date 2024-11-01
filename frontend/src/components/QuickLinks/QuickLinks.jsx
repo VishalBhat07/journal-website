@@ -20,7 +20,7 @@ const QuickLinks = () => {
         <li>
         <li>
           <strong>
-            <Link to="/about/industry-benefits">Benefits to Industry</Link>
+            <Link to="/about/industry-benefits">Industry benefits</Link>
           </strong>
         </li>
           <strong>
@@ -29,13 +29,13 @@ const QuickLinks = () => {
         </li>
         <li>
           <strong>
-            <Link to="/author/peer-review-process">Peer Review Process</Link>
+            <Link to="/author/peer-review-process">Publication Process</Link>
           </strong>
         </li>
 
         <li>
           <strong>
-            <Link to="/author/board-of-member">Board of Member</Link>
+            <Link to="/about/board-of-member">Board of Members</Link>
           </strong>
         </li>
         <li>

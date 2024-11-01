@@ -1,6 +1,6 @@
 import "./App.css";
 import Navbar from "../src/components/Navbar/Navbar.jsx";
-import Hero from "../src/components/Hero/Hero.jsx";
+import Home from "./components/Home/Hero.jsx";
 import Footer from "../src/components/Footer/Footer.jsx";
 import SignUpModal from "../src/components/SignUpModal/SignUpModal.jsx";
 import LoginModal from "../src/components/LoginModal/LoginModal.jsx";
@@ -12,7 +12,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AcademicBenefits from "./pages/AcademicBenefits.jsx";
 import IndustryBenefits from "./pages/IndustryBenefits.jsx";
 import AuthorGuidelines from "./pages/Guidelines/guidelines.jsx";
-import BoardOfMember from "./pages/BoardOfMember.jsx";
+import BoardOfMember from "./pages/BoardOfMembers/boardOfMember.jsx";
 import CallForPaper from "./pages/CallForPaper.jsx";
 import PeerReviewProcess from "./pages/Publication/publication.jsx";
 import Uploads from "../src/components/Uploads/Uploads.jsx";
@@ -46,6 +46,8 @@ function App() {
     closeLoginModal(); // Close login modal after successful login
   };
 
+  
+
   return (
     <>
       <Router>
@@ -54,7 +56,7 @@ function App() {
           <Sidebar isLoggedIn={isLoggedIn}/>
           <div className="hero-content">
             <Routes>
-              <Route path="/" element={<Hero />} />
+              <Route path="/" element={<Home />} />
               <Route path="/about/academic-benefits" element={<AcademicBenefits />} />
               <Route path="/about/industry-benefits" element={<IndustryBenefits />} />
               <Route path="/about/board-of-member" element={<BoardOfMember />} />
