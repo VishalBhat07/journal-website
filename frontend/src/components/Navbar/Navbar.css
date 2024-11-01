@@ -1,54 +1,31 @@
-/* Navbar.css */
-.navbar {
+#navbar {
   display: flex;
-  justify-content: space-between; /* Allows space between logo and button */
-  align-items: center;
-  background-color: white; /* White background */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  font-family: Arial, sans-serif;
-  position: relative;
-  background-image: url('../../assets/dome.jpg');
+  justify-content: space-between; /* keeps image and button on edges */
+  align-items: center; /* centers items vertically */
+  padding: 10px;
+  height: 10vh;
+  gap: 20px;
+  background-image: url(../../assets/dome.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#navbar > img {
+  width: min(20%, 400px);
+}
+
+#navbar > #button {
+  height: 40px;
+  width: 80px;
   padding: 0;
-  margin: 0;
 }
 
-.navbar-logo {
-  height: 140px; /* Height of the logo */
-  width: 350px;  /* Width of the logo */
-  padding: 0;
-  margin: 0;
-}
-
-.navbar-title {
-  font-size: 2rem; /* Font size for title */
-  font-weight: bold;
-  color: white; /* Adjust color to fit your theme */
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%); /* Center the title */
-  padding-top: 10px;
-}
-
-.navbar-btn {
-  background-color: #007bff; /* Blue button background */
-  color: white; /* Button text color */
-  padding: 0.5rem 1rem;
-  border: 2px solid #007bff; /* Border color matching the button */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  font-size: 1rem;
-  font-weight: bold;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover */
-}
-
-.navbar-btn:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-}
-
-@media (max-width: 768px) {
-  .navbar-logo {
-    position: relative; /* Remove absolute centering for mobile */
-    left: auto;
-    transform: none; /* Reset transformation */
-  }
+#navbar > #navbar-title {
+  font-size: 1.5rem;
+  flex-grow: 1; /* Allow title to grow and take up available space */
+  display: flex; /* Set this to flex to center text */
+  justify-content: center; /* Center the title text horizontally */
+  align-items: center; /* Center the title text vertically */
+  color: white;
 }
