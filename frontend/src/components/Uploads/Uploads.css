@@ -1,0 +1,27 @@
+.back-to-home {
+    background-color: #007bff; /* Button background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px 20px; /* Padding inside the button */
+    font-size: 1rem; /* Font size */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+    display: inline-block; /* Display as inline-block */
+    text-decoration: none; /* Remove underline */
+    margin: 20px; /* Margin around the button */
+  }
+
+  /* Hover effect */
+.back-to-home:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+  }
+  
+  /* Focus effect */
+  .back-to-home:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a shadow on focus */
+  }
+  

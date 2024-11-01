@@ -8,13 +8,22 @@ import { useState } from "react";
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
 import QuickLinks from "../src/components/QuickLinks/QuickLinks.jsx";
 import BankDetails from "../src/components/BankDetails/BankDetails.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AcademicBenefits from "./pages/AcademicBenefits.jsx";
+import IndustryBenefits from "./pages/IndustryBenefits.jsx";
+import AuthorGuidelines from "./pages/AuthorGuidelines.jsx";
+import BoardOfMember from "./pages/BoardOfMember.jsx";
+import CallForPaper from "./pages/CallForPaper.jsx";
+import PeerReviewProcess from "./pages/PeerReviewProcess.jsx";
+import Uploads from "../src/components/Uploads/Uploads.jsx";
+import UploadPopup from "./components/UploadPopup/UploadPopup.jsx";
 
 function App() {
   const [isSignUpOpen, setSignUpOpen] = useState(false);
   const [isLoginOpen, setLoginOpen] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false); // Track login state
 
   const handleSignUpClick = () => {
-    // Close login modal if it's open
     setLoginOpen(false);
     setSignUpOpen(true);
   };
@@ -24,7 +33,6 @@ function App() {
   };
 
   const openLoginModal = () => {
-    // Close sign up modal if it's open
     setSignUpOpen(false);
     setLoginOpen(true);
   };
@@ -33,19 +41,36 @@ function App() {
     setLoginOpen(false);
   };
 
+  const handleLogin = () => {
+    setLoggedIn(true); // Set user as logged in
+    closeLoginModal(); // Close login modal after successful login
+  };
+
   return (
     <>
-      <Navbar onSignUpClick={handleSignUpClick} />
-      <div className="hero-section">
-        <Sidebar />
-        <Hero />
-        <div className="right-section">
-          <QuickLinks />
-          <BankDetails />
-        </div>
-      </div>
+      <Router>
+        <Navbar onSignUpClick={handleSignUpClick} />
+        <div className="hero-section">
+          <Sidebar isLoggedIn={isLoggedIn} />
+          <Routes>
+            <Route path="/" element={<Hero />} />
+            <Route path="/about/academic-benefits" element={<AcademicBenefits />} />
+            <Route path="/about/industry-benefits" element={<IndustryBenefits />} />
+            <Route path="/about/board-of-member" element={<BoardOfMember />} />
+            <Route path="/author/author-guidelines" element={<AuthorGuidelines />} />
+            <Route path="/author/author-responsibilities" element={<AuthorGuidelines />} />
+            <Route path="/author/peer-review-process" element={<PeerReviewProcess />} />
+            <Route path="/upload-article" element={isLoggedIn ? <UploadPopup isOpen={true}/> : <LoginModal/>} /> {/* Conditional rendering */}
+            <Route path="/uploads" element={<Uploads />} />
 
-      <Footer />
+          </Routes>
+          <div className="right-section">
+            <QuickLinks />
+            <BankDetails />
+          </div>
+        </div>
+        <Footer />
+      </Router>
 
       {isSignUpOpen && (
         <SignUpModal onClose={closeSignUpModal} onLoginClick={openLoginModal} />
@@ -55,6 +80,7 @@ function App() {
         <LoginModal
           onClose={closeLoginModal}
           onSignUpClick={handleSignUpClick} // To switch back to Sign Up
+          onLogin={handleLogin} // Pass the handleLogin function to the LoginModal
         />
       )}
     </>
