@@ -3,22 +3,13 @@ import { Carousel } from "react-bootstrap";
 import "./JournalCard.css";
 import slide1 from "../../assets/vol1issue1.png"; // Update path as necessary
 import slide2 from "../../assets/vol1issue2.png"; // Update path as necessary
+import ImageCarousel from "./ImageCarousel/ImageCarousel"
 
 const JournalDetails = () => {
   return (
     <div className="hero-container">
       <div className="left-column">
-        {/* Image Carousel */}
-        <Carousel controls={false}>
-          {" "}
-          {/* Disable controls */}
-          <Carousel.Item>
-            <img className="d-block w-100" src={slide1} alt="First slide" />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img className="d-block w-100" src={slide2} alt="Second slide" />
-          </Carousel.Item>
-        </Carousel>
+        <ImageCarousel/>
         <div className="contact-details">
           <h3>Contact Person and Designation:</h3>
           <p>Dr. NILESH B. GAJJAR</p>

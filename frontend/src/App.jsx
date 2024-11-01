@@ -11,10 +11,10 @@ import BankDetails from "../src/components/BankDetails/BankDetails.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AcademicBenefits from "./pages/AcademicBenefits.jsx";
 import IndustryBenefits from "./pages/IndustryBenefits.jsx";
-import AuthorGuidelines from "./pages/AuthorGuidelines.jsx";
+import AuthorGuidelines from "./pages/Guidelines/guidelines.jsx";
 import BoardOfMember from "./pages/BoardOfMember.jsx";
 import CallForPaper from "./pages/CallForPaper.jsx";
-import PeerReviewProcess from "./pages/PeerReviewProcess.jsx";
+import PeerReviewProcess from "./pages/Publication/publication.jsx";
 import Uploads from "../src/components/Uploads/Uploads.jsx";
 import UploadPopup from "./components/UploadPopup/UploadPopup.jsx";
 
@@ -51,20 +51,24 @@ function App() {
       <Router>
         <Navbar onSignUpClick={handleSignUpClick} />
         <div className="hero-section">
-          <Sidebar isLoggedIn={isLoggedIn} />
-          <Routes>
-            <Route path="/" element={<Hero />} />
-            <Route path="/about/academic-benefits" element={<AcademicBenefits />} />
-            <Route path="/about/industry-benefits" element={<IndustryBenefits />} />
-            <Route path="/about/board-of-member" element={<BoardOfMember />} />
-            <Route path="/author/author-guidelines" element={<AuthorGuidelines />} />
-            <Route path="/author/author-responsibilities" element={<AuthorGuidelines />} />
-            <Route path="/author/peer-review-process" element={<PeerReviewProcess />} />
-            <Route path="/upload-article" element={isLoggedIn ? <UploadPopup isOpen={true}/> : <LoginModal/>} /> {/* Conditional rendering */}
-            <Route path="/uploads" element={<Uploads />} />
+          <Sidebar isLoggedIn={isLoggedIn}/>
+          <div className="hero-content">
+            <Routes>
+              <Route path="/" element={<Hero />} />
+              <Route path="/about/academic-benefits" element={<AcademicBenefits />} />
+              <Route path="/about/industry-benefits" element={<IndustryBenefits />} />
+              <Route path="/about/board-of-member" element={<BoardOfMember />} />
+              <Route path="/author/author-guidelines" element={<AuthorGuidelines />} />
+              <Route path="/author/peer-review-process" element={<PeerReviewProcess />} />
+              <Route path="/author/call-for-paper" element={<CallForPaper />} />
 
-          </Routes>
-          <div className="right-section">
+              <Route path="/upload-article" element={isLoggedIn ? <UploadPopup isOpen={true}/> : <LoginModal/>} /> {/* Conditional rendering */}
+              <Route path="/uploads" element={<Uploads />} />
+
+            </Routes>
+          </div>
+
+          <div className="right-content">
             <QuickLinks />
             <BankDetails />
           </div>

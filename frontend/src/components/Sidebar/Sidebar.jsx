@@ -5,7 +5,7 @@ const Sidebar = ({ isLoggedIn }) => {
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 bg-light"
-      style={{ width: "230px", height: "82vh" }}
+      style={{ width: "230px", height: "100vh" }}
     >
       <ul className="nav nav-pills flex-column mb-auto">
         <li className="nav-item dropdown">
@@ -117,53 +117,6 @@ const Sidebar = ({ isLoggedIn }) => {
         </li>
       </ul>
       <hr />
-      <div className="dropdown">
-        <Link
-          to="#"
-          className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
-          id="dropdownUser2"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <img
-            src="https://github.com/mdo.png"
-            alt=""
-            width="32"
-            height="32"
-            className="rounded-circle me-2"
-          />
-          <strong>mdo</strong>
-        </Link>
-        <ul
-          className="dropdown-menu text-small shadow"
-          aria-labelledby="dropdownUser2"
-        >
-          <li>
-            <Link className="dropdown-item" to="/new-project">
-              New project...
-            </Link>
-          </li>
-          <li>
-            <Link className="dropdown-item" to="/settings">
-              Settings
-            </Link>
-          </li>
-          <li>
-            <Link className="dropdown-item" to="/profile">
-              Profile
-            </Link>
-          </li>
-          <li>
-            <hr className="dropdown-divider" />
-          </li>
-          <li>
-            <Link className="dropdown-item" to="/sign-out">
-              Sign out
-            </Link>
-          </li>
-        </ul>
-      </div>
     </div>
   );
 };
