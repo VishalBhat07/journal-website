@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const QuickLinks = () => {
   return (
     <div className="quick-links">
-      <h2>Quick Links</h2>
+      <h2 className="animated-header"><strong>Quick Links</strong></h2>
       <ul>
         <li>
           <strong>
@@ -18,11 +18,11 @@ const QuickLinks = () => {
           </strong>
         </li>
         <li>
-        <li>
           <strong>
-            <Link to="/about/industry-benefits">Industry benefits</Link>
+            <Link to="/about/industry-benefits">Industry Benefits</Link>
           </strong>
         </li>
+        <li>
           <strong>
             <Link to="/author/author-guidelines">Author Guidelines and Responsibilities</Link>
           </strong>
@@ -32,7 +32,6 @@ const QuickLinks = () => {
             <Link to="/author/peer-review-process">Publication Process</Link>
           </strong>
         </li>
-
         <li>
           <strong>
             <Link to="/about/board-of-member">Board of Members</Link>
@@ -45,10 +44,9 @@ const QuickLinks = () => {
         </li>
         <li>
           <strong>
-            <Link to="/author/author-guidelines">Advertisement Tariff</Link>
+            <Link to="/author/advertisement-tariff">Advertisement Tariff</Link>
           </strong>
         </li>
-
       </ul>
     </div>
   );

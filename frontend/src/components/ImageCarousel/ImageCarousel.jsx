@@ -1,6 +1,6 @@
 import React from 'react';
-import image1 from "../../../assets/vol1issue1.png";
-import image2 from "../../../assets/vol1issue2.png";
+import image1 from "../../assets/vol1issue1.png";
+import image2 from "../../assets/vol1issue2.png";
 
 const ImageCarousel = () => {
   return (

@@ -1,25 +1,27 @@
-import React from 'react';
-import './BankDetails.css'; // Make sure to create a CSS file for styles
+import React from "react";
+import "./BankDetails.css"; // Ensure this CSS file is in the same directory
 
 const BankDetails = () => {
   return (
     <div className="bank-details">
-      <h2>Bank Details</h2>
+      <h2 className="animated-header">
+        <strong>Bank Details</strong>
+      </h2>
       <ul>
         <li>
-          <strong>Bank Name:</strong> Example Bank
+          <strong>Account Name:</strong> ASM India National Council Trust
         </li>
         <li>
-          <strong>Account Number:</strong> 1234567890
+          <strong>Bank Name:</strong> HDFC Bank
         </li>
         <li>
-          <strong>IFSC Code:</strong> EXMP0001234
+          <strong>Account Number:</strong> 50200087378860
         </li>
         <li>
-          <strong>Branch:</strong> Example Branch
+          <strong>IFSC Code:</strong> HDFC0001232
         </li>
         <li>
-          <strong>Contact Number:</strong> (123) 456-7890
+          <strong>PAN Card no.:</strong> AADAA9068L
         </li>
       </ul>
     </div>
