@@ -6,15 +6,18 @@ const JournalDetails = () => {
   return (
     <div className="hero-container">
       <div className="left-column">
-        <ImageCarousel/>
+        <ImageCarousel />
         <div className="contact-details">
-          <h3>Contact Person and Designation:</h3>
-          <p>Dr. NILESH B. GAJJAR</p>
-          <p>
-            <strong>(Chairman: RAJMR)</strong>
-          </p>
+          <h3>Editor:</h3>
+          <p>Ajith Kumar: 9944452591</p>
+
+          <h3>Associate Editors:</h3>
+          <p>Dr. Gangadhar Angadi: 8105888568</p>
+          <p>Dr. Nataraj J R: 9901150505</p>
         </div>
       </div>
+
+
 
       <div className="right-column">
         <h1>Materials and Processing</h1>
