@@ -1,0 +1,8 @@
+/* ImageCarousel.css */
+
+.carousel-image {
+    height: 420px; 
+    object-fit: cover; 
+    width: auto;
+  }
+  
