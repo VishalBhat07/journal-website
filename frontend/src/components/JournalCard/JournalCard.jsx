@@ -1,9 +1,6 @@
 import React from "react";
-import { Carousel } from "react-bootstrap";
 import "./JournalCard.css";
-import slide1 from "../../assets/vol1issue1.png"; // Update path as necessary
-import slide2 from "../../assets/vol1issue2.png"; // Update path as necessary
-import ImageCarousel from "./ImageCarousel/ImageCarousel"
+import ImageCarousel from "../ImageCarousel/ImageCarousel"
 
 const JournalDetails = () => {
   return (
@@ -26,7 +23,7 @@ const JournalDetails = () => {
           <strong>Year of Start:</strong> October 2023
         </p>
         <p>
-          <strong>Frequency:</strong>Biannually
+          <strong>Frequency:</strong> Biannually
         </p>
         <p>
           <strong>Version:</strong> Electronic and Print
@@ -40,7 +37,7 @@ const JournalDetails = () => {
 
         <h2>About The Journal:</h2>
         <p>
-          IMaterials and Processing A journal from ASM India National Council
+          Materials and Processing A journal from ASM India National Council
           (INC) is a biannual open access research journal. Materials and
           Processing journal features peer reviewed original research articles,
           technical papers, reviews, case studies, and short communications that

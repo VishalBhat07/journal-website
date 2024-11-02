@@ -6,10 +6,29 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-.quick-links h2 {
+.animated-header {
   font-size: 20px;
   margin-bottom: 15px;
-  color: #333; /* Ensure the header has a good contrast */
+  color: #333; /* Initial color */
+  animation: colorChange 2s linear infinite; /* Animation for color change */
+}
+
+@keyframes colorChange {
+  0% {
+    color: #007BFF; /* Initial color */
+  }
+  25% {
+    color: #28a745; /* Green */
+  }
+  50% {
+    color: #ffc107; /* Yellow */
+  }
+  75% {
+    color: #dc3545; /* Red */
+  }
+  100% {
+    color: #007BFF; /* Back to initial */
+  }
 }
 
 .quick-links ul {

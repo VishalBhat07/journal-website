@@ -1,8 +1,7 @@
-// src/components/Navbar.jsx
 import React, { useEffect, useState } from 'react';
 import { auth } from '../../firebaseConfig';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import './Navbar.css'; // Ensure this path is correct
+import './Navbar.css'; 
 import logo from '../../assets/logo.png'
 
 const Navbar = ({ onSignUpClick }) => {
@@ -27,24 +26,13 @@ const Navbar = ({ onSignUpClick }) => {
   };
 
   return (
-          {/* <img src={logo} alt="navbar-logo" className="navbar-logo"/>
-      <h1 className="navbar-title">Materials and Processing A journal from ASM India National Council (INC)</h1>
-        {user ? (
-          <button className="navbar-btn" onClick={handleSignOut}>
-            Sign Out
-          </button>
-        ) : (
-          <button className="navbar-btn" onClick={onSignUpClick}>
-            Sign Up
-          </button>
-        )} */},
     <nav id="navbar">
       <div>
       <img src={logo} alt="ASM logo" height="" width="200" />
 
       </div>
             
-      <div id="navbar-title">Materials and Processing A journal from ASM India National Council (INC)</div>
+      <div id="navbar-title">Materials and Processing : A journal from ASM India National Council (INC)</div>
         
       
       {user ? (

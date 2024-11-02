@@ -2,39 +2,41 @@ import React, { useState } from "react";
 import "./LoginModal.css";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-const LoginModal = ({ onClose, onSignUpClick}) => {
+const LoginModal = ({ onClose, onSignUpClick }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(""); // State for error messages
+  const [isLoggingIn, setIsLoggingIn] = useState(false); // State for loading status
 
   const handleLogin = (e) => {
     e.preventDefault(); // Prevent default form submission behavior
+    setError(""); // Clear previous error messages
+    setIsLoggingIn(true); // Set loading state to disable button
 
     const auth = getAuth(); // Initialize Firebase authentication
 
-    // Use Firebase signInWithEmailAndPassword method
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Logged in successfully
         const user = userCredential.user;
-        console.log("User Logged In:", user); // Log user details if needed
-        alert("Login Successful!"); // Alert for successful login
-        onClose(); // Close the modal after successful login
+        console.log("User Logged In:", user); // Optional: Log user details
+        setIsLoggingIn(false); // Reset loading state
+        onClose(); // Close modal after successful login
       })
       .catch((error) => {
-        // Handle login errors
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error("Login Error:", errorCode, errorMessage); // Log error details
-        alert("Invalid credentials. Please try again."); // Alert for invalid credentials
+        const errorMessage =
+          error.code === "auth/user-not-found" || error.code === "auth/wrong-password"
+            ? "Invalid credentials. Please try again."
+            : "Failed to login. Please check your network and try again.";
+        setError(errorMessage); // Show appropriate error message
+        console.error("Login Error:", error.code, error.message); // Log error details
+        setIsLoggingIn(false); // Reset loading state
       });
-
-    console.log("Logging in:", { email, password }); // Debugging: log form inputs
   };
 
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <button className="close-btn" onClick={onClose}>
+        <button className="close-btn" onClick={onClose} disabled={isLoggingIn}>
           ×
         </button>
         <h2 className="modal-title">Login</h2>
@@ -63,9 +65,10 @@ const LoginModal = ({ onClose, onSignUpClick}) => {
             required
           />
 
-          <button className="modal-button" type="submit">
-            Login
+          <button className="modal-button" type="submit" disabled={isLoggingIn}>
+            {isLoggingIn ? "Logging in..." : "Login"}
           </button>
+          {error && <p className="modal-error">{error}</p>} {/* Display error message */}
         </form>
         <p className="modal-text">
           Don't have an account?
@@ -73,9 +76,9 @@ const LoginModal = ({ onClose, onSignUpClick}) => {
             className="modal-signup"
             onClick={onSignUpClick}
             style={{
-              color: "#bb86fc", // Purple color for the Sign Up text
-              textDecoration: "underline", // Underline for visibility
-              cursor: "pointer", // Pointer cursor on hover
+              color: "#bb86fc",
+              textDecoration: "underline",
+              cursor: "pointer",
             }}
           >
             {" "}

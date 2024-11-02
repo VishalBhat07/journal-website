@@ -51,7 +51,7 @@ VITE_FIREBASE_MEASUREMENT_ID=your-measurement-id
 
 ### Start the Development Server
 ```bash
-npm start
+npm run dev
 ```
 - The app will start on ``http://localhost:3000/``.
 

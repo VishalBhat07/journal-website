@@ -1,18 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ isLoggedIn }) => {
+const Sidebar = ({ isLoggedIn, onUploadClick }) => {
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 bg-light"
-      style={{ width: "230px", height: "100vh" }}
+      style={{ width: "230px", height: "123.3vh" }}
     >
       <ul className="nav nav-pills flex-column mb-auto">
         <li className="nav-item dropdown">
-          <Link to="/" className="nav-link active">
-            <svg className="bi me-2" width="16" height="16">
-              <use xlinkHref="#home" />
-            </svg>
+          <Link
+            to="/"
+            className="nav-link active"
+            style={{ fontWeight: "bold", color: "#007BFF" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
+          >
             Home
           </Link>
         </li>
@@ -25,10 +28,10 @@ const Sidebar = ({ isLoggedIn }) => {
             role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
+            style={{ fontWeight: "bold", color: "#007BFF" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
           >
-            <svg className="bi me-2" width="16" height="16">
-              <use xlinkHref="#speedometer2" />
-            </svg>
             About
           </Link>
           <ul className="dropdown-menu" aria-labelledby="dashboardDropdown">
@@ -58,10 +61,10 @@ const Sidebar = ({ isLoggedIn }) => {
             role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
+            style={{ fontWeight: "bold", color: "#007BFF" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
           >
-            <svg className="bi me-2" width="16" height="16">
-              <use xlinkHref="#speedometer2" />
-            </svg>
             Authors Section
           </Link>
           <ul className="dropdown-menu" aria-labelledby="dashboardDropdown">
@@ -73,7 +76,7 @@ const Sidebar = ({ isLoggedIn }) => {
             <li>
               <Link
                 className="dropdown-item"
-                to="/author/author-responsibilities"
+                to="/author/author-guidelines"
               >
                 Author Responsibilities
               </Link>
@@ -87,36 +90,35 @@ const Sidebar = ({ isLoggedIn }) => {
         </li>
 
         <li className="nav-item dropdown">
-          <Link
-            to={isLoggedIn ? "/upload-article" : "/uploads" }
+          <button
             className="nav-link link-dark dropdown-toggle"
-            id="dashboardDropdown"
-            role="button"
-            aria-expanded="false"
+            style={{
+              fontWeight: "bold",
+              color: "#007BFF",
+              background: "none",
+              border: "none",
+              textAlign: "left",
+            }}
+            onClick={onUploadClick} // Trigger the upload popup
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
           >
-            <svg className="bi me-2" width="16" height="16">
-              <use xlinkHref="#speedometer2" />
-            </svg>
             Upload Article
-          </Link>
+          </button>
         </li>
 
         <li className="nav-item dropdown">
           <Link
             to="/uploads"
             className="nav-link link-dark dropdown-toggle"
-            id="dashboardDropdown"
-            role="button"
-            aria-expanded="false"
+            style={{ fontWeight: "bold", color: "#007BFF" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
           >
-            <svg className="bi me-2" width="16" height="16">
-              <use xlinkHref="#speedometer2" />
-            </svg>
             Uploads
           </Link>
         </li>
       </ul>
-      <hr />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { uploadArticle } from '../../articleService'; // Import functions
-import './UploadPopup.css'; // Add your modal CSS styles here
+import { uploadArticle } from '../../articleService';
+import './UploadPopup.css';
 
 const UploadPopup = ({ isOpen, onClose }) => {
   const [author, setAuthor] = useState('');
@@ -17,27 +17,28 @@ const UploadPopup = ({ isOpen, onClose }) => {
       return;
     }
 
-    if (!file.name.endsWith('.pdf')) { // Example file type check for PDF
+    if (!file.name.endsWith('.pdf')) {
       setMessage('Only PDF files are allowed.');
       return;
     }
 
-    const articleData = {
-      author,
-      title,
-    };
+    const articleData = { author, title };
 
     setIsUploading(true);
+    setMessage(''); // Clear any previous messages
 
     try {
       const response = await uploadArticle(articleData, file);
 
       if (response.success) {
         setMessage('File uploaded successfully!');
-        resetForm();
-        setTimeout(onClose, 2000);
+        // Delay closing the popup to allow message to be read
+        setTimeout(() => {
+          resetForm();
+          onClose();
+        }, 2000); // Close after 2 seconds
       } else {
-        setMessage(response.message);
+        setMessage(response.message || 'Failed to upload file. Please try again.');
       }
     } catch (error) {
       setMessage('Error uploading file: ' + error.message);
@@ -60,19 +61,26 @@ const UploadPopup = ({ isOpen, onClose }) => {
         <div className="upload-modal-content" onClick={(e) => e.stopPropagation()}>
           <div className="upload-modal-header">
             <h1 className="upload-hero-title">Upload File</h1>
-            <button className="upload-close-icon" onClick={onClose} aria-label="Close">&times;</button>
+            <button
+              className="upload-close-icon"
+              onClick={onClose}
+              aria-label="Close"
+              disabled={isUploading} // Disable close button while uploading
+            >
+              &times;
+            </button>
           </div>
           <form id="uploadForm" className="upload-hero-form" onSubmit={handleSubmit}>
-            <label htmlFor="file">Choose file:</label>
+            <label htmlFor="fileInput">Choose file:</label>
             <input
               type="file"
               id="fileInput"
               required
-              accept=".pdf" // Restrict file types to PDFs
+              accept=".pdf"
               onChange={(e) => setFile(e.target.files[0])}
             />
 
-            <label htmlFor="author">Author Name:</label>
+            <label htmlFor="authorInput">Author Name:</label>
             <input
               type="text"
               id="authorInput"
@@ -81,7 +89,7 @@ const UploadPopup = ({ isOpen, onClose }) => {
               required
             />
 
-            <label htmlFor="title">Title:</label>
+            <label htmlFor="titleInput">Title:</label>
             <input
               type="text"
               id="titleInput"
@@ -91,11 +99,7 @@ const UploadPopup = ({ isOpen, onClose }) => {
             />
 
             <button type="submit" disabled={isUploading}>
-              {isUploading ? (
-                <span>Uploading...</span> // You could replace this with a spinner
-              ) : (
-                'Upload'
-              )}
+              {isUploading ? 'Uploading...' : 'Upload'}
             </button>
           </form>
 
