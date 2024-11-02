@@ -39,6 +39,8 @@
 .bank-details li {
   margin: 10px 0; /* Space between list items */
   font-size: 16px; /* Font size for list items */
+  display: flex;
+  flex-direction: column;
 }
 
 .bank-details strong {

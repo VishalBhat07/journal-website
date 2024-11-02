@@ -9,10 +9,12 @@ const BankDetails = () => {
       </h2>
       <ul>
         <li>
-          <strong>Account Name:</strong> ASM India National Council Trust
+          <strong>Account Name:</strong> 
+          ASM India National Council Trust
         </li>
         <li>
-          <strong>Bank Name:</strong> HDFC Bank
+          <strong>Bank Name:</strong> 
+          HDFC Bank
         </li>
         <li>
           <strong>Account Number:</strong> 50200087378860
