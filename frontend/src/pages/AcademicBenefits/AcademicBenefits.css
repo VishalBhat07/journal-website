@@ -1,0 +1,32 @@
+.academic-benefits{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.academic-benefits > h3{
+    text-align: center;
+}
+
+.accordions-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows the children to wrap */
+    gap: 20px; /* Space between accordions */
+}
+
+/* Additional styles to ensure responsiveness */
+.accordion-section {
+    flex: 1 1 clamp(250px, 30%, 400px); /* Use flex-grow, flex-shrink, and responsive width */
+    max-width: 100%; /* Prevents overflow */
+    margin: 0; /* Reset margin */
+}
+.accordion-section > h4 {
+    text-align: center;
+}
+
+.accordion-body{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

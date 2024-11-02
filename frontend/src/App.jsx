@@ -9,12 +9,15 @@ import Sidebar from "./components/Sidebar/Sidebar.jsx";
 import QuickLinks from "../src/components/QuickLinks/QuickLinks.jsx";
 import BankDetails from "../src/components/BankDetails/BankDetails.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AcademicBenefits from "./pages/AcademicBenefits.jsx";
-import IndustryBenefits from "./pages/IndustryBenefits.jsx";
+
+import AcademicBenefits from "./pages/AcademicBenefits/AcademicBenefits.jsx";
+import IndustryBenefits from "./pages/IndustryBenefits/IndustryBenefits.jsx";
 import AuthorGuidelines from "./pages/Guidelines/guidelines.jsx";
 import BoardOfMember from "./pages/BoardOfMembers/boardOfMember.jsx";
 import CallForPaper from "./pages/CallForPaper.jsx";
 import PeerReviewProcess from "./pages/Publication/publication.jsx";
+import AdvertisementTariff from "./pages/AdvertisementTariff/AdvertisementTariff.jsx";
+
 import Uploads from "../src/components/Uploads/Uploads.jsx";
 import UploadPopup from "./components/UploadPopup/UploadPopup.jsx";
 import { getAuth, onAuthStateChanged } from "firebase/auth"; // Import Firebase auth
@@ -83,6 +86,7 @@ function App() {
               <Route path="/author/author-guidelines" element={<AuthorGuidelines />} />
               <Route path="/author/peer-review-process" element={<PeerReviewProcess />} />
               <Route path="/author/call-for-paper" element={<CallForPaper />} />
+              <Route path="/author/advertisement-tariff" element={<AdvertisementTariff />} />
               <Route path="/uploads" element={<Uploads />} />
             </Routes>
           </div>
