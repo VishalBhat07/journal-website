@@ -118,7 +118,7 @@ const Footer = () => {
                 className="text-uppercase fw-bold mb-4"
                 style={{ color: "#fff" }}
               >
-                Useful Links
+                Quick Links
               </h6>
               <p style={{ color: "#fff" }}>
                 <Link to="/" className="text-reset" onClick={scrollToTop}>
