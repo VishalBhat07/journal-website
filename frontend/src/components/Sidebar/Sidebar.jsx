@@ -70,20 +70,20 @@ const Sidebar = ({ isLoggedIn, onUploadClick }) => {
           <ul className="dropdown-menu" aria-labelledby="dashboardDropdown">
             <li>
               <Link className="dropdown-item" to="/author/author-guidelines">
-                Author Guidelines
+                Guidelines and Responsibilities
+              </Link>
+            </li>
+            <li>
+              <Link className="dropdown-item" to="/author/peer-review-process">
+                Publication Process
               </Link>
             </li>
             <li>
               <Link
                 className="dropdown-item"
-                to="/author/author-guidelines"
+                to="/author/advertisement-tariff"
               >
-                Author Responsibilities
-              </Link>
-            </li>
-            <li>
-              <Link className="dropdown-item" to="/author/peer-review-process">
-                Peer Review Process
+                Advertisement Tariff
               </Link>
             </li>
           </ul>
