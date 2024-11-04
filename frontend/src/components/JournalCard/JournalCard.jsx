@@ -17,8 +17,6 @@ const JournalDetails = () => {
         </div>
       </div>
 
-
-
       <div className="right-column">
         <h1>Materials and Processing</h1>
         <h2>A journal from ASM India National Council (INC)</h2>
@@ -72,11 +70,11 @@ const JournalDetails = () => {
         <h3>Web site:</h3>
         <p>
           <a
-            href="http://www.asme.com"
+            href="https://journal-website-test.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            www.asme.....
+            www.asm.com
           </a>
         </p>
       </div>

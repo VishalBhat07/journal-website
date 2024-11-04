@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import ArticleCard from "../ArticleCard/ArticleCard";
 import { useNavigate } from "react-router-dom";
 import { fetchArticles } from "../../articleService"; // Import fetchArticles function
+import ArticleCard from "../ArticleCard/ArticleCard"; // Import ArticleTable instead of ArticleCard
+import "./Uploads.css";
 
 const Uploads = () => {
   const navigate = useNavigate();
@@ -18,13 +19,15 @@ const Uploads = () => {
 
   return (
     <div className="articles-container">
-      <button onClick={() => navigate("/")} className="back-to-home">
+      <button
+        onClick={() => navigate("/")}
+        className="back-to-home"
+        style={{ marginBottom: "5px" }}
+      >
         Back to Home
-      </button>{" "}
-      {/* Button to go back to home */}
-      {fetchedArticles.map((article) => (
-        <ArticleCard article={article} key={article.id} /> // Render ArticleCard for each article
-      ))}
+      </button>
+
+      <ArticleCard articles={fetchedArticles} />
     </div>
   );
 };

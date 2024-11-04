@@ -79,7 +79,7 @@ const Footer = () => {
             <MDBIcon fab icon="linkedin" style={{ color: "#fff" }} />
           </a>
           <a
-            href="https://github.com/"
+            href="https://github.com/VishalBhat07/journal-website"
             aria-label="GitHub"
             className="me-4 text-reset"
           >
@@ -98,11 +98,6 @@ const Footer = () => {
                 className="text-uppercase fw-bold mb-4"
                 style={{ color: "#fff" }}
               >
-                <MDBIcon
-                  icon="gem"
-                  className="me-3"
-                  style={{ color: "blue" }}
-                />
                 ASM (INC)
               </h6>
               <p style={{ color: "#fff" }}>

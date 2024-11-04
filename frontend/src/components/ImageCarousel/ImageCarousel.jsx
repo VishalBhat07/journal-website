@@ -1,20 +1,28 @@
 import React from 'react';
+import { Carousel } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import image1 from "../../assets/vol1issue1.png";
 import image2 from "../../assets/vol1issue2.png";
-import './ImageCarousel.css'; // Import the CSS file
+import './ImageCarousel.css';
 
 const ImageCarousel = () => {
   return (
-    <div className="carousel slide carousel-fade" data-bs-ride="carousel">
-      <div className="carousel-inner">
-        <div className="carousel-item active" data-bs-interval="5000">
-          <img src={image1} className="d-block w-100 carousel-image" alt="vol1issue1" />
-        </div>
-        <div className="carousel-item" data-bs-interval="5000">
-          <img src={image2} className="d-block w-100 carousel-image" alt="vol2issue2" />
-        </div>
-      </div>
-    </div>
+    <Carousel fade interval={4000} controls={false}>
+      <Carousel.Item>
+        <img
+          className="d-block w-100 carousel-image"
+          src={image1}
+          alt="vol1issue1"
+        />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100 carousel-image"
+          src={image2}
+          alt="vol2issue2"
+        />
+      </Carousel.Item>
+    </Carousel>
   );
 };
 
