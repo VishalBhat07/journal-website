@@ -7,7 +7,7 @@ import './ImageCarousel.css';
 
 const ImageCarousel = () => {
   return (
-    <Carousel fade interval={4000} controls={false}>
+    <Carousel fade interval={4000} controls={false} indicators={false}>
       <Carousel.Item>
         <img
           className="d-block w-100 carousel-image"

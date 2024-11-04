@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 const QuickLinks = () => {
   return (
     <div className="quick-links">
-      <h2 className="animated-header"><strong>Quick Links</strong></h2>
+      <h2 className="animated-header">
+        <strong>Quick Links</strong>
+      </h2>
       <ul>
         <li>
           <strong>
@@ -24,7 +26,7 @@ const QuickLinks = () => {
         </li>
         <li>
           <strong>
-            <Link to="/author/author-guidelines">Author Guidelines and Responsibilities</Link>
+            <Link to="/uploads">Previous Issues</Link>
           </strong>
         </li>
         <li>
