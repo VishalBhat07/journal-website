@@ -22,6 +22,21 @@ const Sidebar = ({ isLoggedIn, onUploadClick }) => {
 
         <li className="nav-item dropdown">
           <Link
+            to="/board-of-member"
+            className="nav-link link-dark"
+            id="dashboardDropdown"
+            role="button"
+            aria-expanded="false"
+            style={{ fontWeight: "bold", color: "#007BFF" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
+          >
+            Board of Members
+          </Link>
+        </li>
+
+        <li className="nav-item dropdown">
+          <Link
             to="#"
             className="nav-link link-dark dropdown-toggle"
             id="dashboardDropdown"
@@ -32,22 +47,17 @@ const Sidebar = ({ isLoggedIn, onUploadClick }) => {
             onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
           >
-            About
+            Benefits
           </Link>
           <ul className="dropdown-menu" aria-labelledby="dashboardDropdown">
             <li>
-              <Link className="dropdown-item" to="/about/academic-benefits">
+              <Link className="dropdown-item" to="/academic-benefits">
                 Academic Benefits
               </Link>
             </li>
             <li>
-              <Link className="dropdown-item" to="/about/industry-benefits">
+              <Link className="dropdown-item" to="/industry-benefits">
                 Industry Benefits
-              </Link>
-            </li>
-            <li>
-              <Link className="dropdown-item" to="/about/board-of-member">
-                Board of Member
               </Link>
             </li>
           </ul>
@@ -69,21 +79,13 @@ const Sidebar = ({ isLoggedIn, onUploadClick }) => {
           </Link>
           <ul className="dropdown-menu" aria-labelledby="dashboardDropdown">
             <li>
-              <Link className="dropdown-item" to="/author/author-guidelines">
+              <Link className="dropdown-item" to="/author-guidelines">
                 Guidelines and Responsibilities
               </Link>
             </li>
             <li>
-              <Link className="dropdown-item" to="/author/peer-review-process">
+              <Link className="dropdown-item" to="/peer-review-process">
                 Publication Process
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="dropdown-item"
-                to="/author/advertisement-tariff"
-              >
-                Advertisement Tariff
               </Link>
             </li>
           </ul>
@@ -91,7 +93,7 @@ const Sidebar = ({ isLoggedIn, onUploadClick }) => {
 
         <li className="nav-item dropdown">
           <button
-            className="nav-link link-dark dropdown-toggle"
+            className="nav-link link-dark"
             style={{
               fontWeight: "bold",
               color: "#007BFF",
@@ -110,13 +112,41 @@ const Sidebar = ({ isLoggedIn, onUploadClick }) => {
         <li className="nav-item dropdown">
           <Link
             to="/uploads"
-            className="nav-link link-dark dropdown-toggle"
+            className="nav-link link-dark"
             style={{ fontWeight: "bold", color: "#007BFF" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
           >
             Uploads
           </Link>
+        </li>
+
+        <li className="nav-item dropdown">
+          <Link
+            to="#"
+            className="nav-link link-dark dropdown-toggle"
+            id="dashboardDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            style={{ fontWeight: "bold", color: "#007BFF" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
+          >
+            Advertisement
+          </Link>
+          <ul className="dropdown-menu" aria-labelledby="dashboardDropdown">
+            <li>
+              <Link className="dropdown-item" to="/bank-details">
+                Bank Details
+              </Link>
+            </li>
+            <li>
+              <Link className="dropdown-item" to="/advertisement-tariff">
+                Advertisement Tariff
+              </Link>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>

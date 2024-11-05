@@ -32,7 +32,7 @@ const Navbar = ({ onSignUpClick }) => {
 
       </div>
             
-      <div id="navbar-title">Materials and Processing : A journal from ASM India National Council (INC)</div>
+      <div id="navbar-title">Materials and Processing : A journal from ASM India National Council Trust (INC)</div>
         
       
       {user ? (

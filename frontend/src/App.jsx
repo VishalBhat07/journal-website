@@ -7,7 +7,6 @@ import LoginModal from "../src/components/LoginModal/LoginModal.jsx";
 import { useState, useEffect } from "react";
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
 import QuickLinks from "../src/components/QuickLinks/QuickLinks.jsx";
-import BankDetails from "../src/components/BankDetails/BankDetails.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import AcademicBenefits from "./pages/AcademicBenefits/AcademicBenefits.jsx";
@@ -17,6 +16,7 @@ import BoardOfMember from "./pages/BoardOfMembers/boardOfMember.jsx";
 import CallForPaper from "./pages/CallForPaper.jsx";
 import PeerReviewProcess from "./pages/Publication/publication.jsx";
 import AdvertisementTariff from "./pages/AdvertisementTariff/AdvertisementTariff.jsx";
+import BankDetails from "./pages/BankDetails/BankDetails.jsx";
 
 import Uploads from "../src/components/Uploads/Uploads.jsx";
 import UploadPopup from "./components/UploadPopup/UploadPopup.jsx";
@@ -74,26 +74,32 @@ function App() {
     <>
       <Router>
         <Navbar onSignUpClick={handleSignUpClick} />
-        <RunningText/>
+        <RunningText />
         <div className="hero-section">
           <Sidebar isLoggedIn={isLoggedIn} onUploadClick={openUploadPopup} />
           <div className="hero-content">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/about/academic-benefits" element={<AcademicBenefits />} />
-              <Route path="/about/industry-benefits" element={<IndustryBenefits />} />
-              <Route path="/about/board-of-member" element={<BoardOfMember />} />
-              <Route path="/author/author-guidelines" element={<AuthorGuidelines />} />
-              <Route path="/author/peer-review-process" element={<PeerReviewProcess />} />
-              <Route path="/author/call-for-paper" element={<CallForPaper />} />
-              <Route path="/author/advertisement-tariff" element={<AdvertisementTariff />} />
+              <Route path="/academic-benefits" element={<AcademicBenefits />} />
+              <Route path="/industry-benefits" element={<IndustryBenefits />} />
+              <Route path="/board-of-member" element={<BoardOfMember />} />
+              <Route path="/author-guidelines" element={<AuthorGuidelines />} />
+              <Route
+                path="/peer-review-process"
+                element={<PeerReviewProcess />}
+              />
+              <Route path="/call-for-paper" element={<CallForPaper />} />
+              <Route
+                path="/advertisement-tariff"
+                element={<AdvertisementTariff />}
+              />
+              <Route path="/bank-details" element={<BankDetails />} />
               <Route path="/uploads" element={<Uploads />} />
             </Routes>
           </div>
 
           <div className="right-content">
             <QuickLinks />
-            <BankDetails />
           </div>
         </div>
         <Footer />
