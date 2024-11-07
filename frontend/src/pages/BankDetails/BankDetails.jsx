@@ -7,25 +7,30 @@ const BankDetails = () => {
       <h2 className="animated-header">
         <strong>Bank Details</strong>
       </h2>
-      <ul>
-        <li>
-          <strong>Account Name:</strong> 
-          ASM India National Council Trust
-        </li>
-        <li>
-          <strong>Bank Name:</strong> 
-          HDFC Bank
-        </li>
-        <li>
-          <strong>Account Number:</strong> 50200087378860
-        </li>
-        <li>
-          <strong>IFSC Code:</strong> HDFC0001232
-        </li>
-        <li>
-          <strong>PAN Card no.:</strong> AADAA9068L
-        </li>
-      </ul>
+      <table className="table table-bordered">
+        <tbody>
+          <tr>
+            <td><strong>Account Name:</strong></td>
+            <td>ASM India National Council Trust</td>
+          </tr>
+          <tr>
+            <td><strong>Bank Name:</strong></td>
+            <td>HDFC Bank</td>
+          </tr>
+          <tr>
+            <td><strong>Account Number:</strong></td>
+            <td>50200087378860</td>
+          </tr>
+          <tr>
+            <td><strong>IFSC Code:</strong></td>
+            <td>HDFC0001232</td>
+          </tr>
+          <tr>
+            <td><strong>PAN Card no.:</strong></td>
+            <td>AADAA9068L</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };
