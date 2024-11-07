@@ -122,7 +122,7 @@ const Footer = () => {
               </p>
               <p style={{ color: "#fff" }}>
                 <Link
-                  to="/about/board-of-member"
+                  to="/board-of-member"
                   className="text-reset"
                   onClick={scrollToTop}
                 >
@@ -140,7 +140,7 @@ const Footer = () => {
               </p>
               <p style={{ color: "#fff" }}>
                 <Link
-                  to="/author/author-guidelines"
+                  to="/author-guidelines"
                   className="text-reset"
                   onClick={scrollToTop}
                 >
