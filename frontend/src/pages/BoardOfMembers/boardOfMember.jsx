@@ -1,11 +1,11 @@
-// src/boardOfMembers.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import IndianData from './Indian.json';
 import InternationalData from './International.json';
-import "./boardOfMember.css"
+import "./boardOfMember.css";
 
 const BoardOfMember = () => {
-  // Function to render a table based on the provided data
+  const [visibleItems, setVisibleItems] = useState(5);
+
   const renderTable = (data, title) => (
     <div className="container mt-5">
       <h2 className="text-center font-weight-bold">{title}</h2>
@@ -19,7 +19,7 @@ const BoardOfMember = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((entry, index) => (
+          {data.slice(0, visibleItems).map((entry, index) => (
             <tr key={index}>
               <th scope="row">{index + 1}</th>
               <td>{entry.name}</td>
@@ -29,6 +29,16 @@ const BoardOfMember = () => {
           ))}
         </tbody>
       </table>
+      {visibleItems < data.length && (
+        <div className="text-center">
+          <button
+            className="see-more"
+            onClick={() => setVisibleItems(visibleItems + 5)}
+          >
+            See More
+          </button>
+        </div>
+      )}
     </div>
   );
 

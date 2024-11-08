@@ -1,9 +1,21 @@
-#advisory-board{
+#advisory-board {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
+
 #advisory-board > * {
     width: 40%;
-} 
+}
+
+.see-more {
+    font-weight: bold;
+    padding: 8px 24px;
+    background-color: rgb(61, 57, 177);;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
