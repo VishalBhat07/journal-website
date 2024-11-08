@@ -1,0 +1,86 @@
+.publication-carousel-container {
+  margin: 0 auto;
+  position: relative;
+  background-color: #ffffff;
+  width: 90%;
+  border-radius: 10px;
+  padding-top: 40px; /* Ensures there's space for the top controls */
+}
+
+.carousel-top-controls {
+  position: absolute;
+  top: 0; /* Aligns the navigation buttons to the top */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 1; /* Ensures it is above the carousel */
+}
+
+.custom-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  overflow-y: auto;
+}
+
+.custom-card-title {
+  font-size: 1.5em;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.custom-card-content {
+  font-size: 1em;
+  color: #333333;
+  text-align: left;
+}
+
+/* Custom navigation buttons styling */
+.prev,
+.next {
+  background: none;
+  border: none;
+  position: relative;
+  top: 20px;
+  font-size: 24px;
+  color: #007bff;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.prev:hover,
+.next:hover {
+  color: #9b59b6;
+}
+
+.carousel-indicators {
+  position: absolute;
+  top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.indicator {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #cce7ff;
+  color: #007bff;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.indicator.active {
+  background-color: #9b59b6;
+  color: #ffffff;
+}
