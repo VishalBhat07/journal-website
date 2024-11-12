@@ -26,7 +26,7 @@ const QuickLinks = () => {
         </li>
         <li>
           <strong>
-            <Link to="/uploads">Previous Issues</Link>
+            <Link to="/previous-issues">Previous Issues</Link>
           </strong>
         </li>
         <li>

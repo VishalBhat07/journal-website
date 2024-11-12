@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchArticles } from "../../articleService"; // Import fetchArticles function
 import ArticleCard from "../ArticleCard/ArticleCard"; // Import ArticleTable instead of ArticleCard
-import "./Uploads.css";
+import "./CurrentIssues.css";
 
-const Uploads = () => {
+const CurrentIssues = () => {
   const navigate = useNavigate();
   const [fetchedArticles, setFetchedArticles] = useState([]); // State to store articles
 
@@ -32,4 +32,4 @@ const Uploads = () => {
   );
 };
 
-export default Uploads;
+export default CurrentIssues;

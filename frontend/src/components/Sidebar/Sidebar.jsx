@@ -93,7 +93,7 @@ const Sidebar = ({ isLoggedIn, onUploadClick , admin}) => {
         {
         admin ? (<li className="nav-item dropdown">
               <Link
-            to="/uploads"
+            to="/current-issues"
             className="nav-link link-dark"
             style={{ fontWeight: "bold", color: "#007BFF" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
@@ -124,7 +124,7 @@ const Sidebar = ({ isLoggedIn, onUploadClick , admin}) => {
 
         <li className="nav-item dropdown">
           <Link
-            to="/uploads"
+            to="/previous-issues"
             className="nav-link link-dark"
             style={{ fontWeight: "bold", color: "#007BFF" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}

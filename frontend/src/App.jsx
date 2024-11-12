@@ -18,9 +18,10 @@ import PeerReviewProcess from "./pages/Publication/publication.jsx";
 import AdvertisementTariff from "./pages/AdvertisementTariff/AdvertisementTariff.jsx";
 import BankDetails from "./pages/BankDetails/BankDetails.jsx";
 
-import Uploads from "../src/components/Uploads/Uploads.jsx";
+import PreviousIssues from "./components/PreviousIssues/PreviousIssues.jsx";
+import CurrentIssues from "./components/CurrentIssues/CurrentIssues.jsx";
 import UploadPopup from "./components/UploadPopup/UploadPopup.jsx";
-import { getAuth, onAuthStateChanged } from "firebase/auth"; // Import Firebase auth
+import { getAuth, onAuthStateChanged } from "firebase/auth"; 
 import RunningText from "./components/RunningText/RunningText.jsx";
 
 function App() {
@@ -28,34 +29,29 @@ function App() {
   const admins = ['admin1@gmail.com', 'admin2@gmail.com'];
   const [isSignUpOpen, setSignUpOpen] = useState(false);
   const [isLoginOpen, setLoginOpen] = useState(false);
-  const [isLoggedIn, setLoggedIn] = useState(false); // Track login state
-  const [isUploadPopupOpen, setUploadPopupOpen] = useState(false); // Track upload popup state
+  const [isLoggedIn, setLoggedIn] = useState(false); 
+  const [isUploadPopupOpen, setUploadPopupOpen] = useState(false);
   const [userEmail, setUserEmail] = useState(null);
   const [admin, setAdmin] = useState(false);
 
-  const auth = getAuth(); // Initialize Firebase authentication
+  const auth = getAuth();
 
   useEffect(() => {
-    // Monitor auth state changes
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setLoggedIn(!!user); // Set logged in state based on user presence
+      setLoggedIn(!!user);
       if (user) {
-        setUserEmail(user.email || ""); // Store the user's email
+        setUserEmail(user.email || ""); 
+        if (admins.includes(user.email)) 
+          setAdmin(true);
+         else 
+          setAdmin(false);
       } else {
         setUserEmail(null);
-      }
-      if(admins.includes(user.email)){
-        setAdmin(true);
-      }else{
         setAdmin(false);
       }
     });
-    return () => unsubscribe(); // Cleanup subscription on unmount
-  }, [auth]);
-
-  useEffect(()=> {
-    console.log(userEmail);
-  })
+    return () => unsubscribe();
+  }, [auth,admins]);
 
   const handleSignUpClick = () => {
     setLoginOpen(false);
@@ -79,7 +75,7 @@ function App() {
     if (isLoggedIn) {
       setUploadPopupOpen(true);
     } else {
-      openLoginModal(); // If not logged in, open login modal instead
+      openLoginModal(); 
     }
   };
 
@@ -111,7 +107,8 @@ function App() {
                 element={<AdvertisementTariff />}
               />
               <Route path="/bank-details" element={<BankDetails />} />
-              <Route path="/uploads" element={<Uploads />} />
+              <Route path="/previous-issues" element={<PreviousIssues />} />
+              <Route path="/current-issues" element={<CurrentIssues />} />
             </Routes>
           </div>
 
