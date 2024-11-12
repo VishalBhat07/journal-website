@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ isLoggedIn, onUploadClick }) => {
+const Sidebar = ({ isLoggedIn, onUploadClick , admin}) => {
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 bg-light"
@@ -90,8 +90,21 @@ const Sidebar = ({ isLoggedIn, onUploadClick }) => {
             </li>
           </ul>
         </li>
+        {
+        admin ? (<li className="nav-item dropdown">
+              <Link
+            to="/uploads"
+            className="nav-link link-dark"
+            style={{ fontWeight: "bold", color: "#007BFF" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
+          >
+            Current Issue
+          </Link>
+        </li>) : <></>
+      } 
 
-        <li className="nav-item dropdown">
+  <li className="nav-item dropdown">
           <button
             className="nav-link link-dark"
             style={{
@@ -117,7 +130,7 @@ const Sidebar = ({ isLoggedIn, onUploadClick }) => {
             onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
           >
-            Uploads
+            Previous Issues
           </Link>
         </li>
 

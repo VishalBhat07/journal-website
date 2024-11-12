@@ -24,10 +24,14 @@ import { getAuth, onAuthStateChanged } from "firebase/auth"; // Import Firebase 
 import RunningText from "./components/RunningText/RunningText.jsx";
 
 function App() {
+
+  const admins = ['admin1@gmail.com', 'admin2@gmail.com'];
   const [isSignUpOpen, setSignUpOpen] = useState(false);
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false); // Track login state
   const [isUploadPopupOpen, setUploadPopupOpen] = useState(false); // Track upload popup state
+  const [userEmail, setUserEmail] = useState(null);
+  const [admin, setAdmin] = useState(false);
 
   const auth = getAuth(); // Initialize Firebase authentication
 
@@ -35,10 +39,23 @@ function App() {
     // Monitor auth state changes
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setLoggedIn(!!user); // Set logged in state based on user presence
+      if (user) {
+        setUserEmail(user.email || ""); // Store the user's email
+      } else {
+        setUserEmail(null);
+      }
+      if(admins.includes(user.email)){
+        setAdmin(true);
+      }else{
+        setAdmin(false);
+      }
     });
-
     return () => unsubscribe(); // Cleanup subscription on unmount
   }, [auth]);
+
+  useEffect(()=> {
+    console.log(userEmail);
+  })
 
   const handleSignUpClick = () => {
     setLoginOpen(false);
@@ -76,7 +93,7 @@ function App() {
         <Navbar onSignUpClick={handleSignUpClick} />
         <RunningText />
         <div className="hero-section">
-          <Sidebar isLoggedIn={isLoggedIn} onUploadClick={openUploadPopup} />
+          <Sidebar isLoggedIn={isLoggedIn} onUploadClick={openUploadPopup} admin={admin} />
           <div className="hero-content">
             <Routes>
               <Route path="/" element={<Home />} />
