@@ -1,0 +1,16 @@
+{
+    "redirects": [
+      { "source": "/academic-benefits", "destination": "/", "permanent": false },
+      { "source": "/industry-benefits", "destination": "/", "permanent": false },
+      { "source": "/board-of-member", "destination": "/", "permanent": false },
+      { "source": "/author-guidelines", "destination": "/", "permanent": false },
+      { "source": "/peer-review-process", "destination": "/", "permanent": false },
+      { "source": "/call-for-paper", "destination": "/", "permanent": false },
+      { "source": "/advertisement-tariff", "destination": "/", "permanent": false },
+      { "source": "/bank-details", "destination": "/", "permanent": false },
+      { "source": "/previous-issues", "destination": "/", "permanent": false },
+      { "source": "/current-issues", "destination": "/", "permanent": false },
+      { "source": "/:path*", "destination": "/", "permanent": false }
+    ]
+  }
+  
