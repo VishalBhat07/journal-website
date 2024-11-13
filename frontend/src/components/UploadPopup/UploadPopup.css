@@ -1,16 +1,28 @@
+
 .upload-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ffffff; /* Dark semi-transparent overlay */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Ensure it sits above other elements */
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it sits above other elements */
+}
+
+.upload-modal-content {
+  background-color: #ffffff; /* Solid white background for the modal */
+  color: #000000; /* Black text color */
+  padding: 40px; /* More padding for a spacious feel */
+  border-radius: 6px; /* Reduced border radius */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  width: 90%; /* Responsive width */
+  max-width: 500px; /* Max width for larger screens */
+  position: relative; /* Position relative for the close button */
+}
+
   .upload-modal-content {
     background-color: #ffffff; /* Solid white background for the modal */
     color: #000000; /* Black text color */

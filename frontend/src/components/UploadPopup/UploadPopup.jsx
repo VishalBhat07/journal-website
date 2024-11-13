@@ -9,6 +9,8 @@ const UploadPopup = ({ isOpen, onClose }) => {
   const [message, setMessage] = useState('');
   const [isUploading, setIsUploading] = useState(false);
 
+  const currentFolderPath = "pending";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -28,7 +30,7 @@ const UploadPopup = ({ isOpen, onClose }) => {
     setMessage(''); // Clear any previous messages
 
     try {
-      const response = await uploadArticle(articleData, file);
+      const response = await uploadArticle(articleData, file, currentFolderPath);
 
       if (response.success) {
         setMessage('File uploaded successfully!');
