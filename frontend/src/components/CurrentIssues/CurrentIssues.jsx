@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchArticles } from "../../articleService"; // Import fetchArticles function
-import ArticleCard from "../ArticleCard/ArticleCard"; // Import ArticleTable instead of ArticleCard
+import { fetchArticles } from "../../articleService";
+import ReviewArticleCard from "../ReviewArticleCard/ReviewArticleCard"; // Import new component
 import "./CurrentIssues.css";
 
 const CurrentIssues = () => {
   const navigate = useNavigate();
-  const [fetchedArticles, setFetchedArticles] = useState([]); // State to store articles
+  const [fetchedArticles, setFetchedArticles] = useState([]);
+  const pendingFolderPath = "pending";
 
   useEffect(() => {
     const loadArticles = async () => {
-      const articles = await fetchArticles(); // Fetch articles
-      setFetchedArticles(articles); // Set fetched articles to state
+      const articles = await fetchArticles(pendingFolderPath);
+      setFetchedArticles(articles);
     };
 
     loadArticles();
   }, []);
+
+  const handleArticleReviewed = (articleId) => {
+    // Update state by filtering out the reviewed article
+    setFetchedArticles(fetchedArticles.filter(article => article.id !== articleId));
+  };
 
   return (
     <div className="articles-container">
@@ -27,7 +33,7 @@ const CurrentIssues = () => {
         Back to Home
       </button>
 
-      <ArticleCard articles={fetchedArticles} />
+      <ReviewArticleCard articles={fetchedArticles} onArticleReviewed={handleArticleReviewed} />
     </div>
   );
 };

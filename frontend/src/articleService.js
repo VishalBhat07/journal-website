@@ -1,16 +1,16 @@
 // articleService.js
 import { db } from './firebaseConfig';
-import { collection, addDoc, getDocs } from 'firebase/firestore';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { doc, getDoc, setDoc, deleteDoc, collection, addDoc, getDocs } from 'firebase/firestore';
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage'; // Add deleteObject import
 
-const articlesRef = collection(db, 'articles');
 const storage = getStorage(); // Get a reference to the storage
 
 // Function to upload an article
-export const uploadArticle = async (articleData, file) => {
+export const uploadArticle = async (articleData, file, folderPath) => {
   try {
     // Create a storage reference
-    const storageRef = ref(storage, `articles/${file.name}`);
+    const storageRef = ref(storage, `${folderPath}/${file.name}`);
+    const articlesRef = collection(db, `${folderPath}`)
     
     // Upload the file to Firebase Storage
     await uploadBytes(storageRef, file);
@@ -39,13 +39,76 @@ export const uploadArticle = async (articleData, file) => {
 };
 
 // Function to fetch articles
-export const fetchArticles = async () => {
+export const fetchArticles = async (folderPath) => {
   try {
-    const articlesSnapshot = await getDocs(articlesRef);
+    const folderRef = collection(db, folderPath);
+    const articlesSnapshot = await getDocs(folderRef);
     const articlesList = articlesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     return articlesList;
   } catch (error) {
     console.error("Error fetching articles: ", error);
     return []; // Return an empty array on error
+  }
+};
+
+export const moveArticle = async (fromFolder, toFolder, articleId, articleData) => {
+  try {
+    // Reference to the source article document
+    const fromDocRef = doc(db, fromFolder, articleId);
+    const toCollectionRef = collection(db, toFolder);
+
+    // Get the article's data and fileURL
+    const articleDoc = await getDoc(fromDocRef);
+    if (articleDoc.exists()) {
+      const articleWithFileURL = {
+        ...articleDoc.data(),
+        ...articleData,
+        date: new Date().toISOString(),
+      };
+
+      // Add the article to the target folder
+      await addDoc(toCollectionRef, articleWithFileURL);
+      
+      // Delete the article from the original (fromFolder)
+      await deleteDoc(fromDocRef);
+
+      console.log("Article moved successfully!");
+      return { success: true, message: "Article moved successfully!" };
+    } else {
+      throw new Error("Article not found in the source folder");
+    }
+  } catch (error) {
+    console.error("Error moving article:", error);
+    return { success: false, message: `Error moving article: ${error.message}` };
+  }
+};
+
+export const deleteArticle = async (folderPath, articleId) => {
+  try {
+    // Reference to the article document in Firestore
+    const articleRef = doc(db, folderPath, articleId);
+    
+    // Get the article's data to retrieve the file URL
+    const articleDoc = await getDoc(articleRef);
+    if (articleDoc.exists()) {
+      const { fileURL } = articleDoc.data();
+      
+      // Delete the article from Firestore
+      await deleteDoc(articleRef);
+
+      // If there’s a file associated, delete it from Firebase Storage
+      if (fileURL) {
+        const fileRef = ref(storage, fileURL);
+        await deleteObject(fileRef);
+      }
+
+      console.log("Article deleted successfully!");
+      return { success: true, message: "Article deleted successfully!" };
+    } else {
+      throw new Error("Article not found");
+    }
+  } catch (error) {
+    console.error("Error deleting article:", error);
+    return { success: false, message: `Error deleting article: ${error.message}` };
   }
 };

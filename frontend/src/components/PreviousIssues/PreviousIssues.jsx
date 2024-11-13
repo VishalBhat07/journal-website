@@ -7,10 +7,11 @@ import "./PreviousIssues.css";
 const PreviousIssues = () => {
   const navigate = useNavigate();
   const [fetchedArticles, setFetchedArticles] = useState([]); // State to store articles
+  const previousFolderPath = "previous"
 
   useEffect(() => {
     const loadArticles = async () => {
-      const articles = await fetchArticles(); // Fetch articles
+      const articles = await fetchArticles(previousFolderPath); // Fetch articles
       setFetchedArticles(articles); // Set fetched articles to state
     };
 
