@@ -1,73 +1,68 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-  }
-  
-  .hero-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 100%;
-    gap: 10px;
-  }
-  
-  .left-column {
-    width: 35%;
-    background-color: #ffffff;
-    padding: 20px;
-    text-align: center;
-    border-right: 1px solid #ccc;
-  }
-  
-  .journal-cover {
-    width: 100%;
-    height: auto;
-  }
-  
-  .contact-details {
-    margin-top: 20px;
-    font-size: 14px;
-  }
-  
-  .right-column {
-    width: 70%;
-    padding: 20px;
-    background-color: #fff;
-  }
-  
-  h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  h2 {
-    font-size: 20px;
-    margin: 15px 0;
-  }
-  
-  h3 {
-    font-size: 18px;
-    margin: 10px 0;
-  }
-  
-  p {
-    margin-bottom: 10px;
-    line-height: 1.5;
-  }
-  
-  a {
-    color: #007BFF;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
+.journal-hero-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  gap: 10px;
+  height: 121vh;
+}
+
+.journal-left-column {
+  width: 35%;
+  background-color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  border-right: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.journal-contact-details {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.journal-right-column {
+  width: 65%;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.journal-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #4a4de6; /* Blue accent for main title */
+  margin-bottom: 20px;
+}
+
+.journal-subtitle, .journal-about-title, .journal-publisher-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #6a5acd; /* Slightly purple-blue color */
+  margin: 15px 0;
+}
+
+.journal-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #6a5acd; /* Blue color for section titles */
+  margin: 10px 0;
+}
+
+.journal-description {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.journal-website-link {
+  color: #007bff; /* Bright blue for links */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.journal-website-link:hover {
+  text-decoration: underline;
+  color: #6a5acd; /* Purple accent on hover */
+}

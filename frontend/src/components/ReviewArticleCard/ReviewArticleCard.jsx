@@ -24,32 +24,45 @@ const ReviewArticleCard = ({ articles, onArticleReviewed }) => {
   };
 
   return (
-    <table className="review-article-table">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Date</th>
-          <th>Link</th>
-          <th>Actions</th>
+    <table className="review-article-card__table">
+      <thead className="review-article-card__table-head">
+        <tr className="review-article-card__table-row">
+          <th className="review-article-card__table-header">Title</th>
+          <th className="review-article-card__table-header">Author</th>
+          <th className="review-article-card__table-header">Date</th>
+          <th className="review-article-card__table-header">Link</th>
+          <th className="review-article-card__table-header">Actions</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="review-article-card__table-body">
         {articles.map((article, index) => (
-          <tr key={article.id || index}>
-            <td>{article.title}</td>
-            <td>{article.author}</td>
-            <td>{new Date(article.date).toLocaleDateString()}</td>
-            <td>
-              <a href={article.fileURL} target="_blank" rel="noopener noreferrer">
+          <tr key={article.id || index} className="review-article-card__table-row">
+            <td className="review-article-card__table-cell">{article.title}</td>
+            <td className="review-article-card__table-cell">{article.author}</td>
+            <td className="review-article-card__table-cell">
+              {new Date(article.date).toLocaleDateString()}
+            </td>
+            <td className="review-article-card__table-cell">
+              <a
+                href={article.fileURL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="review-article-card__link"
+              >
                 View Article
               </a>
             </td>
-            <td>
-              <button onClick={() => handleApprove(article.id, article)}>
+            <td className="review-article-card__table-cell">
+              <button
+                onClick={() => handleApprove(article.id, article)}
+                className="review-article-card__button review-article-card__button--approve"
+              >
                 &#10003;
               </button>
-              <button onClick={() => handleReject(article.id)}>
+              <button
+                onClick={() => handleReject(article.id)}
+                className="review-article-card__button review-article-card__button--reject"
+              >
                 &#10005;
               </button>
             </td>

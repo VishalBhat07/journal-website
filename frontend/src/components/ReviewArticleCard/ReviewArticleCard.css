@@ -1,76 +1,77 @@
-.review-article-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 16px;
-    text-align: left;
-  }
-  
-  .review-article-table th,
-  .review-article-table td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-  }
-  
-  .review-article-table th {
-    background-color: #f4f4f4;
-    font-weight: bold;
-  }
-  
-  .review-article-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  button {
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
-    font-size: 18px;
-    margin: 0 5px;
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.2s ease;
-  }
-  
-  button:focus {
-    outline: none;
-  }
-  
-  button:hover {
-    transform: scale(1.1);
-  }
-  
-  button.approve {
-    background-color: #4caf50;
-    color: white;
-  }
-  
-  button.approve:hover {
-    background-color: #45a049;
-  }
-  
-  button.reject {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  button.reject:hover {
-    background-color: #e53935;
-  }
-  
-  button.approve:active, button.reject:active {
-    transform: scale(1);
-  }
-  
-  button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  a {
-    color: #2196f3;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
+.review-article-card__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: left;
+}
+
+.review-article-card__table-header,
+.review-article-card__table-cell {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+.review-article-card__table-header {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.review-article-card__table-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.review-article-card__button {
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 0 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s ease;
+}
+
+.review-article-card__button:focus {
+  outline: none;
+}
+
+.review-article-card__button:hover {
+  transform: scale(1.1);
+}
+
+.review-article-card__button--approve {
+  background-color: #4caf50;
+  color: white;
+}
+
+.review-article-card__button--approve:hover {
+  background-color: #45a049;
+}
+
+.review-article-card__button--reject {
+  background-color: #f44336;
+  color: white;
+}
+
+.review-article-card__button--reject:hover {
+  background-color: #e53935;
+}
+
+.review-article-card__button--approve:active, 
+.review-article-card__button--reject:active {
+  transform: scale(1);
+}
+
+.review-article-card__button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.review-article-card__link {
+  color: #2196f3;
+  text-decoration: none;
+}
+
+.review-article-card__link:hover {
+  text-decoration: underline;
+}

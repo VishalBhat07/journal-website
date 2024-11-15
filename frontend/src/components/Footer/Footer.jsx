@@ -98,12 +98,10 @@ const Footer = () => {
                 className="text-uppercase fw-bold mb-4"
                 style={{ color: "#fff" }}
               >
-                ASM (INC)
+                ASM India National Council Trust
               </h6>
               <p style={{ color: "#fff" }}>
-                Here you can use rows and columns to organize your footer
-                content. Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit.
+              Published by the ASM India National Council Trust (INC), Materials and Processing is a biannual open-access journal that provides a platform for the latest research, technical insights, and case studies in engineering and manufacturing.
               </p>
             </MDBCol>
 
@@ -131,7 +129,7 @@ const Footer = () => {
               </p>
               <p style={{ color: "#fff" }}>
                 <Link
-                  to="/uploads"
+                  to="/previous-issues"
                   className="text-reset"
                   onClick={scrollToTop}
                 >
@@ -144,7 +142,7 @@ const Footer = () => {
                   className="text-reset"
                   onClick={scrollToTop}
                 >
-                  Author Guideline
+                  Author Guidelines
                 </Link>
               </p>
             </MDBCol>
