@@ -20,6 +20,7 @@ import BankDetails from "./pages/BankDetails/BankDetails.jsx";
 
 import PreviousIssues from "./components/PreviousIssues/PreviousIssues.jsx";
 import CurrentIssues from "./components/CurrentIssues/CurrentIssues.jsx";
+import ApprovedArticles from "./components/ApprovedArticles/ApprovedArticles.jsx";
 import UploadPopup from "./components/UploadPopup/UploadPopup.jsx";
 import { getAuth, onAuthStateChanged } from "firebase/auth"; 
 import RunningText from "./components/RunningText/RunningText.jsx";
@@ -109,6 +110,7 @@ function App() {
               <Route path="/bank-details" element={<BankDetails />} />
               <Route path="/previous-issues" element={<PreviousIssues />} />
               <Route path="/current-issues" element={<CurrentIssues />} />
+              <Route path="/approved-issues" element={<ApprovedArticles/>}/>
             </Routes>
           </div>
 
