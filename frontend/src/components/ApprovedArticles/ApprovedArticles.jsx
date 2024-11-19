@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchArticles } from "../../articleService";
-import ApprovedArticleCard from "../ApprovedArticleCard/ApprovedArticleCard"; // Import the approved articles component
+import ApprovedArticleCard from "../ApprovedArticleCard/ApprovedArticleCard.jsx"
 import "./ApprovedArticles.css";
 
 const ApprovedArticles = () => {
