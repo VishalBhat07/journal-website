@@ -62,7 +62,7 @@ const UploadPopup = ({ isOpen, onClose }) => {
       <div className="upload-modal-overlay" onClick={onClose}>
         <div className="upload-modal-content" onClick={(e) => e.stopPropagation()}>
           <div className="upload-modal-header">
-            <h1 className="upload-hero-title">Upload File</h1>
+            <h1 className="upload-hero-title">Upload Article</h1>
             <button
               className="upload-close-icon"
               onClick={onClose}
@@ -82,7 +82,7 @@ const UploadPopup = ({ isOpen, onClose }) => {
               onChange={(e) => setFile(e.target.files[0])}
             />
 
-            <label htmlFor="authorInput">Author Name:</label>
+            <label htmlFor="authorInput">Author of the Article:</label>
             <input
               type="text"
               id="authorInput"
@@ -91,7 +91,7 @@ const UploadPopup = ({ isOpen, onClose }) => {
               required
             />
 
-            <label htmlFor="titleInput">Title:</label>
+            <label htmlFor="titleInput">Title of the Article:</label>
             <input
               type="text"
               id="titleInput"

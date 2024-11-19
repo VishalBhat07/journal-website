@@ -4,7 +4,7 @@
   justify-content: space-evenly;
   width: 100%;
   gap: 10px;
-  height: 121vh;
+  min-height: 121vh;
 }
 
 .journal-left-column {
