@@ -45,7 +45,7 @@ const ApprovedArticleCard = ({ articles, onArticleDeleted }) => {
             <td className="approved-article-card__table-cell">
               <button
                 onClick={() => handleDelete(article.id)}
-                className="approved-article-card__button approved-article-card__button--delete"
+                className="approved-article-card__button approved-article-card__button--reject"
               >
                 Delete
               </button>
