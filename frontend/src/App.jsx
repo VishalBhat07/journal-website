@@ -26,9 +26,10 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import RunningText from "./components/RunningText/RunningText.jsx";
 import PageNotFound from "./pages/PageNotFound/PageNotFound.jsx";
 
+import admins from "../Admin/admins.js"
+
 function App() {
 
-  const admins = ['admin1@gmail.com', 'admin2@gmail.com'];
   const [isSignUpOpen, setSignUpOpen] = useState(false);
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false); 
