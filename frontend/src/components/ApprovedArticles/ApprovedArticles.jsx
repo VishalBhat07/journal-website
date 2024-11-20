@@ -4,14 +4,14 @@ import { fetchArticles } from "../../articleService";
 import ApprovedArticleCard from "../ApprovedArticleCard/ApprovedArticleCard.jsx"
 import "./ApprovedArticles.css";
 
-const ApprovedArticles = () => {
+const ApprovedArticles = ({admin}) => {
   const navigate = useNavigate();
   const [fetchedArticles, setFetchedArticles] = useState([]);
   const approvedFolderPath = "approved";
 
   useEffect(() => {
     const loadArticles = async () => {
-      const articles = await fetchArticles(approvedFolderPath); // Fetch articles from 'approved' folder
+      const articles = await fetchArticles(approvedFolderPath);
       setFetchedArticles(articles);
     };
 
@@ -24,7 +24,7 @@ const ApprovedArticles = () => {
   };
 
   return (
-    <div className="articles-container">
+    admin ?  <div className="articles-container">
       <button
         onClick={() => navigate("/")}
         className="back-to-home"
@@ -37,7 +37,7 @@ const ApprovedArticles = () => {
         articles={fetchedArticles} 
         onArticleDeleted={handleArticleDeleted} 
       />
-    </div>
+    </div> : <h1>You are not authorized to access this page</h1>
   );
 };
 

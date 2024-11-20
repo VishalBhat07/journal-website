@@ -4,7 +4,7 @@ import { fetchArticles } from "../../articleService";
 import ReviewArticleCard from "../ReviewArticleCard/ReviewArticleCard"; // Import new component
 import "./CurrentIssues.css";
 
-const CurrentIssues = () => {
+const CurrentIssues = ({admin}) => {
   const navigate = useNavigate();
   const [fetchedArticles, setFetchedArticles] = useState([]);
   const pendingFolderPath = "pending";
@@ -19,12 +19,11 @@ const CurrentIssues = () => {
   }, []);
 
   const handleArticleReviewed = (articleId) => {
-    // Update state by filtering out the reviewed article
     setFetchedArticles(fetchedArticles.filter(article => article.id !== articleId));
   };
 
   return (
-    <div className="articles-container">
+    admin ? ( <div className="articles-container">
       <button
         onClick={() => navigate("/")}
         className="back-to-home"
@@ -34,7 +33,7 @@ const CurrentIssues = () => {
       </button>
 
       <ReviewArticleCard articles={fetchedArticles} onArticleReviewed={handleArticleReviewed} />
-    </div>
+    </div> ): (<h1>You are not authorised to access this page</h1>)
   );
 };
 

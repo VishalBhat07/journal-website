@@ -24,6 +24,7 @@ import ApprovedArticles from "./components/ApprovedArticles/ApprovedArticles.jsx
 import UploadPopup from "./components/UploadPopup/UploadPopup.jsx";
 import { getAuth, onAuthStateChanged } from "firebase/auth"; 
 import RunningText from "./components/RunningText/RunningText.jsx";
+import PageNotFound from "./pages/PageNotFound/PageNotFound.jsx";
 
 function App() {
 
@@ -109,8 +110,9 @@ function App() {
               />
               <Route path="/bank-details" element={<BankDetails />} />
               <Route path="/previous-issues" element={<PreviousIssues />} />
-              <Route path="/current-issues" element={<CurrentIssues />} />
-              <Route path="/approved-issues" element={<ApprovedArticles/>}/>
+              <Route path="/current-issues" element={<CurrentIssues admin={admin} />} />
+              <Route path="/approved-issues" element={<ApprovedArticles admin={admin}/>}/>
+              <Route path="*" element={<PageNotFound/>}/>
             </Routes>
           </div>
 
