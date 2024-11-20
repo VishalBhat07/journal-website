@@ -98,7 +98,7 @@ const Footer = () => {
                 className="text-uppercase fw-bold mb-4"
                 style={{ color: "#fff" }}
               >
-                ASM India National Council Trust
+                ASM India National Council
               </h6>
               <p style={{ color: "#fff" }}>
               Published by the ASM India National Council Trust (INC), Materials and Processing is a biannual open-access journal that provides a platform for the latest research, technical insights, and case studies in engineering and manufacturing.
@@ -157,36 +157,29 @@ const Footer = () => {
               </h6>
               <p style={{ color: "#fff" }}>
                 <MDBIcon
-                  icon="home"
-                  className="me-2"
-                  style={{ color: "#fff" }}
-                />
-                RVCE, Bengaluru.
-              </p>
-              <p style={{ color: "#fff" }}>
-                <MDBIcon
                   icon="envelope"
                   className="me-3"
                   style={{ color: "#fff" }}
                 />
-                sample@rvce.edu.in
+                asmincjournal@gmail.com
               </p>
+              <p style={{ color: "#fff" }}>
               <p style={{ color: "#fff" }}>
                 <MDBIcon
                   icon="phone"
                   className="me-3"
                   style={{ color: "#fff" }}
                 />{" "}
-                +01 234 567 88
+                080 2839 5327
               </p>
-              <p style={{ color: "#fff" }}>
                 <MDBIcon
-                  icon="print"
+                  icon="home"
                   className="me-3"
                   style={{ color: "#fff" }}
-                />{" "}
-                +01 234 567 89
+                />
+                C/O Process pumps (I) Pvt. Ltd.
               </p>
+              <p style={{color:"#ffffff",marginLeft:"35px", marginTop:"-12px"}}>Plot No. 86, Phase 3, Peenya, Bengaluru, Karnataka 560058.</p>
             </MDBCol>
           </MDBRow>
         </MDBContainer>
@@ -196,7 +189,7 @@ const Footer = () => {
         className="text-center p-3"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.05)", color: "#fff" }}
       >
-        © 2024 <b>RVCE</b> All copyrights reserved.
+        © 2024 <b>ASM INC</b> ( All copyrights reserved )
       </div>
     </MDBFooter>
   );

@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
-import IndianData from './Indian.json';
-import InternationalData from './International.json';
+import React from "react";
+import IndianData from "./Indian.json";
+import InternationalData from "./International.json";
 import "./boardOfMember.css";
 
 const BoardOfMember = () => {
-  const [visibleItems, setVisibleItems] = useState(5);
-
-  const renderTable = (data, title) => (
-    <div className="container mt-5">
-      <h2 className="text-center font-weight-bold">{title}</h2>
-      <table className="table">
-        <thead className="thead-dark">
+  const renderTable = (data, title, tableClass) => (
+    <div className={`board-container ${tableClass}`}>
+      <h2 className="board-title">{title}</h2>
+      <table className="board-table">
+        <thead className="board-header">
           <tr>
             <th scope="col"><strong>#</strong></th>
             <th scope="col"><strong>Name</strong></th>
@@ -19,8 +17,8 @@ const BoardOfMember = () => {
           </tr>
         </thead>
         <tbody>
-          {data.slice(0, visibleItems).map((entry, index) => (
-            <tr key={index}>
+          {data.map((entry, index) => (
+            <tr key={index} className="board-row">
               <th scope="row">{index + 1}</th>
               <td>{entry.name}</td>
               <td>{entry.institution}</td>
@@ -29,23 +27,13 @@ const BoardOfMember = () => {
           ))}
         </tbody>
       </table>
-      {visibleItems < data.length && (
-        <div className="text-center">
-          <button
-            className="see-more"
-            onClick={() => setVisibleItems(visibleItems + 5)}
-          >
-            See More
-          </button>
-        </div>
-      )}
     </div>
   );
 
   return (
     <div id="advisory-board">
-      {renderTable(IndianData, 'Indian Board Members')}
-      {renderTable(InternationalData, 'International Board Members')}
+      {renderTable(InternationalData, "International Board Members", "international-board")}
+      {renderTable(IndianData, "Indian Board Members", "indian-board")}
     </div>
   );
 };

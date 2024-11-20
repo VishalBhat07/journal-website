@@ -5,7 +5,7 @@ const Sidebar = ({ isLoggedIn, onUploadClick , admin}) => {
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 bg-light"
-      style={{ width: "230px", height: "123.3vh" }}
+      style={{ width: "18vw", height: "123.3vh" }}
     >
       <ul className="nav nav-pills flex-column mb-auto">
         <li className="nav-item dropdown">
@@ -99,10 +99,25 @@ const Sidebar = ({ isLoggedIn, onUploadClick , admin}) => {
             onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
           >
-            Current Issue
+            Current Issues
           </Link>
         </li>) : <></>
       } 
+
+{
+        admin ? (<li className="nav-item dropdown">
+              <Link
+            to="/approved-issues"
+            className="nav-link link-dark"
+            style={{ fontWeight: "bold", color: "#007BFF" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
+          >
+            Approved Issues
+          </Link>
+        </li>) : <></>
+      } 
+
 
   <li className="nav-item dropdown">
           <button

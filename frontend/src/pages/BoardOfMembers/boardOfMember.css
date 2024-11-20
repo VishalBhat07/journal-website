@@ -1,21 +1,72 @@
-#advisory-board {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-#advisory-board > * {
-    width: 40%;
-}
-
-.see-more {
-    font-weight: bold;
-    padding: 8px 24px;
-    background-color: rgb(61, 57, 177);;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+/* Common container styling */
+.board-container {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 90%;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Table title styling */
+  .board-title {
+    font-size: 1.6rem;
     margin-bottom: 20px;
-}
+    color: #343a40;
+    text-align: center;
+  }
+  
+  /* Common table styling */
+  .board-table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+  }
+  
+  .board-header {
+    background-color: #3d39b1;
+    color: white;
+    text-align: left;
+  }
+  
+  .board-table th,
+  .board-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .board-row:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .board-row:hover {
+    background-color: #ddd;
+  }
+  
+  /* International board-specific styling */
+  .international-board .board-container {
+    border-left: 5px solid #007bff; /* Highlight international board */
+  }
+  
+  /* Indian board-specific styling */
+  .indian-board .board-container {
+    border-left: 5px solid #28a745; /* Highlight Indian board */
+  }
+  
+  /* Media query for responsiveness */
+  @media (max-width: 768px) {
+    .board-container {
+      max-width: 100%;
+      padding: 10px;
+    }
+  
+    .board-table {
+      font-size: 0.9rem;
+    }
+  
+    .board-title {
+      font-size: 1.5rem;
+    }
+  }
+  

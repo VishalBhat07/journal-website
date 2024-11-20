@@ -1,6 +1,6 @@
 import React from 'react';
 import './AdvertisementTariff.css';
-import AdvertisementImage from "../../assets/AdvertisementImage.png";
+import AdvertisementImage from "../../assets/advertisement.png";
 
 function AdvertisementTariff() {
   return (
@@ -21,12 +21,12 @@ function AdvertisementTariff() {
           </thead>
           <tbody>
             <tr>
-              <td>F2- Inside Left Spread</td>
+              <td>PF2- Inside Left Spread</td>
               <td>20,000</td>
             </tr>
             <tr>
               <td>B1- Back Cover</td>
-              <td>20,000</td>
+              <td>25,000</td>
             </tr>
             <tr>
               <td>B2- Inside Right Spread</td>

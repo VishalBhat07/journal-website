@@ -3,6 +3,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 17px;
+
   }
   
   .hero-section {
@@ -14,8 +17,6 @@
   width: 80%;
 }
 
-
-/* Right Section */
 .right-content {
   width: 20%; /* Width for the right section */
   padding: 20px; /* Padding for the right section */

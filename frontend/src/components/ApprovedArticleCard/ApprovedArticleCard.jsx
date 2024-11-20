@@ -3,6 +3,7 @@ import './ApprovedArticleCard.css'; // Create CSS specific to this component
 import { deleteArticle } from '../../articleService'; // Import the delete function
 
 const ApprovedArticleCard = ({ articles, onArticleDeleted }) => {
+  console.log(articles)
   const handleDelete = async (articleId) => {
     // Delete article permanently from 'approved' folder and Firebase Storage
     const result = await deleteArticle('approved', articleId);
