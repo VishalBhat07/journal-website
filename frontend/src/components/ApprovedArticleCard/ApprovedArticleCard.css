@@ -1,0 +1,78 @@
+.approved-article-card__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+  }
+  
+  .approved-article-card__table-header,
+  .approved-article-card__table-cell {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+  }
+  
+  .approved-article-card__table-header {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .approved-article-card__table-row:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .approved-article-card__button {
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s ease;
+  }
+  
+  .approved-article-card__button:focus {
+    outline: none;
+  }
+  
+  .approved-article-card__button:hover {
+    transform: scale(1.1);
+  }
+  
+  .approved-article-card__button--approve {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .approved-article-card__button--approve:hover {
+    background-color: #45a049;
+  }
+  
+  .approved-article-card__button--reject {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .approved-article-card__button--reject:hover {
+    background-color: #e53935;
+  }
+  
+  .approved-article-card__button--approve:active, 
+  .approved-article-card__button--reject:active {
+    transform: scale(1);
+  }
+  
+  .approved-article-card__button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .approved-article-card__link {
+    color: #2196f3;
+    text-decoration: none;
+  }
+  
+  .approved-article-card__link:hover {
+    text-decoration: underline;
+  }
+  

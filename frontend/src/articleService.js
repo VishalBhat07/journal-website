@@ -51,25 +51,21 @@ export const fetchArticles = async (folderPath) => {
   }
 };
 
-export const moveArticle = async (fromFolder, toFolder, articleId, articleData) => {
+export const moveArticle = async (fromFolder, toFolder, articleId) => {
   try {
-    // Reference to the source article document
+    // Reference to the source document
     const fromDocRef = doc(db, fromFolder, articleId);
-    const toCollectionRef = collection(db, toFolder);
+    const toDocRef = doc(db, toFolder, articleId); // Use the same ID in the target folder
 
-    // Get the article's data and fileURL
+    // Fetch the document data
     const articleDoc = await getDoc(fromDocRef);
     if (articleDoc.exists()) {
-      const articleWithFileURL = {
-        ...articleDoc.data(),
-        ...articleData,
-        date: new Date().toISOString(),
-      };
+      const articleData = articleDoc.data();
 
-      // Add the article to the target folder
-      await addDoc(toCollectionRef, articleWithFileURL);
-      
-      // Delete the article from the original (fromFolder)
+      // Copy the article to the target collection
+      await setDoc(toDocRef, articleData);
+
+      // Delete the original article
       await deleteDoc(fromDocRef);
 
       console.log("Article moved successfully!");
@@ -82,6 +78,7 @@ export const moveArticle = async (fromFolder, toFolder, articleId, articleData) 
     return { success: false, message: `Error moving article: ${error.message}` };
   }
 };
+
 
 export const deleteArticle = async (folderPath, articleId) => {
   try {
