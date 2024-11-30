@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { auth } from '../../firebaseConfig';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import './Navbar.css'; 
-import logo from '../../assets/logo.png'
 
 const Navbar = ({ onSignUpClick }) => {
   const [user, setUser] = useState(null);
@@ -28,7 +27,7 @@ const Navbar = ({ onSignUpClick }) => {
   return (
     <nav id="navbar">
       <div>
-      <img src={logo} alt="ASM logo" height="" width="200" />
+      <img src="./logo.png" alt="ASM logo" height="" width="200" />
 
       </div>
             

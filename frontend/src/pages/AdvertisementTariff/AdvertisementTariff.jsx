@@ -1,6 +1,5 @@
 import React from 'react';
 import './AdvertisementTariff.css';
-import AdvertisementImage from "../../assets/advertisement.png";
 
 function AdvertisementTariff() {
   return (
@@ -54,7 +53,7 @@ function AdvertisementTariff() {
             </tr>
           </tbody>
         </table>
-        <img src={AdvertisementImage} alt="Advertisement" className="advertisement-image" />
+        <img src="./advertisement.png" alt="Advertisement" className="advertisement-image" />
       </div>
     </div>
   );
