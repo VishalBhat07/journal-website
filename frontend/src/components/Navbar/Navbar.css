@@ -2,27 +2,22 @@
   display: flex;
   justify-content: space-between; /* keeps image and button on edges */
   align-items: center; /* centers items vertically */
-  padding: 10px;
-  height: 12vh;
+  padding: 20px;
   gap: 20px;
-  background-color: rgb(61, 57, 177);
+  background-color: var(--background-color);
   background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
-#navbar > img {
-  width: min(20%, 400px);
+#navbar > img{
+  max-width: 200px;
 }
 
 #navbar > #button {
-  height: 40px;
-  width: 80px;
-  padding: 0;
+  padding: 10px;
 }
 
 #navbar > #navbar-title {
-  font-size: 1.75rem;
+  font-size: 1.8vw;
   flex-grow: 1; /* Allow title to grow and take up available space */
   display: flex; /* Set this to flex to center text */
   justify-content: center; /* Center the title text horizontally */

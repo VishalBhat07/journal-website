@@ -7,6 +7,11 @@
     font-size: 17px;
 
   }
+:root{
+  --background-color: #03045E;
+  --secondary-background-color: #CAF0F8;
+  --white-text-color: #ffffff;
+}
   
   .hero-section {
     display: flex;

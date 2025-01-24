@@ -26,10 +26,8 @@ const Navbar = ({ onSignUpClick }) => {
 
   return (
     <nav id="navbar">
-      <div>
       <img src="./logo.png" alt="ASM logo" height="" width="200" />
 
-      </div>
             
       <div id="navbar-title">Materials and Processing : A journal from ASM India National Council Trust (INC)</div>
         
