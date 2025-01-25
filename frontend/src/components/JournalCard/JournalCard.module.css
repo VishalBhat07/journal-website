@@ -3,30 +3,25 @@
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
+  height: 100%;
   gap: 10px;
-  min-height: 121vh;
 }
 
 .journal-left-column {
   width: 35%;
+  height: 100%;
   background-color: #ffffff;
-  padding: 20px;
   text-align: center;
-  border-right: 1px solid #ccc;
   border-radius: 8px;
+  padding: 2%;
 }
 
-.journal-contact-details {
-  margin-top: 20px;
-  font-size: 14px;
-}
 
 .journal-right-column {
   width: 65%;
   padding: 20px;
   background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .journal-title {
@@ -37,7 +32,6 @@
 }
 
 .journal-subtitle, .journal-about-title, .journal-publisher-title {
-  font-size: 20px;
   font-weight: 600;
   color: #6a5acd; /* Slightly purple-blue color */
   margin: 15px 0;
@@ -65,4 +59,10 @@
 .journal-website-link:hover {
   text-decoration: underline;
   color: #6a5acd; /* Purple accent on hover */
+}
+
+@media (max-width: 768px){
+  .journal-hero-container{
+    flex-direction: column;
+  }
 }

@@ -5,9 +5,7 @@ import JournalCard from "../JournalCard/JournalCard";
 const Hero = () => {
   return (
     <>
-      <div className="main-content">
         <JournalCard />
-      </div>
     </>
   );
 };

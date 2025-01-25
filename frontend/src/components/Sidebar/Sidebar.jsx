@@ -2,73 +2,38 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import PeopleIcon from '@mui/icons-material/People';
+import Person from '@mui/icons-material/Person'
 import WorkIcon from '@mui/icons-material/Work';
 import PublishIcon from '@mui/icons-material/Publish';
 import DescriptionIcon from '@mui/icons-material/Description';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import Close from '@mui/icons-material/Close'
-
 import styles from './Sidebar.module.css';
 import { MobileContext } from '../../AppContext';
-import { Button } from 'bootstrap/dist/js/bootstrap.bundle.min';
 
-const sidebarConfig = [
-  {
-    name: 'Home',
-    icon: HomeIcon,
-    linkTo: '/',
-    type: 'single'
-  },
-  {
-    name: 'Board of Members',
-    icon: PeopleIcon,
-    linkTo: '/board-of-member',
-    type: 'single'
-  },
-  {
-    name: 'Benefits',
-    icon: WorkIcon,
-    type: 'dropdown',
-    items: [
-      { name: 'Academic Benefits', linkTo: '/academic-benefits' },
-      { name: 'Industry Benefits', linkTo: '/industry-benefits' }
-    ]
-  },
-  {
-    name: 'Authors Section',
-    icon: PublishIcon,
-    type: 'dropdown',
-    items: [
-      { name: 'Guidelines and Responsibilities', linkTo: '/author-guidelines' },
-      { name: 'Publication Process', linkTo: '/peer-review-process' }
-    ]
-  },
-  {
-    name: 'Upload Article',
-    icon: PublishIcon,
-    type: 'single',
-    onClick: () => { } // Add your upload click handler
-  },
-  {
-    name: 'Previous Issues',
-    icon: DescriptionIcon,
-    linkTo: '/previous-issues',
-    type: 'single'
-  },
-  {
-    name: 'Advertisement',
-    icon: AttachMoneyIcon,
-    type: 'dropdown',
-    items: [
-      { name: 'Bank Details', linkTo: '/bank-details' },
-      { name: 'Advertisement Tariff', linkTo: '/advertisement-tariff' }
-    ]
-  }
-];
+function SingleLink({ name, Icon, linkTo }) {
+  const { isSidebarOpen, isMobile, toggleSidebar } = useContext(MobileContext);
+  const navigate = useNavigate();
 
-function Accordian({ items, name, icon: Icon }) {
+  return (
+    <div className={styles['sidebar-link']} onClick={() => {
+      if (isSidebarOpen) {
+        toggleSidebar();
+      }
+      navigate(linkTo)
+    }}>
+      <Icon className={styles['sidebar-icon']} />
+      <div className={styles['sidebar-name']}>{name}</div>
+    </div>
+
+  );
+}
+
+function Accordian({ items, name, Icon }) {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const { toggleSidebar, isSidebarOpen } = useContext(MobileContext);
+
 
   function handleAccordianClick() {
     setOpen(!open);
@@ -79,10 +44,13 @@ function Accordian({ items, name, icon: Icon }) {
       <div className={styles['accordian-items-container']}>
         <ul>
           {items.map((item, index) => (
-            <li key={index}>
-              <div className={styles['sidebar-link']} onClick={()=>{navigate(item.linkTo)}}>
-                {item.name}
-              </div>
+            <li key={index} onClick={() => {
+              if (isSidebarOpen) {
+                toggleSidebar();
+              }
+              navigate(item.linkTo)
+            }}>
+              {item.name}
             </li>
           ))}
         </ul>
@@ -102,53 +70,45 @@ function Accordian({ items, name, icon: Icon }) {
 }
 
 function Sidebar() {
-  const navigate = useNavigate();
   const { isMobile, toggleSidebar, isSidebarOpen } = useContext(MobileContext);
 
-  const sidebarStyle = isMobile
-    ? isSidebarOpen
+  const sidebarStyle =
+    isSidebarOpen
       ? styles['sidebar-container'] + ' ' + styles.open
-      : styles['sidebar-container'] + ' ' + styles.close
-    : styles['sidebar-container'];
+      : styles['sidebar-container']
 
-  function SidebarContainer() {
-    return (
-      <div className={sidebarStyle}>
-        {isMobile && <button className={styles['close-btn']} onClick={toggleSidebar}><Close /></button>}
-        <div className={styles['sidebar-logo']}>
-          <img src="./logo.svg" alt="asm-logo" />
-        </div>
-        <div className={styles['sidebar-links']}>
-          {sidebarConfig.map((item, index) => {
-            switch (item.type) {
-              case 'single':
-                return (
-                  <div className={styles['sidebar-link']} key={index} onClick={() => { navigate(item.linkTo) }}>
-                    <item.icon className={styles['sidebar-icon']} />
-                    <div className={styles['sidebar-name']}>{item.name}</div>
-                  </div>
+  const benefitItems = [
+    { name: 'Guidelines and Responsibilities', linkTo: '/author-guidelines' },
+    { name: 'Publication Process', linkTo: '/peer-review-process' }
+  ];
 
-                );
-              case 'dropdown':
-                return (
-                  <Accordian
-                    key={index}
-                    name={item.name}
-                    items={item.items}
-                    icon={item.icon}
-                  />
-                );
-              default:
-                return null;
-            }
-          })}
-        </div>
+  const authorItems = [
+    { name: 'Guidelines and Responsibilities', linkTo: '/author-guidelines' },
+    { name: 'Publication Process', linkTo: '/peer-review-process' }
+  ];
 
-      </div>
-    )
-  }
+  const adItems = [
+    { name: 'Bank Details', linkTo: '/bank-details' },
+    { name: 'Advertisement Tariff', linkTo: '/advertisement-tariff' }
+  ];
+
   return (
-    <SidebarContainer />
+    <div className={sidebarStyle}>
+      {isMobile && <button className={styles['close-btn']} onClick={toggleSidebar}><Close /></button>}
+      <div className={styles['sidebar-logo']}>
+        <img src="./logo.svg" alt="asm-logo" />
+      </div>
+      <div className={styles['sidebar-links']}>
+        <SingleLink name={"Home"} Icon={HomeIcon} linkTo={'/'} />
+        <SingleLink name={"Board of members"} Icon={PeopleIcon} linkTo={'/board-of-member'} />
+        <Accordian name={"Benefits"} Icon={WorkIcon} items={benefitItems} />
+        <Accordian name={"Author Section"} Icon={Person} items={authorItems} />
+        <SingleLink name={"Publish Article"} Icon={PublishIcon} linkTo={'/publish'} />
+        <SingleLink name={"Previous Issues"} Icon={DescriptionIcon} linkTo={'/previous-issues'} />
+        <Accordian name={'Advertising'} Icon={AttachMoneyIcon} items={adItems} />
+      </div>
+
+    </div>
   );
 }
 

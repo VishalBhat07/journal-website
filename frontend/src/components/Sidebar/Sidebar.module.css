@@ -1,3 +1,4 @@
+
 .accordian-container {
   cursor: pointer;
   width: 100%;
@@ -27,18 +28,17 @@
 .accordian-items-container ul {
   display: flex;
   flex-direction: column;
-  list-style-type: none;
   justify-content: center;
   align-items: center;
   width: 100%;
   gap: 20px;
-  margin: 20px;
-  padding: 0;
+  padding-top: 20px;
+  margin: 0;
 }
 
 .accordian-items-container li {
   width: 100%;
-  font-size: 14px;
+  text-align: left;
 }
 
 .sidebar-container {
@@ -91,13 +91,13 @@
     position: fixed;
     z-index: 100;
     top: 0;
-    left: -250px; /* Start off-screen */
+    left: -100%; 
     height: 100%;
     transition: left 0.3s ease-in-out;
   }
 
   .sidebar-container.open {
-    left: 0; /* Slide in from left */
+    left: 0; 
   }
 
   .close-btn {
