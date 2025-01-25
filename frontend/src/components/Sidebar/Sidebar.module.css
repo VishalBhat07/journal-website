@@ -11,11 +11,15 @@
   font-size: 16px;
   padding: 8px;
   border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+
 }
 
 .accordian-header:hover {
   color: var(--background-color);
   background-color: var(--secondary-background-color);
+  transform: scale(1.1);
+
 }
 
 .accordian-icon {
@@ -84,11 +88,13 @@
   padding: 8px;
   justify-content: space-between;
   border-radius: 10px;
+  transition: all 0.3s ease-in-out;
 }
 
 .sidebar-link:hover {
   color: var(--background-color);
   background-color: var(--secondary-background-color);
+  transform: scale(1.1);
 
 }
 
