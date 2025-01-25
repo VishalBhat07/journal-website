@@ -13,28 +13,22 @@ import CurrentIssues from "./components/CurrentIssues/CurrentIssues";
 import ApprovedArticles from "./components/ApprovedArticles/ApprovedArticles";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
-export default function AllRoutes(){
-    return (
-        <Routes>
-              <Route path="/" element={<Hero />} />
-              <Route path="/academic-benefits" element={<AcademicBenefits />} />
-              <Route path="/industry-benefits" element={<IndustryBenefits />} />
-              <Route path="/board-of-member" element={<BoardOfMember />} />
-              <Route path="/author-guidelines" element={<AuthorGuidelines />} />
-              <Route
-                path="/peer-review-process"
-                element={<PeerReviewProcess />}
-              />
-              <Route path="/call-for-paper" element={<CallForPaper />} />
-              <Route
-                path="/advertisement-tariff"
-                element={<AdvertisementTariff />}
-              />
-              <Route path="/bank-details" element={<BankDetails />} />
-              <Route path="/previous-issues" element={<PreviousIssues />} />
-              <Route path="/current-issues" element={<CurrentIssues/>} />
-              <Route path="/approved-issues" element={<ApprovedArticles/>}/>
-              <Route path="*" element={<PageNotFound/>}/>
-        </Routes>
-    );
+export default function AllRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<Hero />} />
+      <Route path="/academic-benefits" element={<AcademicBenefits />} />
+      <Route path="/industry-benefits" element={<IndustryBenefits />} />
+      <Route path="/board-of-member" element={<BoardOfMember />} />
+      <Route path="/author-guidelines" element={<AuthorGuidelines />} />
+      <Route path="/peer-review-process" element={<PeerReviewProcess />} />
+      <Route path="/call-for-paper" element={<CallForPaper />} />
+      <Route path="/advertisement-tariff" element={<AdvertisementTariff />} />
+      <Route path="/bank-details" element={<BankDetails />} />
+      <Route path="/previous-issues" element={<PreviousIssues />} />
+      <Route path="/current-issues" element={<CurrentIssues />} />
+      <Route path="/approved-issues" element={<ApprovedArticles />} />
+      <Route path="*" element={<PageNotFound />} />
+    </Routes>
+  );
 }

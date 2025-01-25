@@ -12,7 +12,7 @@ import styles from './Sidebar.module.css';
 import { MobileContext } from '../../AppContext';
 
 function SingleLink({ name, Icon, linkTo }) {
-  const { isSidebarOpen, isMobile, toggleSidebar } = useContext(MobileContext);
+  const { isSidebarOpen, toggleSidebar } = useContext(MobileContext);
   const navigate = useNavigate();
 
   return (
