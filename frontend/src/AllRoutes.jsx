@@ -1,22 +1,22 @@
 import { Route, Routes } from "react-router-dom";
-
-import AcademicBenefits from "./src/pages/AcademicBenefits/AcademicBenefits";
-import IndustryBenefits from "./src/pages/IndustryBenefits/IndustryBenefits";
-import BoardOfMember from "./src/pages/BoardOfMembers/boardOfMember";
-import AuthorGuidelines from "./src/pages/Guidelines/guidelines";
-import PeerReviewProcess from './src/pages/Publication/publication';
-import CallForPaper from "./src/pages/CallForPaper";
-import AdvertisementTariff from "./src/pages/AdvertisementTariff/AdvertisementTariff";
-import BankDetails from "./src/pages/BankDetails/BankDetails";
-import PreviousIssues from "./src/components/PreviousIssues/PreviousIssues";
-import CurrentIssues from "./src/components/CurrentIssues/CurrentIssues";
-import ApprovedArticles from "./src/components/ApprovedArticles/ApprovedArticles";
-import PageNotFound from "./src/pages/PageNotFound/PageNotFound";
+import Hero from "./components/Home/Hero";
+import AcademicBenefits from "./pages/AcademicBenefits/AcademicBenefits";
+import IndustryBenefits from "./pages/IndustryBenefits/IndustryBenefits";
+import BoardOfMember from "./pages/BoardOfMembers/boardOfMember";
+import AuthorGuidelines from "./pages/Guidelines/guidelines";
+import PeerReviewProcess from './pages/Publication/publication';
+import CallForPaper from "./pages/CallForPaper";
+import AdvertisementTariff from "./pages/AdvertisementTariff/AdvertisementTariff";
+import BankDetails from "./pages/BankDetails/BankDetails";
+import PreviousIssues from "./components/PreviousIssues/PreviousIssues";
+import CurrentIssues from "./components/CurrentIssues/CurrentIssues";
+import ApprovedArticles from "./components/ApprovedArticles/ApprovedArticles";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 export default function AllRoutes(){
     return (
         <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Hero />} />
               <Route path="/academic-benefits" element={<AcademicBenefits />} />
               <Route path="/industry-benefits" element={<IndustryBenefits />} />
               <Route path="/board-of-member" element={<BoardOfMember />} />

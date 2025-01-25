@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between; /* keeps image and button on edges */
   align-items: center; /* centers items vertically */
-  padding: 20px;
+  padding: 10px;
   gap: 20px;
   background-color: var(--background-color);
   background-position: center;
@@ -12,10 +12,16 @@
   max-width: 200px;
 }
 
-#navbar > #button {
-  padding: 10px;
+.menu-button{
+  padding: 7px;
+  height: 100%;
+  border: none;
+  outline: none;
+  background-color: var(--background-color);
 }
-
+.menu-button svg{
+  color: white;
+}
 #navbar > #navbar-title {
   font-size: 1.8vw;
   flex-grow: 1; /* Allow title to grow and take up available space */

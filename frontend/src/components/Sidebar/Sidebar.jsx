@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import PeopleIcon from '@mui/icons-material/People';
@@ -6,7 +6,11 @@ import WorkIcon from '@mui/icons-material/Work';
 import PublishIcon from '@mui/icons-material/Publish';
 import DescriptionIcon from '@mui/icons-material/Description';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import Close from '@mui/icons-material/Close'
+
 import styles from './Sidebar.module.css';
+import { MobileContext } from '../../AppContext';
+import { Button } from 'bootstrap/dist/js/bootstrap.bundle.min';
 
 const sidebarConfig = [
   {
@@ -64,6 +68,7 @@ const sidebarConfig = [
 
 function Accordian({ items, name, icon: Icon }) {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   function handleAccordianClick() {
     setOpen(!open);
@@ -75,9 +80,9 @@ function Accordian({ items, name, icon: Icon }) {
         <ul>
           {items.map((item, index) => (
             <li key={index}>
-              <Link to={item.linkTo} className={styles['sidebar-link']}>
+              <div className={styles['sidebar-link']} onClick={()=>{navigate(item.linkTo)}}>
                 {item.name}
-              </Link>
+              </div>
             </li>
           ))}
         </ul>
@@ -86,54 +91,64 @@ function Accordian({ items, name, icon: Icon }) {
   }
 
   return (
-    <div
-      className={`${styles['accordian-container']}`}
-    >
+    <div className={`${styles['accordian-container']}`}>
       <div className={styles['accordian-header']} onClick={handleAccordianClick}>
         {Icon && <Icon className={styles['accordian-icon']} />}
         <div className={styles['accordian-name']}>{name}</div>
       </div>
       {open && <AccordianItems items={items} />}
-
     </div>
   );
 }
 
-function Sidebar({ admin = false }) {
+function Sidebar() {
   const navigate = useNavigate();
+  const { isMobile, toggleSidebar, isSidebarOpen } = useContext(MobileContext);
+
+  const sidebarStyle = isMobile
+    ? isSidebarOpen
+      ? styles['sidebar-container'] + ' ' + styles.open
+      : styles['sidebar-container'] + ' ' + styles.close
+    : styles['sidebar-container'];
+
+  function SidebarContainer() {
+    return (
+      <div className={sidebarStyle}>
+        {isMobile && <button className={styles['close-btn']} onClick={toggleSidebar}><Close /></button>}
+        <div className={styles['sidebar-logo']}>
+          <img src="./logo.svg" alt="asm-logo" />
+        </div>
+        <div className={styles['sidebar-links']}>
+          {sidebarConfig.map((item, index) => {
+            switch (item.type) {
+              case 'single':
+                return (
+                  <div className={styles['sidebar-link']} key={index} onClick={() => { navigate(item.linkTo) }}>
+                    <item.icon className={styles['sidebar-icon']} />
+                    <div className={styles['sidebar-name']}>{item.name}</div>
+                  </div>
+
+                );
+              case 'dropdown':
+                return (
+                  <Accordian
+                    key={index}
+                    name={item.name}
+                    items={item.items}
+                    icon={item.icon}
+                  />
+                );
+              default:
+                return null;
+            }
+          })}
+        </div>
+
+      </div>
+    )
+  }
   return (
-    <div className={styles['sidebar-container']}>
-      {sidebarConfig.map((item, index) => {
-        // Skip admin-only sections if not admin
-        if ((item.name === 'Current Issues' || item.name === 'Approved Issues') && !admin) {
-          return null;
-        }
-
-        switch (item.type) {
-          case 'single':
-            return (
-              <div className={styles['sidebar-link']} key={index} onClick={()=>{navigate(item.linkTo)}}>
-                  <item.icon className={styles['sidebar-icon']} />
-                  <div className={styles['sidebar-name']}>{item.name}</div>
-              </div>
-
-            );
-
-          case 'dropdown':
-            return (
-              <Accordian
-                key={index}
-                name={item.name}
-                items={item.items}
-                icon={item.icon}
-              />
-            );
-
-          default:
-            return null;
-        }
-      })}
-    </div>
+    <SidebarContainer />
   );
 }
 

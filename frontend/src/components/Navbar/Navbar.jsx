@@ -1,46 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { auth } from '../../firebaseConfig';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
-import './Navbar.css'; 
+import React, { useContext } from 'react';
+import { MobileContext } from '../../AppContext';
+import Menu from '@mui/icons-material/Menu';
+import styles from './Navbar.module.css';
 
-const Navbar = ({ onSignUpClick }) => {
-  const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
+const Navbar = () => {
+  const {isMobile, toggleSidebar} = useContext(MobileContext);
 
-    return () => unsubscribe();
-  }, []);
-
-  const handleSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        alert('You have signed out successfully.');
-      })
-      .catch((error) => {
-        console.error('Sign Out Error:', error);
-      });
-  };
 
   return (
-    <nav id="navbar">
-      <img src="./logo.png" alt="ASM logo" height="" width="200" />
-
+    <nav id={styles['navbar']}>
+      {isMobile && <button className={styles['menu-button']} onClick={toggleSidebar}><Menu/></button>}
+      {!isMobile && <div id={styles["navbar-title"]}>Materials and Processing : A journal from ASM India National Council Trust (INC)</div>}
             
-      <div id="navbar-title">Materials and Processing : A journal from ASM India National Council Trust (INC)</div>
         
       
-      {user ? (
-          <button className="btn btn-outline-light" onClick={handleSignOut} id="button">
-            Sign Out
-          </button>
-        ) : (
-          <button className="btn btn-outline-light" onClick={onSignUpClick} id="button">
-            Sign Up
-          </button>
-        )}
 
     </nav>
 

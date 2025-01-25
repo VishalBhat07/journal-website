@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { createContext } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import admins from "./Admin/admins";
+import admins from "../Admin/admins";
 
 export const UserContext = createContext();
 export const MobileContext = createContext();
@@ -45,6 +45,7 @@ function UserProvider({ children }) {
 
 function MobileProvider({ children }) {
     const [isMobile, setIsMobile] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     useEffect(() => {
         const checkMobile = () => {
@@ -59,8 +60,12 @@ function MobileProvider({ children }) {
         };
     }, []);
 
+    function toggleSidebar(){
+        setIsSidebarOpen((prev)=>!prev);
+    }
+
     return (
-        <MobileContext.Provider value={isMobile}>
+        <MobileContext.Provider value={{isMobile, isSidebarOpen, toggleSidebar}}>
             {children}
         </MobileContext.Provider>
     );

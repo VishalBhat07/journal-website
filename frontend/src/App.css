@@ -1,34 +1,15 @@
-/* Global CSS reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 17px;
-
-  }
-:root{
+:root {
   --background-color: #03045E;
   --secondary-background-color: #CAF0F8;
-  --white-text-color: #ffffff;
-}
-  
-  .hero-section {
-    display: flex;
-    min-height: 100vh; 
-    width: 100%;
-  }
-.hero-content{
-  width: 80%;
+  --text-color: white;
+  font-family: 'Times New Roman', Times, serif;
 }
 
-.right-content {
-  width: 20%; /* Width for the right section */
-  padding: 20px; /* Padding for the right section */
-  background-color: #f8f9fa; /* White background */
-  border-radius: 5px; /* Rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  display: flex; /* Flex display for child components */
-  flex-direction: column; /* Stack child components vertically */
-  gap: 20px; /* Space between child components */
+.upper-section{
+  display: flex;
+}
+
+.right-section{
+  flex: 1;
+
 }
