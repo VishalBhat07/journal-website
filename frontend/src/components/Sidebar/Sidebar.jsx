@@ -96,8 +96,6 @@ function Accordian({ items, name, icon: Icon }) {
       {open && <AccordianItems items={items} />}
 
     </div>
-
-
   );
 }
 
