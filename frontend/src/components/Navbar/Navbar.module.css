@@ -1,32 +1,62 @@
 #navbar {
+  box-sizing: border-box;
   display: flex;
-  justify-content: space-between; /* keeps image and button on edges */
-  align-items: center; /* centers items vertically */
-  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
   gap: 20px;
-  background-color: var(--background-color);
+  background-color: white;
   background-position: center;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
-#navbar > img{
+#navbar>img {
   max-width: 200px;
 }
 
-.menu-button{
+.menu-btn {
   padding: 7px;
   height: 100%;
   border: none;
   outline: none;
-  background-color: var(--background-color);
+  background-color: white;
+  display: none;
 }
-.menu-button svg{
-  color: white;
+
+.menu-btn svg {
+  color: var(--background-color);
 }
-#navbar > #navbar-title {
-  font-size: 1.8vw;
-  flex-grow: 1; /* Allow title to grow and take up available space */
-  display: flex; /* Set this to flex to center text */
-  justify-content: center; /* Center the title text horizontally */
-  align-items: center; /* Center the title text vertically */
-  color: white;
+
+.login-link {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  padding: 10px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+
+}
+
+.login-link:hover {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+}
+
+#navbar>h3 {
+  color: var(--primary-color);
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .menu-btn {
+    display: inline-block;
+  }
+
+  #navbar>h3 {
+    display: none;
+  }
 }

@@ -60,6 +60,15 @@ function MobileProvider({ children }) {
         };
     }, []);
 
+    useEffect(()=>{
+        if (isMobile && isSidebarOpen){
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
+
+    }, [isMobile, isSidebarOpen]);
+
     function toggleSidebar(){
         setIsSidebarOpen((prev)=>!prev);
     }

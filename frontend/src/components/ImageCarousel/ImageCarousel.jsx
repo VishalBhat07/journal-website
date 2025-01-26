@@ -9,7 +9,7 @@ const ImageCarousel = () => {
       <Carousel.Item>
         <a href="https://heyzine.com/flip-book/67d753c541.html">
         <img
-          className="d-block w-100 carousel-image"
+          className="d-block carousel-image"
           src="./vol1issue1.png"
           alt="vol1issue1"
           />
@@ -18,7 +18,7 @@ const ImageCarousel = () => {
       <Carousel.Item>
         <a href='https://heyzine.com/flip-book/1d9866f8fc.html'>        
         <img
-          className="d-block w-100 carousel-image"
+          className="d-block carousel-image"
           src="./vol1issue2.png"
           alt="vol1issue2"
         />

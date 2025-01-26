@@ -1,21 +1,19 @@
 import React, { useContext } from 'react';
 import { MobileContext } from '../../AppContext';
+import { Link } from 'react-router-dom';
 import Menu from '@mui/icons-material/Menu';
 import styles from './Navbar.module.css';
-
+import { Login } from '@mui/icons-material';
 
 const Navbar = () => {
-  const {isMobile, toggleSidebar} = useContext(MobileContext);
+  const {toggleSidebar} = useContext(MobileContext);
 
 
   return (
     <nav id={styles['navbar']}>
-      {isMobile && <button className={styles['menu-button']} onClick={toggleSidebar}><Menu/></button>}
-      {!isMobile && <div id={styles["navbar-title"]}>Materials and Processing : A journal from ASM India National Council Trust (INC)</div>}
-            
-        
-      
-
+      <button className={styles['menu-btn']} onClick={toggleSidebar}><Menu/></button>
+      <h3>ASM India National Council Trust (INC)</h3>
+      <Link to='/login' className={styles['login-link']}>Sign In <Login/></Link>
     </nav>
 
   );

@@ -6,7 +6,8 @@ const JournalDetails = () => {
   return (
     <div className={styles['journal-hero-container']}>
       <div className={styles['journal-left-column']}>
-        <ImageCarousel />
+        <div className='journal-image'><ImageCarousel /></div>
+
         <div className={styles['journal-contact-details']}>
           <h3 className={styles['journal-section-title']}>Editor:</h3>
           <p className={styles['journal-contact-info']}>Ajith Kumar: 9944452591</p>

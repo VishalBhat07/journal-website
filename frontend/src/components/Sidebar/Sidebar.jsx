@@ -91,22 +91,25 @@ function Sidebar() {
   ];
 
   return (
-    <div className={sidebarStyle}>
-      {isMobile && <button className={styles['close-btn']} onClick={toggleSidebar}><Close /></button>}
-      <div className={styles['sidebar-logo']}>
-        <img src="./logo.svg" alt="asm-logo" />
-      </div>
-      <div className={styles['sidebar-links']}>
-        <SingleLink name={"Home"} Icon={HomeIcon} linkTo={'/'} />
-        <SingleLink name={"Board of members"} Icon={PeopleIcon} linkTo={'/board-of-member'} />
-        <Accordian name={"Benefits"} Icon={WorkIcon} items={benefitItems} />
-        <Accordian name={"Author Section"} Icon={Person} items={authorItems} />
-        <SingleLink name={"Publish Article"} Icon={PublishIcon} linkTo={'/publish'} />
-        <SingleLink name={"Previous Issues"} Icon={DescriptionIcon} linkTo={'/previous-issues'} />
-        <Accordian name={'Advertising'} Icon={AttachMoneyIcon} items={adItems} />
-      </div>
+    <>
+      {isMobile && isSidebarOpen && <div className={styles['sidebar-cover']} onClick={toggleSidebar}></div>}
+      <div className={sidebarStyle}>
+        <div className={styles['sidebar-logo']}>
+          <img src="./logo.svg" alt="asm-logo" />
+        </div>
+        <div className={styles['sidebar-links']}>
+          <SingleLink name={"Home"} Icon={HomeIcon} linkTo={'/'} />
+          <SingleLink name={"Board of members"} Icon={PeopleIcon} linkTo={'/board-of-member'} />
+          <Accordian name={"Benefits"} Icon={WorkIcon} items={benefitItems} />
+          <Accordian name={"Author Section"} Icon={Person} items={authorItems} />
+          <SingleLink name={"Publish Article"} Icon={PublishIcon} linkTo={'/publish'} />
+          <SingleLink name={"Previous Issues"} Icon={DescriptionIcon} linkTo={'/previous-issues'} />
+          <Accordian name={'Advertising'} Icon={AttachMoneyIcon} items={adItems} />
+        </div>
 
-    </div>
+      </div>
+    </>
+
   );
 }
 
