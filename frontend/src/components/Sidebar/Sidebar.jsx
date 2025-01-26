@@ -8,6 +8,7 @@ import PublishIcon from '@mui/icons-material/Publish';
 import DescriptionIcon from '@mui/icons-material/Description';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import Close from '@mui/icons-material/Close'
+import ArrowDropDown from '@mui/icons-material/ArrowDropDown'
 import styles from './Sidebar.module.css';
 import { MobileContext } from '../../AppContext';
 
@@ -39,8 +40,15 @@ function Accordian({ items, name, Icon }) {
     setOpen(!open);
   }
 
-  function AccordianItems({ items }) {
-    return (
+  return (
+    <div className={`${styles['accordian-container']} ${open ? styles['open'] : ''}`}>
+      <div className={styles['accordian-header']} onClick={handleAccordianClick}>
+        {Icon && <Icon className={styles['accordian-icon']} />}
+        <div className={styles['accordian-name']}>
+          {name}
+          <ArrowDropDown />
+        </div>
+      </div>
       <div className={styles['accordian-items-container']}>
         <ul>
           {items.map((item, index) => (
@@ -55,16 +63,6 @@ function Accordian({ items, name, Icon }) {
           ))}
         </ul>
       </div>
-    );
-  }
-
-  return (
-    <div className={`${styles['accordian-container']}`}>
-      <div className={styles['accordian-header']} onClick={handleAccordianClick}>
-        {Icon && <Icon className={styles['accordian-icon']} />}
-        <div className={styles['accordian-name']}>{name}</div>
-      </div>
-      {open && <AccordianItems items={items} />}
     </div>
   );
 }

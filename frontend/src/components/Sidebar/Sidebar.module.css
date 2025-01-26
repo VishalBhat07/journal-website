@@ -4,6 +4,7 @@
   width: 100%;
 }
 
+
 .accordian-header {
   display: flex;
   align-items: center;
@@ -28,12 +29,31 @@
 
 .accordian-name {
   width: 75%;
-  text-align: left;
+  display: flex;
+  justify-content: space-between;
 }
+
+.accordian-name svg{
+  transition: transform 0.3s ease-in;
+}
+
+.accordian-container.open .accordian-name svg{
+  transform: rotate(180deg);
+  transition: transform 0.5s ease-out;
+}
+
 
 .accordian-items-container {
   display: flex;
   justify-content: center;
+  max-height: 0; 
+  overflow: hidden; 
+  transition: max-height 0.3s ease-in; 
+}
+
+.accordian-container.open .accordian-items-container {
+  max-height: 500px;
+  transition: max-height 0.5s ease-out;
 }
 
 .accordian-items-container ul {
@@ -113,13 +133,14 @@
     position: fixed;
     z-index: 100;
     top: 0;
-    left: -100%; 
+    left: -250px; 
     height: 100%;
-    transition: left 0.3s ease-in-out;
+    transition: left 0.5s ease-in;
   }
 
   .sidebar-container.open {
     left: 0; 
+    transition: left 0.3s ease-out;
   }
 
   .close-btn {
