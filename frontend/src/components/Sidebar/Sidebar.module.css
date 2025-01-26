@@ -33,12 +33,12 @@
 }
 
 .accordian-name svg{
-  transition: transform 0.3s ease-in;
+  transition: transform 0.3s ease;
 }
 
 .accordian-container.open .accordian-name svg{
   transform: rotate(180deg);
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease;
 }
 
 
@@ -48,13 +48,13 @@
   max-height: 0; 
   opacity: 0;
   overflow: hidden; 
-  transition: max-height 0.3s ease-in, opacity 0.3s ease-in;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
 .accordian-container.open .accordian-items-container {
   max-height: 500px;
   opacity: 1;
-  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
 .accordian-items-container ul {
@@ -130,6 +130,12 @@
   text-align: left;
 }
 
+.links{
+  display: none;
+}
+
+
+
 @media (max-width: 768px) {
   .sidebar-container {
     position: fixed;
@@ -140,6 +146,7 @@
     width: 60%;
     height: 100%;
     transition: left 0.5s ease-in;
+    justify-content: space-between;
   }
 
   .sidebar-cover{
@@ -153,6 +160,40 @@
   .sidebar-container.open {
     left: 0; 
     transition: left 0.3s ease-out;
+  }
+
+  .links{
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    width: 80%
+  }
+
+  .signup-link, .login-link{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+  }
+  
+  
+  .signup-link {
+
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+
+  }
+  
+  .login-link{
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+  }
+  
+  .login-link:hover{
+    color: var(--secondary-color);
   }
 
 }

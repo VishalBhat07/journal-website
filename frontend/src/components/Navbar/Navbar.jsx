@@ -3,17 +3,25 @@ import { MobileContext } from '../../AppContext';
 import { Link } from 'react-router-dom';
 import Menu from '@mui/icons-material/Menu';
 import styles from './Navbar.module.css';
-import { Login } from '@mui/icons-material';
 
 const Navbar = () => {
-  const {toggleSidebar} = useContext(MobileContext);
+  const { isMobile, toggleSidebar } = useContext(MobileContext);
 
 
   return (
     <nav id={styles['navbar']}>
-      <button className={styles['menu-btn']} onClick={toggleSidebar}><Menu/></button>
+      <div className={styles['sidebar-logo']}>
+        <button className={styles['menu-btn']} onClick={toggleSidebar}><Menu /></button>
+        <img src="./logo.svg" alt="asm-logo" />
+      </div>
+      <div className={styles['sidebar-logo']}></div>
       <h3>ASM India National Council Trust (INC)</h3>
-      <Link to='/login' className={styles['login-link']}>Sign In <Login/></Link>
+      <div className={styles['links']}>
+        <Link to='/login' className={styles['login-link']}>Login</Link>
+        <Link to='/signup' className={styles['signup-link']}>Sign up</Link>
+
+      </div>
+
     </nav>
 
   );

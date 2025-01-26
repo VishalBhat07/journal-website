@@ -67,6 +67,28 @@ function Accordian({ items, name, Icon }) {
   );
 }
 
+function NavLinks() {
+  const navigate = useNavigate();
+  const { toggleSidebar, isSidebarOpen } = useContext(MobileContext);
+
+  return (
+    <div className={styles['links']}>
+      <button className={styles['login-link']} onClick={() => {
+        if (isSidebarOpen) {
+          toggleSidebar();
+        }
+        navigate('/login')
+      }}>Login</button>
+      <button className={styles['signup-link']} onClick={() => {
+        if (isSidebarOpen) {
+          toggleSidebar();
+        }
+        navigate('/signup')
+      }}>Sign up</button>
+
+    </div>
+  )
+}
 function Sidebar() {
   const { isMobile, toggleSidebar, isSidebarOpen } = useContext(MobileContext);
 
@@ -106,6 +128,8 @@ function Sidebar() {
           <SingleLink name={"Previous Issues"} Icon={DescriptionIcon} linkTo={'/previous-issues'} />
           <Accordian name={'Advertising'} Icon={AttachMoneyIcon} items={adItems} />
         </div>
+        <NavLinks/>
+
 
       </div>
     </>
