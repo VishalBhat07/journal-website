@@ -76,18 +76,18 @@ function Sidebar() {
       : styles['sidebar-container']
 
   const benefitItems = [
-    { name: 'Guidelines and Responsibilities', linkTo: '/author-guidelines' },
-    { name: 'Publication Process', linkTo: '/peer-review-process' }
+    { name: 'Academic Benefits', linkTo: '/benefits/academic-benefits' },
+    { name: 'Industry Benefits', linkTo: '/benefits/industry-benefits' }
   ];
 
   const authorItems = [
-    { name: 'Guidelines and Responsibilities', linkTo: '/author-guidelines' },
-    { name: 'Publication Process', linkTo: '/peer-review-process' }
+    { name: 'Guidelines and Responsibilities', linkTo: '/author/author-guidelines' },
+    { name: 'Publication Process', linkTo: '/author/peer-review-process' }
   ];
 
   const adItems = [
-    { name: 'Bank Details', linkTo: '/bank-details' },
-    { name: 'Advertisement Tariff', linkTo: '/advertisement-tariff' }
+    { name: 'Bank Details', linkTo: '/ad/bank-details' },
+    { name: 'Advertisement Tariff', linkTo: '/ad/advertisement-tariff' }
   ];
 
   return (

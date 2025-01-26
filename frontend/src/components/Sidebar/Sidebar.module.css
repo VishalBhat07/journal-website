@@ -13,7 +13,6 @@
   padding: 8px;
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
-
 }
 
 .accordian-header:hover {
@@ -39,7 +38,7 @@
 
 .accordian-container.open .accordian-name svg{
   transform: rotate(180deg);
-  transition: transform 0.5s ease-out;
+  transition: transform 0.3s ease-out;
 }
 
 
@@ -47,13 +46,15 @@
   display: flex;
   justify-content: center;
   max-height: 0; 
+  opacity: 0;
   overflow: hidden; 
-  transition: max-height 0.3s ease-in; 
+  transition: max-height 0.3s ease-in, opacity 0.3s ease-in;
 }
 
 .accordian-container.open .accordian-items-container {
   max-height: 500px;
-  transition: max-height 0.5s ease-out;
+  opacity: 1;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
 }
 
 .accordian-items-container ul {
