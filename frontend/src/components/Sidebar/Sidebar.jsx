@@ -56,6 +56,7 @@ function Accordian({ items, name, Icon }) {
               if (isSidebarOpen) {
                 toggleSidebar();
               }
+              setOpen(false);
               navigate(item.linkTo)
             }}>
               {item.name}
