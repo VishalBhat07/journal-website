@@ -53,7 +53,7 @@ function AdvertisementTariff() {
             </tr>
           </tbody>
         </table>
-        <img src="./advertisement.png" alt="Advertisement" className="advertisement-image" />
+        <img src="/advertisement.png" alt="Advertisement" className="advertisement-image" />
       </div>
     </div>
   );
