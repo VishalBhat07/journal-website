@@ -98,10 +98,13 @@ const Footer = () => {
                 className="text-uppercase fw-bold mb-4"
                 style={{ color: "#fff" }}
               >
-                ASM India National Council
+                ASM India
               </h6>
               <p style={{ color: "#fff" }}>
-              Published by the ASM India National Council Trust (INC), Materials and Processing is a biannual open-access journal that provides a platform for the latest research, technical insights, and case studies in engineering and manufacturing.
+                Published by the ASM India, Materials and Processing is a
+                biannual open-access journal that provides a platform for the
+                latest research, technical insights, and case studies in
+                engineering and manufacturing.
               </p>
             </MDBCol>
 
@@ -164,14 +167,14 @@ const Footer = () => {
                 asmincjournal@gmail.com
               </p>
               <p style={{ color: "#fff" }}>
-              <p style={{ color: "#fff" }}>
-                <MDBIcon
-                  icon="phone"
-                  className="me-3"
-                  style={{ color: "#fff" }}
-                />{" "}
-                080 2839 5327
-              </p>
+                <p style={{ color: "#fff" }}>
+                  <MDBIcon
+                    icon="phone"
+                    className="me-3"
+                    style={{ color: "#fff" }}
+                  />{" "}
+                  080 2839 5327
+                </p>
                 <MDBIcon
                   icon="home"
                   className="me-3"
@@ -179,7 +182,15 @@ const Footer = () => {
                 />
                 C/O Process pumps (I) Pvt. Ltd.
               </p>
-              <p style={{color:"#ffffff",marginLeft:"35px", marginTop:"-12px"}}>Plot No. 86, Phase 3, Peenya, Bengaluru, Karnataka 560058.</p>
+              <p
+                style={{
+                  color: "#ffffff",
+                  marginLeft: "35px",
+                  marginTop: "-12px",
+                }}
+              >
+                Plot No. 86, Phase 3, Peenya, Bengaluru, Karnataka 560058.
+              </p>
             </MDBCol>
           </MDBRow>
         </MDBContainer>
