@@ -62,14 +62,17 @@
 .login-link:hover{
   color: var(--primary-color);
 }
-#navbar>h3 {
+#navbar h3 {
   color: white;
   padding: 0;
   margin: 0;
 }
-
-.sidebar-logo{
-  display: none;
+.sidebar-logo {
+  display: flex;
+  gap: 20px;
+}
+.sidebar-logo img{
+  height: 35px;
 }
 
 
