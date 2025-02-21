@@ -22,7 +22,7 @@ const Navbar = () => {
           Login
         </Link>
         <Link to="/signup" className={styles["signup-link"]}>
-          <p>Sign up</p>
+          Sign up
         </Link>
       </div>
     </nav>
