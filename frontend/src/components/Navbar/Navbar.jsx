@@ -1,21 +1,35 @@
 import { useContext } from "react";
 import { MobileContext } from "../../AppContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Menu from "@mui/icons-material/Menu";
 import styles from "./Navbar.module.css";
+import SingleLink from "./SingleLink/SingleLink";
 
 const Navbar = () => {
   const { toggleSidebar } = useContext(MobileContext);
+  const navigate = useNavigate();
 
   return (
     <nav id={styles["navbar"]}>
-      <div className={styles["sidebar-logo"]}>
-        <button className={styles["menu-btn"]} onClick={toggleSidebar}>
-          <Menu />
-        </button>
-        <img src="/logo.svg" alt="asm-logo" />
+      <button className={styles["menu-btn"]} onClick={toggleSidebar}>
+        <Menu />
+      </button>
+      <div className={styles["sidebar-logo"]} onClick={() => navigate("/")} >
+        <img src="/logo.png" alt="asm-logo" />
+        <div className={styles["asm-name"]} >
+          Materials and processing
+        </div>
       </div>
-      <h3>Materials and Processing: A journal from ASM India</h3>
+
+      <div className={styles["nav-links"]}>
+        <SingleLink name="About" linkTo="author" isActive={0}/>
+        <SingleLink name="About" linkTo="author" isActive={1}/>
+        <SingleLink name="About" linkTo="author" isActive={1}/>
+        <SingleLink name="About" linkTo="author" isActive={0}/>
+        <SingleLink name="About" linkTo="author" isActive={1}/>
+
+
+      </div>
 
       <div className={styles["links"]}>
         <Link to="/login" className={styles["login-link"]}>

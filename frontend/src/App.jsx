@@ -16,8 +16,8 @@ function App() {
     <BrowserRouter>
       <AppProvider>
         <div className="app">
-          <nav><Navbar/></nav>
-          <div className="running-tex"><RunningText/></div>
+          <Navbar/>
+          <div className="running-text"><RunningText/></div>
           <div className='upper-section'>
             <Sidebar />
             <div className="right-section">

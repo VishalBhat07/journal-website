@@ -44,36 +44,22 @@ function UserProvider({ children }) {
 }
 
 function MobileProvider({ children }) {
-    const [isMobile, setIsMobile] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth <= 768);
-        };
-
-        checkMobile();
-        window.addEventListener("resize", checkMobile);
-
-        return () => {
-            window.removeEventListener("resize", checkMobile);
-        };
-    }, []);
-
-    useEffect(() => {
-            if (isMobile && isSidebarOpen) {
+            if (isSidebarOpen) {
                 document.body.classList.add('no-scroll');
             } else {
                 document.body.classList.remove('no-scroll');
             }
-    }, [isMobile, isSidebarOpen]);
+    }, [isSidebarOpen]);
 
     function toggleSidebar(){
         setIsSidebarOpen((prev)=>!prev);
     }
 
     return (
-        <MobileContext.Provider value={{isMobile, isSidebarOpen, toggleSidebar}}>
+        <MobileContext.Provider value={{isSidebarOpen, toggleSidebar}}>
             {children}
         </MobileContext.Provider>
     );

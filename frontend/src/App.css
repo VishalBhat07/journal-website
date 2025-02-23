@@ -1,13 +1,23 @@
 :root {
-  --primary-color: #03045E;
-  --secondary-color: #CAF0F8;
-  --nav-background-color: #3d39b1;
-  --text-color: white;
-  font-family: 'Times New Roman', Times, serif;
+  --primary-color: #fdfffc;
+  --secondary-color:#457b9d;
+  --accent-color:#1d3557;
+  --text-color: #011627;
 }
+
+h1, h2, h3, p, a, span {
+  color: var(--text-color);
+}
+
 
 body, html{
   height: 100%;
+}
+
+.app{
+  min-height: 100vh;
+  display:flex;
+  flex-direction: column;
 }
 
 .upper-section{
@@ -25,7 +35,7 @@ body, html{
   display: flex;
   flex-direction: column;
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .no-scroll  {
     overflow: hidden;
   }

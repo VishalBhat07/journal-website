@@ -90,7 +90,7 @@ function NavLinks() {
   )
 }
 function Sidebar() {
-  const { isMobile, toggleSidebar, isSidebarOpen } = useContext(MobileContext);
+  const { toggleSidebar, isSidebarOpen } = useContext(MobileContext);
   const location = useLocation();
   const activeRoute = location.pathname.split('/')[1];
   console.log(activeRoute);
@@ -112,10 +112,10 @@ function Sidebar() {
 
   return (
     <>
-      {isMobile && isSidebarOpen && <div className={styles['sidebar-cover']} onClick={toggleSidebar}></div>}
+      {isSidebarOpen && <div className={styles['sidebar-cover']} onClick={toggleSidebar}></div>}
       <div className={`${styles['sidebar-container']} ${isSidebarOpen ? styles['open'] : ''}`}>
         <div className={styles['sidebar-logo']}>
-          <img src="/logo.svg" alt="asm-logo" />
+          <img src="/logo.png" alt="asm-logo" />
         </div>
         <div className={styles['sidebar-links']}>
           <SingleLink name={"Home"} Icon={HomeIcon} linkTo={'/'} isActive={activeRoute == ''}/>
@@ -127,8 +127,6 @@ function Sidebar() {
           <Accordian name={'Advertising'} Icon={AttachMoneyIcon} items={adItems} isActive={activeRoute == 'ad'}/>
         </div>
         <NavLinks/>
-
-
       </div>
     </>
 

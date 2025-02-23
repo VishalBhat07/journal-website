@@ -1,19 +1,29 @@
 #navbar {
   box-sizing: border-box;
   display: flex;
+  height: 4rem;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
+  padding: 1rem 1.5rem;
   gap: 20px;
-  background-color: var(--nav-background-color);
+  background-color: var(--primary-color);
   background-position: center;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
   z-index: 1;
+  position: sticky;
+  top:0;
 }
 
-#navbar>img {
-  max-width: 200px;
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
 }
+.sidebar-logo img{
+  height: 1.7rem;
+}
+
 
 .menu-btn {
   padding: 7px;
@@ -24,83 +34,86 @@
   display: none;
 }
 
-.menu-btn svg {
-  color: white;
+.menu-btn img {
+  color: var(--accent-color);
 }
+
+.asm-name {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 600; 
+  line-height: 1.2; 
+  letter-spacing: -0.04rem; 
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+.nav-links{
+  display: flex;
+  gap: 3.5rem;
+}
+
 
 .links{
   display: flex;
-  gap: 8px;
+  gap: 1rem;
 }
 
 
-.signup-link {
+
+.signup-link, .login-link{
   display: flex;
-  gap: 5px;
   align-items: center;
-  color: var(--secondary-color);
-  background-color: var(--primary-color);
-  padding: 0.75rem 1rem;
+  justify-content: center;
   border-radius: 12px;
   transition: all 0.3s ease;
+  width: 100px;
+  padding: 0.5rem;
+}
+
+.signup-link {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
 }
 
 .login-link{
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  color: var(--secondary-color);
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color)
 }
 
-.signup-link:hover {
-  color: var(--primary-color);
-  background-color: var(--secondary-color);
+.signup-link:active, .login-link:active{
+  transform: scale(0.90);
 }
-.login-link:hover{
-  color: var(--primary-color);
-}
-#navbar h3 {
-  color: white;
-  padding: 0;
-  margin: 0;
-}
-.sidebar-logo {
-  display: flex;
-  gap: 20px;
-}
-.sidebar-logo img{
-  height: 35px;
+@media (max-width: 1440px){
+  .asm-name{
+    display: none;
+  }
 }
 
-
-@media (max-width: 768px) {
+@media (max-width:1024px){
   #navbar{
     padding: 10px;
+    justify-content: flex-start;
   }
-  .menu-btn {
-    display: inline-block;
+  .sidebar-logo img{
+    height: 25px;
+  }
+  .asm-name{
+    font-size: 1.3rem;
+    display: inline;
   }
 
-  #navbar>h3 {
+  .links, .nav-links{
     display: none;
   }
 
-  .sidebar-logo{
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  .menu-btn{
+    display: inline;
   }
-  
+}
 
-  .sidebar-logo img{
-    display: block;
-    height: 25px;
-  }
-
-  .links{
+@media (max-width: 768px) {
+  .asm-name{
     display: none;
   }
 }

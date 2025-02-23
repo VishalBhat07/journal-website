@@ -6,7 +6,7 @@ const JournalDetails = () => {
   return (
     <div className={styles['journal-hero-container']}>
       <div className={styles['journal-left-column']}>
-        <div className='journal-image'><ImageCarousel /></div>
+        {/* <div className='journal-image'><ImageCarousel /></div> */}
 
         <div className={styles['journal-contact-details']}>
           <h3 className={styles['journal-section-title']}>Editor:</h3>
