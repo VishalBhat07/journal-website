@@ -1,4 +1,5 @@
 // RunningText.jsx
+
 import React from 'react';
 import styles from './RunningText.module.css';
 

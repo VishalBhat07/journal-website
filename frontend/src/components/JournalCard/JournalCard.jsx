@@ -53,6 +53,7 @@ const JournalDetails = () => {
           </p>
         </div>
 
+
         <h2 className={styles["journal-about-title"]}>About The Journal:</h2>
         <p
           className={styles["journal-description"]}
@@ -69,6 +70,7 @@ const JournalDetails = () => {
           className={styles["journal-description"]}
           style={{ fontStyle: "italic" }}
         >
+
           This journal invites high-quality scientific research, case studies,
           and technical papers discussing industrial practices, providing a
           platform for students, academicians, scholars, industrialists,
@@ -76,8 +78,10 @@ const JournalDetails = () => {
           insights.
         </p>
 
+
         <h2 className={styles["journal-publisher-title"]}>Publisher Name:</h2>
         <p>ASM India National Council Trust</p>
+
 
         <h3 className={styles["journal-section-title"]}>Submission E-mail:</h3>
         <p>asmincjournal@gmail.com</p>

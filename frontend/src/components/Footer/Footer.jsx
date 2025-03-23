@@ -98,8 +98,9 @@ const Footer = () => {
                 className="text-uppercase fw-bold mb-4"
                 style={{ color: "var(--text-color)" }}
               >
-                ASM India National Council
+                ASM India
               </h6>
+
               <p style={{ color: "var(--text-color)" }}>
               Published by the ASM India National Council Trust (INC), Materials and Processing is a biannual open-access journal that provides a platform for the latest research, technical insights, and case studies in engineering and manufacturing.
               </p>
@@ -163,6 +164,7 @@ const Footer = () => {
                 />
                 asmincjournal@gmail.com
               </p>
+
               <p style={{ color: "var(--text-color)" }}>
               <p style={{ color: "var(--text-color)" }}>
                 <MDBIcon
@@ -172,6 +174,7 @@ const Footer = () => {
                 />{" "}
                 080 2839 5327
               </p>
+
                 <MDBIcon
                   icon="home"
                   className="me-3"
@@ -179,6 +182,7 @@ const Footer = () => {
                 />
                 C/O Process pumps (I) Pvt. Ltd.
               </p>
+
               <p style={{color:"var(--text-color)",marginLeft:"35px", marginTop:"-12px"}}>Plot No. 86, Phase 3, Peenya, Bengaluru, Karnataka 560058.</p>
             </MDBCol>
           </MDBRow>
