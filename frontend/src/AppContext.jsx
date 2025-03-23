@@ -1,66 +1,80 @@
 import { useState, useEffect } from "react";
 import { createContext } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { toast } from "react-toastify";
 import admins from "../Admin/admins";
 
 export const UserContext = createContext();
 export const MobileContext = createContext();
 
 export function AppProvider({ children }) {
-    return (
-        <UserProvider>
-            <MobileProvider>
-                {children}
-            </MobileProvider>
-        </UserProvider>
-    );
+  return (
+    <UserProvider>
+      <MobileProvider>{children}</MobileProvider>
+    </UserProvider>
+  );
 }
 
 function UserProvider({ children }) {
-    const [user, setUser] = useState(null);
-    const [isAdmin, setIsAdmin] = useState(false);
-    const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const auth = getAuth();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+        console.log(currentUser);
+        if (admins.includes(currentUser.email)) {
+          setIsAdmin(true);
+        }
+      }
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  function handleSignout() {
     const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        setUser(null);
+        toast.success("User signed out succesfully");
+      })
+      .catch((error) => {
+        toast.error("Error signing out:", error);
+      });
+  }
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            if (currentUser) {
-                setUser(currentUser);
-                if (admins.includes(currentUser.email)){
-                    setIsAdmin(true);
-                }
-            }
-            setLoading(false);
-        });
-
-        return () => unsubscribe();
-    }, []);
-
-    return (
-        <UserContext.Provider value={{ user, isAdmin, loading }}>
-            {!loading && children}
-        </UserContext.Provider>
-    );
+  return (
+    <UserContext.Provider
+      value={{ user, setUser, isAdmin, loading, handleSignout }}
+    >
+      {!loading && children}
+    </UserContext.Provider>
+  );
 }
 
 function MobileProvider({ children }) {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-    useEffect(() => {
-            if (isSidebarOpen) {
-                document.body.classList.add('no-scroll');
-            } else {
-                document.body.classList.remove('no-scroll');
-            }
-    }, [isSidebarOpen]);
-
-    function toggleSidebar(){
-        setIsSidebarOpen((prev)=>!prev);
+  useEffect(() => {
+    if (isSidebarOpen) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
     }
+  }, [isSidebarOpen]);
 
-    return (
-        <MobileContext.Provider value={{isSidebarOpen, toggleSidebar}}>
-            {children}
-        </MobileContext.Provider>
-    );
+  function toggleSidebar() {
+    setIsSidebarOpen((prev) => !prev);
+  }
+
+  return (
+    <MobileContext.Provider value={{ isSidebarOpen, toggleSidebar }}>
+      {children}
+    </MobileContext.Provider>
+  );
 }

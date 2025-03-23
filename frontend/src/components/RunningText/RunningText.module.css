@@ -6,7 +6,7 @@
   font-size: 1rem;
   white-space: nowrap;
   position: relative;
-
+  height: 35px;
 }
 
 .text-content {

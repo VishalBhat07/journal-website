@@ -1,8 +1,19 @@
-/* ImageCarousel.css */
+.carousel-container {
+  width: 100%;
+  max-width: 400px; /* Adjust as needed */
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
 
 .carousel-image {
-    height: 420px; 
-    object-fit: cover; 
-    width: auto;
-  }
-  
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-container a {
+  display: block;
+  text-align: center;
+}

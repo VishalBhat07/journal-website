@@ -10,59 +10,63 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ffffff;
+  background-color: var(--primary-color);
   text-align: center;
   border-radius: 8px;
   padding: 2%;
 }
 
-
 .journal-right-column {
   flex: 2;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: var(--primary-color);
   border-radius: 8px;
 }
 
 .journal-title {
-  font-size: 28px;
+  font-size: 2rem;
   font-weight: 600;
-  color: #4a4de6; /* Blue accent for main title */
+  color: var(--secondary-color);
   margin-bottom: 20px;
 }
 
-.journal-subtitle, .journal-about-title, .journal-publisher-title {
+.journal-subtitle,
+.journal-about-title,
+.journal-publisher-title {
   font-weight: 600;
-  color: #6a5acd; /* Slightly purple-blue color */
+  font-size: 1.4rem;
+  text-decoration: underline;
+  color: var(--secondary-color);
   margin: 15px 0;
 }
 
 .journal-section-title {
-  font-size: 18px;
   font-weight: 600;
-  color: #6a5acd; /* Blue color for section titles */
+  text-decoration: underline;
+  font-size: 1.4rem;
+  color: var(--secondary-color);
   margin: 10px 0;
 }
 
 .journal-description {
   margin-bottom: 10px;
   line-height: 1.5;
-  color: #333;
+  color: var(--text-color);
 }
 
 .journal-website-link {
-  color: #007bff; /* Bright blue for links */
+  color: var(--accent-color);
   text-decoration: none;
   font-weight: 500;
 }
 
 .journal-website-link:hover {
   text-decoration: underline;
-  color: #6a5acd; /* Purple accent on hover */
+  color: var(--secondary-color);
 }
 
-@media (max-width: 768px){
-  .journal-hero-container{
+@media (max-width: 768px) {
+  .journal-hero-container {
     flex-direction: column;
   }
 }
