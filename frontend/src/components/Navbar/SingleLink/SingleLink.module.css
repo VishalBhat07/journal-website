@@ -1,0 +1,30 @@
+/* *{
+  border: 1px solid red;
+} */
+
+.link {
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 8px;
+  justify-content: space-between;
+  transition:
+    color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out,
+    transform 0.1s ease-in;
+}
+
+.link:active{
+  transform: scale(0.9);
+}
+.active{
+  border-bottom: 2.5px solid var(--accent-color);
+}
+
+.name {
+    text-align: center;
+    text-transform: capitalize;
+}
+  

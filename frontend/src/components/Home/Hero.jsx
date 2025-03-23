@@ -1,15 +1,19 @@
-import React from "react";
-import "./Hero.css";
-import JournalCard from "../JournalCard/JournalCard";
-
-const Hero = () => {
+import styles from "./Hero.module.css";
+import JournalCard from "../JournalCard/JournalCard"
+const Home = () => {
   return (
-    <>
-      <div className="main-content">
-        <JournalCard />
-      </div>
-    </>
+    <JournalCard/>
+    // <div className={styles['home']}>
+    //     <div className={styles['hero-section']}>
+    //       <div className={styles['carousel']}></div>
+    //       <div className={styles['journal-info']}></div>
+    //     </div>
+    //     <div className={styles['main-section']}>
+    //       <div className={styles['quick-navigation']}></div>
+
+    //     </div>
+    // </div>
   );
 };
 
-export default Hero;
+export default Home;

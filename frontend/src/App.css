@@ -1,29 +1,47 @@
-/* Global CSS reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 17px;
-
-  }
-  
-  .hero-section {
-    display: flex;
-    min-height: 100vh; 
-    width: 100%;
-  }
-.hero-content{
-  width: 80%;
+:root {
+  --primary-color: #fdfffc;
+  --secondary-color: #3d39b1;
+  --accent-color: #000;
+  --text-color: #011627;
 }
 
-.right-content {
-  width: 20%; /* Width for the right section */
-  padding: 20px; /* Padding for the right section */
-  background-color: #f8f9fa; /* White background */
-  border-radius: 5px; /* Rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  display: flex; /* Flex display for child components */
-  flex-direction: column; /* Stack child components vertically */
-  gap: 20px; /* Space between child components */
+h1,
+h2,
+h3,
+p,
+a,
+span {
+  color: var(--text-color);
+}
+
+body,
+html {
+  height: 100%;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.upper-section {
+  display: flex;
+}
+
+.right-section {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-section {
+  min-height: 90vh;
+  background-color: #efefef;
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 1024px) {
+  .no-scroll {
+    overflow: hidden;
+  }
 }

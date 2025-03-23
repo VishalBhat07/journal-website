@@ -1,184 +1,136 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
+import PeopleIcon from '@mui/icons-material/People';
+import Person from '@mui/icons-material/Person'
+import WorkIcon from '@mui/icons-material/Work';
+import PublishIcon from '@mui/icons-material/Publish';
+import DescriptionIcon from '@mui/icons-material/Description';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import ArrowDropDown from '@mui/icons-material/ArrowDropDown'
+import styles from './Sidebar.module.css';
+import { MobileContext } from '../../AppContext';
 
-const Sidebar = ({ isLoggedIn, onUploadClick , admin}) => {
+function SingleLink({ name, Icon, linkTo, isActive }) {
+  const { isSidebarOpen, toggleSidebar } = useContext(MobileContext);
+  const navigate = useNavigate();
+
   return (
-    <div
-      className="d-flex flex-column flex-shrink-0 p-3 bg-light"
-      style={{ width: "18vw", height: "123.3vh" }}
-    >
-      <ul className="nav nav-pills flex-column mb-auto">
-        <li className="nav-item dropdown">
-          <Link
-            to="/"
-            className="nav-link active"
-            style={{ fontWeight: "bold", color: "#007BFF" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
-          >
-            Home
-          </Link>
-        </li>
+    <div className={`${styles['sidebar-link']} ${isActive ? styles['active'] : ''}`} onClick={() => {
+      if (isSidebarOpen) {
+        toggleSidebar();
+      }
+      navigate(linkTo)
+    }}>
+      <Icon className={styles['sidebar-icon']} />
+      <div className={styles['sidebar-name']}>{name}</div>
+    </div>
 
-        <li className="nav-item dropdown">
-          <Link
-            to="/board-of-member"
-            className="nav-link link-dark"
-            id="dashboardDropdown"
-            role="button"
-            aria-expanded="false"
-            style={{ fontWeight: "bold", color: "#007BFF" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
-          >
-            Board of Members
-          </Link>
-        </li>
+  );
+}
 
-        <li className="nav-item dropdown">
-          <Link
-            to="#"
-            className="nav-link link-dark dropdown-toggle"
-            id="dashboardDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            style={{ fontWeight: "bold", color: "#007BFF" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
-          >
-            Benefits
-          </Link>
-          <ul className="dropdown-menu" aria-labelledby="dashboardDropdown">
-            <li>
-              <Link className="dropdown-item" to="/academic-benefits">
-                Academic Benefits
-              </Link>
+function Accordian({ items, name, Icon, isActive }) {
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const { toggleSidebar, isSidebarOpen } = useContext(MobileContext);
+
+
+  function handleAccordianClick() {
+    setOpen(!open);
+  }
+
+  return (
+    <div className={`${styles['accordian-container']} ${open ? styles['open'] : ''}`}>
+      <div className={`${styles['accordian-header']} ${isActive ? styles['active'] : ''}`} onClick={handleAccordianClick}>
+        {Icon && <Icon className={styles['accordian-icon']} />}
+        <div className={styles['accordian-name']}>
+          {name}
+          <ArrowDropDown />
+        </div>
+      </div>
+      <div className={styles['accordian-items-container']}>
+        <ul>
+          {items.map((item, index) => (
+            <li key={index} onClick={() => {
+              if (isSidebarOpen) {
+                toggleSidebar();
+              }
+              setOpen(false);
+              navigate(item.linkTo)
+            }}>
+              {item.name}
             </li>
-            <li>
-              <Link className="dropdown-item" to="/industry-benefits">
-                Industry Benefits
-              </Link>
-            </li>
-          </ul>
-        </li>
-
-        <li className="nav-item dropdown">
-          <Link
-            to="#"
-            className="nav-link link-dark dropdown-toggle"
-            id="dashboardDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            style={{ fontWeight: "bold", color: "#007BFF" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
-          >
-            Authors Section
-          </Link>
-          <ul className="dropdown-menu" aria-labelledby="dashboardDropdown">
-            <li>
-              <Link className="dropdown-item" to="/author-guidelines">
-                Guidelines and Responsibilities
-              </Link>
-            </li>
-            <li>
-              <Link className="dropdown-item" to="/peer-review-process">
-                Publication Process
-              </Link>
-            </li>
-          </ul>
-        </li>
-        {
-        admin ? (<li className="nav-item dropdown">
-              <Link
-            to="/current-issues"
-            className="nav-link link-dark"
-            style={{ fontWeight: "bold", color: "#007BFF" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
-          >
-            Current Issues
-          </Link>
-        </li>) : <></>
-      } 
-
-{
-        admin ? (<li className="nav-item dropdown">
-              <Link
-            to="/approved-issues"
-            className="nav-link link-dark"
-            style={{ fontWeight: "bold", color: "#007BFF" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
-          >
-            Approved Issues
-          </Link>
-        </li>) : <></>
-      } 
-
-
-  <li className="nav-item dropdown">
-          <button
-            className="nav-link link-dark"
-            style={{
-              fontWeight: "bold",
-              color: "#007BFF",
-              background: "none",
-              border: "none",
-              textAlign: "left",
-            }}
-            onClick={onUploadClick} // Trigger the upload popup
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
-          >
-            Upload Article
-          </button>
-        </li>
-
-        <li className="nav-item dropdown">
-          <Link
-            to="/previous-issues"
-            className="nav-link link-dark"
-            style={{ fontWeight: "bold", color: "#007BFF" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
-          >
-            Previous Issues
-          </Link>
-        </li>
-
-        <li className="nav-item dropdown">
-          <Link
-            to="#"
-            className="nav-link link-dark dropdown-toggle"
-            id="dashboardDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            style={{ fontWeight: "bold", color: "#007BFF" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#0056b3")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#007BFF")}
-          >
-            Advertisement
-          </Link>
-          <ul className="dropdown-menu" aria-labelledby="dashboardDropdown">
-            <li>
-              <Link className="dropdown-item" to="/bank-details">
-                Bank Details
-              </Link>
-            </li>
-            <li>
-              <Link className="dropdown-item" to="/advertisement-tariff">
-                Advertisement Tariff
-              </Link>
-            </li>
-          </ul>
-        </li>
-      </ul>
+          ))}
+        </ul>
+      </div>
     </div>
   );
-};
+}
+
+function NavLinks() {
+  const navigate = useNavigate();
+  const { toggleSidebar, isSidebarOpen } = useContext(MobileContext);
+
+  return (
+    <div className={styles['links']}>
+      <button className={styles['login-link']} onClick={() => {
+        if (isSidebarOpen) {
+          toggleSidebar();
+        }
+        navigate('/login')
+      }}>Login</button>
+      <button className={styles['signup-link']} onClick={() => {
+        if (isSidebarOpen) {
+          toggleSidebar();
+        }
+        navigate('/signup')
+      }}>Sign up</button>
+
+    </div>
+  )
+}
+function Sidebar() {
+  const { toggleSidebar, isSidebarOpen } = useContext(MobileContext);
+  const location = useLocation();
+  const activeRoute = location.pathname.split('/')[1];
+  console.log(activeRoute);
+
+  const benefitItems = [
+    { name: 'Academic Benefits', linkTo: '/benefits/academic-benefits' },
+    { name: 'Industry Benefits', linkTo: '/benefits/industry-benefits' }
+  ];
+
+  const authorItems = [
+    { name: 'Guidelines and Responsibilities', linkTo: '/author/author-guidelines' },
+    { name: 'Publication Process', linkTo: '/author/peer-review-process' }
+  ];
+
+  const adItems = [
+    { name: 'Bank Details', linkTo: '/ad/bank-details' },
+    { name: 'Advertisement Tariff', linkTo: '/ad/advertisement-tariff' }
+  ];
+
+  return (
+    <>
+      {isSidebarOpen && <div className={styles['sidebar-cover']} onClick={toggleSidebar}></div>}
+      <div className={`${styles['sidebar-container']} ${isSidebarOpen ? styles['open'] : ''}`}>
+        <div className={styles['sidebar-logo']}>
+          <img src="/logo.png" alt="asm-logo" />
+        </div>
+        <div className={styles['sidebar-links']}>
+          <SingleLink name={"Home"} Icon={HomeIcon} linkTo={'/'} isActive={activeRoute == ''}/>
+          <SingleLink name={"Board of members"} Icon={PeopleIcon} linkTo={'/board-of-member'} isActive={activeRoute == 'board-of-member'}/>
+          <Accordian name={"Benefits"} Icon={WorkIcon} items={benefitItems} isActive={activeRoute == 'benefits'}/>
+          <Accordian name={"Author Section"} Icon={Person} items={authorItems} isActive={activeRoute == 'author'}/>
+          <SingleLink name={"Publish Article"} Icon={PublishIcon} linkTo={'/publish'} isActive={activeRoute == 'publish'}/>
+          <SingleLink name={"Previous Issues"} Icon={DescriptionIcon} linkTo={'/previous-issues'} isActive={activeRoute == 'previous-issues'}/>
+          <Accordian name={'Advertising'} Icon={AttachMoneyIcon} items={adItems} isActive={activeRoute == 'ad'}/>
+        </div>
+        <NavLinks/>
+      </div>
+    </>
+
+  );
+}
 
 export default Sidebar;

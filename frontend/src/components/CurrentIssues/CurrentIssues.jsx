@@ -4,7 +4,7 @@ import { fetchArticles } from "../../articleService";
 import ReviewArticleCard from "../ReviewArticleCard/ReviewArticleCard"; // Import new component
 import "./CurrentIssues.css";
 
-const CurrentIssues = ({admin}) => {
+function CurrentIssues(){
   const navigate = useNavigate();
   const [fetchedArticles, setFetchedArticles] = useState([]);
   const pendingFolderPath = "pending";

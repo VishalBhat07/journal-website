@@ -1,0 +1,131 @@
+#navbar {
+  box-sizing: border-box;
+  display: flex;
+  height: 4rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  gap: 20px;
+  background-color: var(--primary-color);
+  background-position: center;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+}
+.sidebar-logo img {
+  height: 1.7rem;
+}
+
+.menu-btn {
+  padding: 7px;
+  height: 100%;
+  border: none;
+  outline: none;
+  background-color: var(--nav-background-color);
+  display: none;
+}
+
+.menu-btn img {
+  color: var(--accent-color);
+}
+
+.asm-name {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.04rem;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+.nav-links {
+  display: flex;
+  gap: 3.5rem;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+}
+
+.signup-link,
+.login-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  width: 100px;
+  padding: 0.5rem;
+  border: 2px solid var(--accent-color);
+}
+
+.login-link {
+  color: var(--accent-color);
+}
+
+.signup-link {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  transition: all 0.5s ease;
+}
+
+.signup-link:hover {
+  transform: translateY(-1px);
+  transform: scale(1.05);
+  color: var(--primary-color);
+  /* background-color: var(--primary-color); */
+}
+
+.login-link:hover {
+  transform: translateY(-1px);
+  transform: scale(1.05);
+}
+
+.signup-link:active,
+.login-link:active {
+  transform: scale(0.9);
+}
+@media (max-width: 1440px) {
+  .asm-name {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  #navbar {
+    padding: 10px;
+    justify-content: flex-start;
+  }
+  .sidebar-logo img {
+    height: 25px;
+  }
+  .asm-name {
+    font-size: 1.3rem;
+    display: inline;
+  }
+
+  .links,
+  .nav-links {
+    display: none;
+  }
+
+  .menu-btn {
+    display: inline;
+  }
+}
+
+@media (max-width: 768px) {
+  .asm-name {
+    display: none;
+  }
+}

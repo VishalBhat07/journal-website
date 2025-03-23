@@ -1,0 +1,46 @@
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    background-color: white;
+    border-radius: 8px;
+    color: var(--accent-color);
+    flex: 1;
+}
+
+.title {
+    font-size: 6rem;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1;
+}
+
+.message {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 4rem;
+    }
+
+    .message {
+        font-size: 1.25rem;
+    }
+}

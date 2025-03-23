@@ -1,51 +1,53 @@
-import React, { useEffect, useState } from 'react';
-import { auth } from '../../firebaseConfig';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
-import './Navbar.css'; 
+import { useContext, useEffect, useState } from "react";
+import { MobileContext, UserContext } from "../../AppContext";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Menu from "@mui/icons-material/Menu";
+import styles from "./Navbar.module.css";
+import SingleLink from "./SingleLink/SingleLink";
 
-const Navbar = ({ onSignUpClick }) => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-
-    return () => unsubscribe();
-  }, []);
-
-  const handleSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        alert('You have signed out successfully.');
-      })
-      .catch((error) => {
-        console.error('Sign Out Error:', error);
-      });
-  };
+const Navbar = () => {
+  const { toggleSidebar } = useContext(MobileContext);
+  const navigate = useNavigate();
+  const { user, handleSignout } = useContext(UserContext);
 
   return (
-    <nav id="navbar">
-      <div>
-      <img src="./logo.png" alt="ASM logo" height="" width="200" />
-
+    <nav id={styles["navbar"]}>
+      <button className={styles["menu-btn"]} onClick={toggleSidebar}>
+        <Menu />
+      </button>
+      <div className={styles["sidebar-logo"]} onClick={() => navigate("/")}>
+        <img src="/logo.png" alt="asm-logo" />
+        <div className={styles["asm-name"]}>Materials and processing</div>
       </div>
-            
-      <div id="navbar-title">Materials and Processing : A journal from ASM India</div>
-        
-      
-      {user ? (
-          <button className="btn btn-outline-light" onClick={handleSignOut} id="button">
-            Sign Out
+
+      <div className={styles["nav-links"]}>
+        <SingleLink name="Home" linkTo="/" />
+        <SingleLink name="Members" linkTo="/board-of-member" />
+        <SingleLink name="Guidelines" linkTo="/author/author-guidelines" />
+        <SingleLink name="Issues" linkTo="/previous-issues" />
+      </div>
+
+      <div className={styles["links"]}>
+        {user ? (
+          <button
+            to="/"
+            className={styles["login-link"]}
+            onClick={handleSignout}
+          >
+            Signout
           </button>
         ) : (
-          <button className="btn btn-outline-light" onClick={onSignUpClick} id="button">
-            Sign Up
-          </button>
+          <>
+            <Link to="/login" className={styles["login-link"]}>
+              Login
+            </Link>
+            <Link to="/signup" className={styles["signup-link"]}>
+              Sign up
+            </Link>
+          </>
         )}
-
+      </div>
     </nav>
-
   );
 };
 
