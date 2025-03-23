@@ -122,7 +122,7 @@ function Sidebar() {
           <SingleLink name={"Board of members"} Icon={PeopleIcon} linkTo={'/board-of-member'} isActive={activeRoute == 'board-of-member'}/>
           <Accordian name={"Benefits"} Icon={WorkIcon} items={benefitItems} isActive={activeRoute == 'benefits'}/>
           <Accordian name={"Author Section"} Icon={Person} items={authorItems} isActive={activeRoute == 'author'}/>
-          <SingleLink name={"Publish Article"} Icon={PublishIcon} linkTo={'/publish'} isActive={activeRoute == 'publish'}/>
+          <SingleLink name={"Publish Article"} Icon={PublishIcon} linkTo={'/publish-paper'} isActive={activeRoute == 'publish-paper'}/>
           <SingleLink name={"Previous Issues"} Icon={DescriptionIcon} linkTo={'/previous-issues'} isActive={activeRoute == 'previous-issues'}/>
           <Accordian name={'Advertising'} Icon={AttachMoneyIcon} items={adItems} isActive={activeRoute == 'ad'}/>
         </div>

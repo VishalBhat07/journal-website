@@ -14,8 +14,13 @@ import ApprovedArticles from "./components/ApprovedArticles/ApprovedArticles";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import LoginModal from "./components/LoginModal/LoginModal";
 import SignUpModal from "./components/SignUpModal/SignUpModal";
+import UploadPopup from "./components/UploadPopup/UploadPopup";
+import { useContext } from "react";
+import { UserContext } from "./AppContext";
+// import CurrentIssues from "./components/CurrentIssues/CurrentIssues";
 
 export default function AllRoutes() {
+  const { user, isAdmin } = useContext(UserContext);
   return (
     <Routes>
       <Route path="/" element={<Hero />} />
@@ -40,11 +45,13 @@ export default function AllRoutes() {
       />
       <Route path="/ad/bank-details" element={<BankDetails />} />
       <Route path="/previous-issues" element={<PreviousIssues />} />
-      <Route path="/current-issues" element={<CurrentIssues />} />
       <Route path="/approved-issues" element={<ApprovedArticles />} />
       <Route path="/login" element={<LoginModal />} />
       <Route path="/signup" element={<SignUpModal />} />
+      {/* <Route path="/review-article" element={<CurrentIssues />} /> */}
 
+      {!user && <Route path="/publish-paper" element={<UploadPopup />} />}
+      {isAdmin && <Route path="/current-issues" element={<CurrentIssues />} />}
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

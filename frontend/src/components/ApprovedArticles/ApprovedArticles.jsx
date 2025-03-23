@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchArticles } from "../../articleService";
-import ApprovedArticleCard from "../ApprovedArticleCard/ApprovedArticleCard.jsx"
+import ApprovedArticleCard from "../ApprovedArticleCard/ApprovedArticleCard.jsx";
 import "./ApprovedArticles.css";
 
-const ApprovedArticles = ({admin}) => {
+const ApprovedArticles = ({ admin }) => {
   const navigate = useNavigate();
   const [fetchedArticles, setFetchedArticles] = useState([]);
   const approvedFolderPath = "approved";
@@ -20,11 +20,13 @@ const ApprovedArticles = ({admin}) => {
 
   const handleArticleDeleted = (articleId) => {
     // Update state by filtering out the deleted article
-    setFetchedArticles(fetchedArticles.filter(article => article.id !== articleId));
+    setFetchedArticles(
+      fetchedArticles.filter((article) => article.id !== articleId)
+    );
   };
 
-  return (
-    admin ?  <div className="articles-container">
+  return admin ? (
+    <div className="articles-container">
       <button
         onClick={() => navigate("/")}
         className="back-to-home"
@@ -33,11 +35,13 @@ const ApprovedArticles = ({admin}) => {
         Back to Home
       </button>
 
-      <ApprovedArticleCard 
-        articles={fetchedArticles} 
-        onArticleDeleted={handleArticleDeleted} 
+      <ApprovedArticleCard
+        articles={fetchedArticles}
+        onArticleDeleted={handleArticleDeleted}
       />
-    </div> : <h1>You are not authorized to access this page</h1>
+    </div>
+  ) : (
+    <h1>You are not authorized to access this page</h1>
   );
 };
 

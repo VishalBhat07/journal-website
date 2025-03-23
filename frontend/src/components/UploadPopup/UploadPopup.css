@@ -1,17 +1,3 @@
-
-.upload-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent overlay */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000; /* Ensure it sits above other elements */
-}
-
 .upload-modal-content {
   background-color: #ffffff; /* Solid white background for the modal */
   color: #000000; /* Black text color */
