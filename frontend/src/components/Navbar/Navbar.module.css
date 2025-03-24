@@ -38,18 +38,18 @@
 }
 
 .asm-name {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.7rem;
-  font-weight: 600;
+  font-family: "Montserrat", serif;
+  font-size: 1.75rem;
   line-height: 1.2;
   letter-spacing: -0.04rem;
   text-transform: uppercase;
   color: var(--text-color);
+  font-weight: 700;
 }
 
 .nav-links {
   display: flex;
-  gap: 3.5rem;
+  gap: 2rem;
 }
 
 .links {

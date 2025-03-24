@@ -41,6 +41,7 @@ function UserProvider({ children }) {
     signOut(auth)
       .then(() => {
         setUser(null);
+        setIsAdmin(false);
         toast.success("User signed out succesfully");
       })
       .catch((error) => {

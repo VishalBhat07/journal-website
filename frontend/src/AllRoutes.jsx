@@ -17,7 +17,6 @@ import SignUpModal from "./components/SignUpModal/SignUpModal";
 import UploadPopup from "./components/UploadPopup/UploadPopup";
 import { useContext } from "react";
 import { UserContext } from "./AppContext";
-// import CurrentIssues from "./components/CurrentIssues/CurrentIssues";
 
 export default function AllRoutes() {
   const { user, isAdmin } = useContext(UserContext);
@@ -44,14 +43,26 @@ export default function AllRoutes() {
         element={<AdvertisementTariff />}
       />
       <Route path="/ad/bank-details" element={<BankDetails />} />
-      <Route path="/previous-issues" element={<PreviousIssues />} />
-      <Route path="/approved-issues" element={<ApprovedArticles />} />
-      <Route path="/login" element={<LoginModal />} />
-      <Route path="/signup" element={<SignUpModal />} />
-      {/* <Route path="/review-article" element={<CurrentIssues />} /> */}
 
-      {!user && <Route path="/publish-paper" element={<UploadPopup />} />}
-      {isAdmin && <Route path="/current-issues" element={<CurrentIssues />} />}
+      {user !== null && (
+        <Route path="/publish-paper" element={<UploadPopup />} />
+      )}
+
+      {!user && (
+        <>
+          <Route path="/login" element={<LoginModal />} />
+          <Route path="/signup" element={<SignUpModal />} />
+        </>
+      )}
+      
+      {isAdmin && (
+        <>
+          <Route path="/approved-issues" element={<ApprovedArticles />} />
+          <Route path="/current-issues" element={<CurrentIssues />} />
+        </>
+      )}
+      <Route path="/previous-issues" element={<PreviousIssues />} />
+
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

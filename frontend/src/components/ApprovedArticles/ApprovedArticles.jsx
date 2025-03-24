@@ -4,7 +4,7 @@ import { fetchArticles } from "../../articleService";
 import ApprovedArticleCard from "../ApprovedArticleCard/ApprovedArticleCard.jsx";
 import "./ApprovedArticles.css";
 
-const ApprovedArticles = ({ admin }) => {
+const ApprovedArticles = () => {
   const navigate = useNavigate();
   const [fetchedArticles, setFetchedArticles] = useState([]);
   const approvedFolderPath = "approved";
@@ -25,7 +25,7 @@ const ApprovedArticles = ({ admin }) => {
     );
   };
 
-  return admin ? (
+  return (
     <div className="articles-container">
       <button
         onClick={() => navigate("/")}
@@ -40,8 +40,6 @@ const ApprovedArticles = ({ admin }) => {
         onArticleDeleted={handleArticleDeleted}
       />
     </div>
-  ) : (
-    <h1>You are not authorized to access this page</h1>
   );
 };
 

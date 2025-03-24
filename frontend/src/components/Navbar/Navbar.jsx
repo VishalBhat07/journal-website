@@ -1,14 +1,47 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { MobileContext, UserContext } from "../../AppContext";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Menu from "@mui/icons-material/Menu";
 import styles from "./Navbar.module.css";
 import SingleLink from "./SingleLink/SingleLink";
+import NavAccordion from "./NavAccordion/NavAccordion";
+
+const accordionGroups = [
+  {
+    title: "Benefits",
+    links: [
+      { url: "/benefits/academic-benefits", title: "Academic" },
+      { url: "/benefits/industry-benefits", title: "Industry" },
+    ],
+  },
+  {
+    title: "Author",
+    links: [
+      { url: "/author/author-guidelines", title: "Guidelines" },
+      { url: "/author/peer-review-process", title: "Publication process" },
+    ],
+  },
+  {
+    title: "Monetization",
+    links: [
+      { url: "/ad/advertisement-tariff", title: "Tariff" },
+      { url: "/ad/bank-details", title: "Bank details" },
+    ],
+  },
+];
+
+const adminLink = {
+  title: "Admin",
+  links: [
+    {url: "/current-issues", title: "Current"},
+    {url: "/approved-issues", title: "Approved"},
+  ]
+}
 
 const Navbar = () => {
   const { toggleSidebar } = useContext(MobileContext);
   const navigate = useNavigate();
-  const { user, handleSignout } = useContext(UserContext);
+  const { user, isAdmin, handleSignout } = useContext(UserContext);
 
   return (
     <nav id={styles["navbar"]}>
@@ -23,8 +56,17 @@ const Navbar = () => {
       <div className={styles["nav-links"]}>
         <SingleLink name="Home" linkTo="/" />
         <SingleLink name="Members" linkTo="/board-of-member" />
-        <SingleLink name="Guidelines" linkTo="/author/author-guidelines" />
         <SingleLink name="Issues" linkTo="/previous-issues" />
+        {accordionGroups.map((accordion, index) => (
+           
+            <NavAccordion
+              key={index}
+              title={accordion.title}
+              links={accordion.links}
+            />
+          
+        ))}
+        {isAdmin ? <NavAccordion title={adminLink.title} links={adminLink.links}/> : ""}
       </div>
 
       <div className={styles["links"]}>
