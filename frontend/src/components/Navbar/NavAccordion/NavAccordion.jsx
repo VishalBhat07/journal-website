@@ -3,18 +3,13 @@ import { Link } from 'react-router-dom';
 import styles from './NavAccordion.module.css';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
-const NavAccordion = ({ title, links }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen);
-  };
-  
+const NavAccordion = ({ title, links, isOpen, onClick }) => {
+
   return (
-    <div className={styles['accordion-container']}>
+    <div className={styles['accordion-container']} onClick={onClick}>
       <div 
         className={`${styles['accordion-header']} ${isOpen ? styles['open'] : ''}`} 
-        onClick={toggleAccordion}
+        onClick={onClick}
       >
         <span>{title}</span>
         <span><ArrowDropDownIcon/></span>

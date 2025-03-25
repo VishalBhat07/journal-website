@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { MobileContext, UserContext } from "../../AppContext";
 import { Link, useNavigate } from "react-router-dom";
 import Menu from "@mui/icons-material/Menu";
@@ -28,20 +28,36 @@ const accordionGroups = [
       { url: "/ad/bank-details", title: "Bank details" },
     ],
   },
+  {
+    title: "Admin",
+    links: [
+      { url: "/current-issues", title: "Current" },
+      { url: "/approved-issues", title: "Approved" },
+    ],
+  }
 ];
 
 const adminLink = {
   title: "Admin",
   links: [
-    {url: "/current-issues", title: "Current"},
-    {url: "/approved-issues", title: "Approved"},
-  ]
-}
+    { url: "/current-issues", title: "Current" },
+    { url: "/approved-issues", title: "Approved" },
+  ],
+};
 
 const Navbar = () => {
   const { toggleSidebar } = useContext(MobileContext);
   const navigate = useNavigate();
   const { user, isAdmin, handleSignout } = useContext(UserContext);
+  const [activeAccordionIndex, setActiveAccordionIndex] = useState(-1);
+
+  function handleAccordionContentToggle(index) {
+    if (activeAccordionIndex == index) {
+      setActiveAccordionIndex(-1);
+    } else {
+      setActiveAccordionIndex(index);
+    }
+  }
 
   return (
     <nav id={styles["navbar"]}>
@@ -57,16 +73,19 @@ const Navbar = () => {
         <SingleLink name="Home" linkTo="/" />
         <SingleLink name="Members" linkTo="/board-of-member" />
         <SingleLink name="Issues" linkTo="/previous-issues" />
-        {accordionGroups.map((accordion, index) => (
-           
-            <NavAccordion
-              key={index}
-              title={accordion.title}
-              links={accordion.links}
-            />
-          
-        ))}
-        {isAdmin ? <NavAccordion title={adminLink.title} links={adminLink.links}/> : ""}
+        {accordionGroups.map((accordion, index) => {
+          if (!isAdmin && accordion.title == "Admin") {
+            return "";
+          }
+
+          return (<NavAccordion
+            key={index}
+            title={accordion.title}
+            links={accordion.links}
+            isOpen={index == activeAccordionIndex}
+            onClick={() => handleAccordionContentToggle(index)}
+          />);
+        })}
       </div>
 
       <div className={styles["links"]}>
