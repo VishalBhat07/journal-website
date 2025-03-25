@@ -21,7 +21,7 @@
   cursor: pointer;
 }
 .sidebar-logo img {
-  height: 1.7rem;
+  height: 1.5rem;
 }
 
 .menu-btn {
@@ -39,7 +39,7 @@
 
 .asm-name {
   font-family: "Montserrat", serif;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   line-height: 1.2;
   letter-spacing: -0.04rem;
   text-transform: uppercase;
