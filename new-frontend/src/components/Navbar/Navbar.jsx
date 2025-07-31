@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
-        <img src="/logo.jpeg" style={{ height: "40px" }} />
+        <img src="/logo.png" style={{ height: "40px" }} />
       </div>
       <div className={styles.navbar}>
         <Tabs />

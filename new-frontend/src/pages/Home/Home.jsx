@@ -1,19 +1,14 @@
 import React from "react";
-import CarouselDemo from "../../components/Carousel/Carousel";
-import BlurText from "../../../yes/BlurText/BlurText";
-import styles from "./Home.module.css"
+import CarouselDemo from "./Carousel/Carousel";
 
-const handleAnimationComplete = () => {
-    console.log('Animation completed!');
-};
 
 
 const Home = () => {
     return (
         <div className="flex flex-col justify-center items-center p-8">
 
-            <div className="flex flex-col w-[70%] items-center gap-6">
-                <h1 className="text-center text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl roboto-slab">
+            <div className="flex flex-col w-[70%] max-w-4xl items-center gap-6">
+                <h1 className="text-center text-white sm:text-5xl md:text-6xl lg:text-7xl roboto-slab">
                     ASM-India: Materials and Processing
                 </h1>
 
@@ -25,8 +20,6 @@ const Home = () => {
                     </p>
 
                     <p className="leading-7 [&:not(:first-child)]:mt-6">This journal invites high-quality scientific research, case studies, and technical papers discussing industrial practices, providing a platform for students, academicians, scholars, industrialists, researchers, and practitioners to share findings, ideas, and critical insights.</p>
-
-
                 </div>
 
             </div>
