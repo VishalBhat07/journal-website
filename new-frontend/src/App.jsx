@@ -2,20 +2,18 @@ import React from "react";
 import styles from "./App.module.css";
 import Navbar from "./components/Navbar/Navbar";
 import Silk from "../yes/Silk/Silk";
+import Home from "./pages/Home/Home";
 
 const App = () => {
   return (
     <>
       <div className={styles.background}>
-        <Silk
-          speed={5}
-          scale={1}
-          color="#5227ff"
-          noiseIntensity={1.5}
-          rotation={0}
-        />
+        <img src="/background.svg" alt="backgournd" />
       </div>
       <Navbar />
+      <Home />
+
+
     </>
   );
 };

@@ -110,6 +110,19 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+
+.roboto-slab {
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
