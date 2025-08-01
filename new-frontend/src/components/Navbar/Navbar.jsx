@@ -5,7 +5,7 @@ import styles from "./Navbar.module.css";
 import { Moon } from "lucide-react";
 import { Toggle } from "@/components/ui/toggle";
 import { Button } from "../ui/button";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function ToggleDemo() {
   return (
@@ -34,7 +34,9 @@ const Navbar = () => {
       </div>
       <div className={styles.extraBtn}>
         <ToggleDemo />
-        <Button>Signup</Button>
+        <Button>
+          <Link to={"/signup"}>Signup</Link>
+        </Button>
       </div>
     </div>
   );

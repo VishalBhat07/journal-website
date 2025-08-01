@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Silk from "../yes/Silk/Silk";
 import Home from "./pages/Home/Home";
 import Footer from "./components/Footer/Footer";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import BackgroundDotGrid from "./components/BackgroundDotGrid/BackgroundDotGrid";
 
 // Import page components (you'll need to create these)
@@ -20,20 +20,53 @@ import NotFound from "./pages/NotFound/NotFound";
 import { useIsMobile } from "./hooks/use-mobile";
 import AppSidebar from "./components/AppSidebar/AppSidebar";
 import { SidebarTrigger } from "./components/ui/sidebar";
+import { LoginForm } from "./pages/Login/Login";
+import { SignupForm } from "./pages/Signup/Signup";
 
 const App = () => {
   const isMobile = useIsMobile();
+  const path = useLocation().pathname;
   return (
     <>
       <BackgroundDotGrid />
-      {!isMobile ? <Navbar/> : <></>}
-      {isMobile ? <div>
-        <AppSidebar/>
-        <SidebarTrigger/>
-      </div> : <></>}
+      {!isMobile && path !== "/login" && path !== "/signup" ? (
+        <Navbar />
+      ) : (
+        <></>
+      )}
+      {isMobile && path !== "/login" && path !== "/signup" ? (
+        <div>
+          <AppSidebar />
+          <SidebarTrigger />
+        </div>
+      ) : (
+        <></>
+      )}
       <Routes>
         {/* Main Routes */}
         <Route path="/" element={<Home />} />
+        <Route
+          path="/login"
+          element={
+            <div className="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
+              <div className="w-full max-w-sm md:max-w-3xl">
+                <LoginForm />
+              </div>
+            </div>
+          }
+        />
+
+        <Route
+          path="/signup"
+          element={
+            <div className="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
+              <div className="w-full max-w-sm md:max-w-3xl">
+                <SignupForm />
+              </div>
+            </div>
+          }
+        />
+
         <Route path="/board-of-members" element={<BoardOfMembers />} />
 
         {/* For Authors Routes */}
@@ -54,7 +87,7 @@ const App = () => {
         {/* 404 Route - Optional */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
+      {path !== "/login" && path !== "/signup" ? <Footer /> : null}
     </>
   );
 };
