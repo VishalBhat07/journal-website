@@ -5,14 +5,14 @@ import HomeHeroSection from "./HomeHeroSection/HomeHeroSection";
 const Home = () => {
   return (
     <div className="flex flex-col justify-center items-center p-8 pt-16">
-      <div className="flex flex-col w-[70%] min-w-sm max-w-5xl items-center space-y-16">
-        <h1 className="text-center text-white sm:text-5xl md:text-6xl lg:text-7xl roboto-slab">
+      <div className="flex flex-col w-[75vw] sm:w-[70vw] items-center gap-8">
+        <h1 className="text-center text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl roboto-slab">
           ASM-India: Materials and Processing
         </h1>
 
         <CarouselDemo />
 
-        <div className="text-xl text-white text-center flex flex-col gap-4">
+        <div className="text-sm sm:text-base md:text-lg text-white text-center flex flex-col gap-4">
           <p className="leading-7 [&:not(:first-child)]:mt-6">
             Materials and Processing, a journal from ASM India, is a biannual
             open access research journal featuring peer-reviewed original

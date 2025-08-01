@@ -24,7 +24,6 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-import MobileSidebar from "./MobileSidebar";
 
 const forAuthorsItems = [
   {
@@ -90,8 +89,6 @@ const sponsorsPaymentsItems = [
 export default function Tabs() {
   return (
     <>
-      {/* Mobile Sidebar */}
-      <MobileSidebar />
 
       {/* Desktop Navigation */}
       <NavigationMenu viewport={false} className="hidden md:flex">

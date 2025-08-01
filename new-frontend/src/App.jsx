@@ -17,12 +17,20 @@ import PreviousIssues from "./pages/PreviousIssues/PreviousIssues";
 import BankDetails from "./pages/BankDetails/BankDetails";
 import AdvertisementTariff from "./pages/AdvertisementTariff/AdvertisementTariff";
 import NotFound from "./pages/NotFound/NotFound";
+import { useIsMobile } from "./hooks/use-mobile";
+import AppSidebar from "./components/AppSidebar/AppSidebar";
+import { SidebarTrigger } from "./components/ui/sidebar";
 
 const App = () => {
+  const isMobile = useIsMobile();
   return (
     <>
       <BackgroundDotGrid />
-      <Navbar />
+      {!isMobile ? <Navbar/> : <></>}
+      {isMobile ? <div>
+        <AppSidebar/>
+        <SidebarTrigger/>
+      </div> : <></>}
       <Routes>
         {/* Main Routes */}
         <Route path="/" element={<Home />} />

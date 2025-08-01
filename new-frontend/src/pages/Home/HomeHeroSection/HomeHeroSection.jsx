@@ -218,7 +218,7 @@ const HomeHeroSection = () => {
 
       {/* Call to Action - Updated font sizes */}
       <div className="text-center">
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 text-white shadow-lg border border-white/10">
+        <div className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 rounded-2xl p-6 text-white shadow-lg border border-white/10">
           <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3">
             Ready to Contribute to Materials Science?
           </h3>
