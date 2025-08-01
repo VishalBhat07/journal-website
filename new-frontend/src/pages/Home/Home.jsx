@@ -4,7 +4,7 @@ import HomeHeroSection from "./HomeHeroSection/HomeHeroSection";
 
 const Home = () => {
   return (
-    <div className="flex flex-col justify-center items-center p-8">
+    <div className="flex flex-col justify-center items-center p-8 pt-16">
       <div className="flex flex-col w-[70%] min-w-sm max-w-5xl items-center space-y-16">
         <h1 className="text-center text-white sm:text-5xl md:text-6xl lg:text-7xl roboto-slab">
           ASM-India: Materials and Processing

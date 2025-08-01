@@ -5,6 +5,7 @@ import styles from "./Navbar.module.css";
 import { Moon } from "lucide-react";
 import { Toggle } from "@/components/ui/toggle";
 import { Button } from "../ui/button";
+import { useNavigate } from "react-router-dom";
 
 export function ToggleDemo() {
   return (
@@ -15,10 +16,15 @@ export function ToggleDemo() {
 }
 
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
-        <img src="/logo.png" style={{ height: "40px" }} />
+        <img
+          src="/logo.png"
+          style={{ height: "40px", cursor: "pointer" }}
+          onClick={() => navigate("/")}
+        />
       </div>
       <div className={styles.navbar}>
         <Tabs />

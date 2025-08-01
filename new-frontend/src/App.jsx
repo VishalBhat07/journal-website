@@ -5,13 +5,12 @@ import Silk from "../yes/Silk/Silk";
 import Home from "./pages/Home/Home";
 import Footer from "./components/Footer/Footer";
 import { Routes, Route } from "react-router-dom";
+import BackgroundDotGrid from "./components/BackgroundDotGrid/BackgroundDotGrid";
 
 const App = () => {
   return (
     <>
-      <div className={styles.background}>
-        <img src="/background.svg" alt="backgournd" />
-      </div>
+      <BackgroundDotGrid />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
