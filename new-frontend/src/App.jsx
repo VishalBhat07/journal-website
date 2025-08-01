@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "./App.module.css";
 import Navbar from "./components/Navbar/Navbar";
-import Silk from "../yes/Silk/Silk";
 import Home from "./pages/Home/Home";
 import Footer from "./components/Footer/Footer";
 import { Routes, Route, useLocation } from "react-router-dom";
 import BackgroundDotGrid from "./components/BackgroundDotGrid/BackgroundDotGrid";
+
+import VantaBackground from "../yes/VantaBackground/VantaBackground";
 
 // Import page components (you'll need to create these)
 import BoardOfMembers from "./pages/BoardOfMembers/BoardOfMembers";
@@ -28,7 +29,7 @@ const App = () => {
   const path = useLocation().pathname;
   return (
     <>
-      <BackgroundDotGrid />
+    <VantaBackground/>
       {!isMobile && path !== "/login" && path !== "/signup" ? (
         <Navbar />
       ) : (
