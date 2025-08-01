@@ -15,7 +15,7 @@ export function LoginForm({ className, ...props }) {
               <div className="flex flex-col items-center text-center">
                 <h1 className="text-2xl font-bold">Welcome back</h1>
                 <p className="text-muted-foreground text-balance">
-                  Login to your Acme Inc account
+                  Login to your ASM account
                 </p>
               </div>
               <div className="grid gap-3">
@@ -86,9 +86,9 @@ export function LoginForm({ className, ...props }) {
           </form>
           <div className="bg-muted relative hidden md:block">
             <img
-              src="https://www.asminternational.org/wp-content/uploads/2023/03/Footer-Background-Image.png"
+              src="/dome.png"
               alt="Image"
-              className="absolute inset-0 h-full w-full dark:brightness-[0.2] dark:grayscale"
+              className="absolute h-full dark:brightness-[0.4] object-cover object-center"
             />
           </div>
         </CardContent>

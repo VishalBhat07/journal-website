@@ -24,6 +24,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
+import { Link } from "react-router-dom";
 
 const forAuthorsItems = [
   {
@@ -89,30 +90,28 @@ const sponsorsPaymentsItems = [
 export default function Tabs() {
   return (
     <>
-
-      {/* Desktop Navigation */}
       <NavigationMenu viewport={false} className="hidden md:flex">
         <NavigationMenuList>
           {/* Home */}
           <NavigationMenuItem>
-            <NavigationMenuLink
-              href="/"
+            <Link
+              to="/"
               className={`${navigationMenuTriggerStyle()} flex items-center gap-2`}
             >
               {/* <HomeIcon className="h-4 w-4" /> */}
               <span>Home</span>
-            </NavigationMenuLink>
+            </Link>
           </NavigationMenuItem>
 
           {/* Board */}
           <NavigationMenuItem>
-            <NavigationMenuLink
-              href="/board-of-members"
+            <Link
+              to="/board-of-members"
               className={`${navigationMenuTriggerStyle()} flex items-center gap-2`}
             >
               {/* <UsersIcon className="h-4 w-4" /> */}
               <span>Board</span>
-            </NavigationMenuLink>
+            </Link>
           </NavigationMenuItem>
 
           {/* For Authors */}
@@ -208,15 +207,15 @@ function ListItem({ title, children, href, ...props }) {
   return (
     <li {...props}>
       <NavigationMenuLink asChild>
-        <a
-          href={href}
+        <Link
+          to={href}
           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
         >
           <div className="text-sm font-medium leading-none">{title}</div>
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
-        </a>
+        </Link>
       </NavigationMenuLink>
     </li>
   );
@@ -226,8 +225,8 @@ function ListItemWithIcon({ title, children, href, icon, ...props }) {
   return (
     <li {...props}>
       <NavigationMenuLink asChild>
-        <a
-          href={href}
+        <Link
+          to={href}
           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
         >
           <div className="flex items-center gap-2 text-sm font-medium leading-none">
@@ -237,7 +236,7 @@ function ListItemWithIcon({ title, children, href, icon, ...props }) {
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
-        </a>
+        </Link>
       </NavigationMenuLink>
     </li>
   );

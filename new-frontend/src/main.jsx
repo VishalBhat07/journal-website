@@ -8,9 +8,9 @@ import { SidebarProvider } from "./components/ui/sidebar";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-    <SidebarProvider>
-      <App />
-    </SidebarProvider>
+      <SidebarProvider>
+        <App />
+      </SidebarProvider>
     </BrowserRouter>
   </StrictMode>
 );
