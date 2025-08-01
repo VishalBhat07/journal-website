@@ -102,7 +102,7 @@ export default function Tabs() {
               href="/"
               className={`${navigationMenuTriggerStyle()} flex items-center gap-2`}
             >
-              <HomeIcon className="h-4 w-4" />
+              {/* <HomeIcon className="h-4 w-4" /> */}
               <span>Home</span>
             </NavigationMenuLink>
           </NavigationMenuItem>
@@ -113,7 +113,7 @@ export default function Tabs() {
               href="/board-of-members"
               className={`${navigationMenuTriggerStyle()} flex items-center gap-2`}
             >
-              <UsersIcon className="h-4 w-4" />
+              {/* <UsersIcon className="h-4 w-4" /> */}
               <span>Board</span>
             </NavigationMenuLink>
           </NavigationMenuItem>
