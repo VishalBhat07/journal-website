@@ -94,10 +94,10 @@ const HomeHeroSection = () => {
             {/* Editor Details - Centered with box */}
             <div className="space-y-3">
               <div className="p-3 backdrop-blur-sm rounded-lg border border-white/30 bg-white/5">
-                <h4 className="text-base sm:text-lg md:text-xl font-semibold text-white mb-2 text-center">
+                <h4 className="text-base sm:text-lg md:text-xl font-semibold text-white mb-2">
                   Ajith Kumar
                 </h4>
-                <div className="flex items-center justify-center gap-2 text-gray-300">
+                <div className="flex items-center gap-2 text-gray-300">
                   <div className="p-2 bg-blue-500/20 rounded-lg backdrop-blur-sm">
                     <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-blue-400" />
                   </div>
