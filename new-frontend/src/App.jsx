@@ -3,6 +3,8 @@ import styles from "./App.module.css";
 import Navbar from "./components/Navbar/Navbar";
 import Silk from "../yes/Silk/Silk";
 import Home from "./pages/Home/Home";
+import Footer from "./components/Footer/Footer";
+import { Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
@@ -11,9 +13,10 @@ const App = () => {
         <img src="/background.svg" alt="backgournd" />
       </div>
       <Navbar />
-      <Home />
-
-
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+      <Footer />
     </>
   );
 };
