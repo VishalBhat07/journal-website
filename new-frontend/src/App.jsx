@@ -94,7 +94,7 @@ const App = () => {
           {/* 404 Route - Optional */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        {path !== "/login" && path !== "/signup" ? <Footer /> : null}
+        {!isAuthRoute ? <Footer /> : null}
       </ThemeProvider>
     </>
   );
