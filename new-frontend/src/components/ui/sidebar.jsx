@@ -4,6 +4,7 @@ import { cva } from "class-variance-authority";
 import { PanelLeftIcon } from "lucide-react"
 
 import { useIsMobile } from "@/hooks/use-mobile"
+import { useIsTab } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -51,6 +52,7 @@ function SidebarProvider({
   ...props
 }) {
   const isMobile = useIsMobile()
+  const isTab = useIsTab()
   const [openMobile, setOpenMobile] = React.useState(false)
 
   // This is the internal state of the sidebar.
@@ -71,8 +73,8 @@ function SidebarProvider({
 
   // Helper to toggle the sidebar.
   const toggleSidebar = React.useCallback(() => {
-    return isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open);
-  }, [isMobile, setOpen, setOpenMobile])
+    return (isMobile || isTab) ? setOpenMobile((open) => !open) : setOpen((open) => !open);
+  }, [isMobile, isTab, setOpen, setOpenMobile])
 
   // Adds a keyboard shortcut to toggle the sidebar.
   React.useEffect(() => {
@@ -99,10 +101,11 @@ function SidebarProvider({
     open,
     setOpen,
     isMobile,
+    isTab,
     openMobile,
     setOpenMobile,
     toggleSidebar,
-  }), [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar])
+  }), [state, open, setOpen, isMobile, isTab, openMobile, setOpenMobile, toggleSidebar])
 
   return (
     <SidebarContext.Provider value={contextValue}>
@@ -136,8 +139,8 @@ function Sidebar({
   children,
   ...props
 }) {
-  const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
-
+  const { isMobile, isTab, state, openMobile, setOpenMobile } = useSidebar()
+  const isCompact = isMobile || isTab;
   if (collapsible === "none") {
     return (
       <div
@@ -152,7 +155,7 @@ function Sidebar({
     );
   }
 
-  if (isMobile) {
+  if (isCompact) {
     return (
       <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
         <SheetContent
@@ -229,7 +232,7 @@ function SidebarTrigger({
       data-slot="sidebar-trigger"
       variant="ghost"
       size="icon"
-      className={cn("size-7 fixed top-4 left-4 bg-background", className)}
+      className={cn("size-7 fixed top-4 left-4 z-50 bg-background", className)}
       onClick={(event) => {
         onClick?.(event)
         toggleSidebar()
@@ -477,7 +480,7 @@ function SidebarMenuButton({
   ...props
 }) {
   const Comp = asChild ? Slot : "button"
-  const { isMobile, state } = useSidebar()
+  const { isMobile, isTab, state } = useSidebar()
 
   const button = (
     <Comp
@@ -505,7 +508,7 @@ function SidebarMenuButton({
       <TooltipContent
         side="right"
         align="center"
-        hidden={state !== "collapsed" || isMobile}
+        hidden={state !== "collapsed" || isMobile || isTab}
         {...tooltip} />
     </Tooltip>
   );

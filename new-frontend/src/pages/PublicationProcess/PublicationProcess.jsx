@@ -3,10 +3,12 @@ import publication from "./publication.json";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Circle } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const PublicationTimeline = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [progress, setProgress] = useState(0);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,46 +58,51 @@ const PublicationTimeline = () => {
   };
 
   return (
-    <div className="p-6 pt-20 min-h-screen relative">
-      {/* Progress Bar */}
-      {/* <div className="fixed top-20 left-0 w-full h-1 bg-muted z-50">
-        <div
-          className="h-full bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300"
-          style={{ width: `${progress}%` }}
-        />
-      </div> */}
-
+    <div className="p-6 pt-20 min-h-screen relative bg-background text-foreground">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center text-foreground mb-12">
+        <h2 className="text-4xl font-bold text-center mb-12">
           Publication Process
         </h2>
 
         <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-purple-600" />
+          {/* Timeline Line for Desktop */}
+          {!isMobile && (
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-muted-foreground" />
+          )}
 
           {/* Steps */}
           <div className="space-y-8">
             {publication.map((step, index) => (
-              <div key={index} className="relative flex items-start gap-6">
+              <div
+                key={index}
+                className={`relative flex ${
+                  isMobile
+                    ? "flex-col items-start gap-4"
+                    : "flex-row items-start gap-6"
+                }`}
+              >
                 {/* Timeline Node */}
-                <div className="relative z-10 flex-shrink-0">
+                <div
+                  className={`relative z-10 flex-shrink-0 ${
+                    isMobile ? "" : ""
+                  }`}
+                >
                   <div
-                    className={`w-16 h-16 rounded-full border-4 flex items-center justify-center transition-all duration-500 ${
+                    className={`w-12 h-12 rounded-full border-4 flex items-center justify-center transition-all duration-500 ${
                       index <= activeStep
-                        ? "bg-gradient-to-r from-blue-500 to-purple-600 border-white shadow-lg"
-                        : "bg-background border-muted"
+                        ? "bg-foreground border-foreground shadow-lg"
+                        : "bg-background border-muted-foreground"
                     }`}
                   >
                     {index <= activeStep ? (
-                      <CheckCircle className="w-8 h-8 text-white" />
+                      <CheckCircle className="w-6 h-6 text-background" />
                     ) : (
-                      <Circle className="w-8 h-8 text-muted-foreground" />
+                      <Circle className="w-6 h-6 text-muted-foreground" />
                     )}
                   </div>
                   <Badge
                     variant={index <= activeStep ? "default" : "secondary"}
-                    className="absolute -bottom-2 left-1/2 transform -translate-x-1/2"
+                    className="absolute left-1/2 top-full mt-1 -translate-x-1/2"
                   >
                     {index + 1}
                   </Badge>
@@ -103,16 +110,12 @@ const PublicationTimeline = () => {
 
                 {/* Content Card */}
                 <Card
-                  className={`flex-1 backdrop-blur-md shadow-lg border transition-all duration-500 ${
-                    index <= activeStep
-                      ? "bg-white/30 dark:bg-gray-900/30 border-blue-200 dark:border-blue-800 transform scale-105"
-                      : "bg-white/15 dark:bg-gray-900/15 border-white/20"
+                  className={`flex-1 backdrop-blur-md border transition-all duration-500 bg-background ${
+                    index <= activeStep ? "border-foreground" : "border-muted"
                   }`}
                 >
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-4">
-                      {step.title}
-                    </h3>
+                    <h3 className="text-xl font-bold mb-4">{step.title}</h3>
                     <div className="space-y-3">
                       {renderContent(step.content)}
                     </div>

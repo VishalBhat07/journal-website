@@ -19,6 +19,7 @@ import BankDetails from "./pages/BankDetails/BankDetails";
 import AdvertisementTariff from "./pages/AdvertisementTariff/AdvertisementTariff";
 import NotFound from "./pages/NotFound/NotFound";
 import { useIsMobile } from "./hooks/use-mobile";
+import { useIsTab } from "./hooks/use-mobile";
 import AppSidebar from "./components/AppSidebar/AppSidebar";
 import { SidebarTrigger } from "./components/ui/sidebar";
 import { LoginForm } from "./pages/Login/Login";
@@ -26,22 +27,20 @@ import { SignupForm } from "./pages/Signup/Signup";
 
 const App = () => {
   const isMobile = useIsMobile();
+  const isTab = useIsTab();
   const path = useLocation().pathname;
+
+  const isAuthRoute = path === "/login" || path === "/signup";
   return (
     <>
-      {!isMobile && path !== "/login" && path !== "/signup" ? (
-        <Navbar />
-      ) : (
-        <></>
-      )}
-      {isMobile && path !== "/login" && path !== "/signup" ? (
-        <div>
-          <AppSidebar />
-          <SidebarTrigger />
-        </div>
-      ) : (
-        <></>
-      )}
+    {!isMobile && !isTab && !isAuthRoute && <Navbar />}
+
+    {(isMobile || isTab) && !isAuthRoute && (
+      <div>
+        <AppSidebar />
+        <SidebarTrigger />
+      </div>
+    )}
       <Routes>
         {/* Main Routes */}
         <Route path="/" element={<Home />} />
