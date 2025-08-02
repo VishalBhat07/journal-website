@@ -11,7 +11,7 @@ import VantaBackground from "../yes/VantaBackground/VantaBackground";
 // Import page components (you'll need to create these)
 import BoardOfMembers from "./pages/BoardOfMembers/BoardOfMembers";
 import AuthorGuidelines from "./pages/AuthorGuidelines/AuthorGuidelines";
-import PublicationProcess from "./pages/PublicationProcess/PublicationProcess";
+import PublicationTimeline from "./pages/PublicationProcess/PublicationProcess";
 import AcademicBenefits from "./pages/AcademicBenefits/AcademicBenefits";
 import IndustryBenefits from "./pages/IndustryBenefits/IndustryBenefits";
 import PreviousIssues from "./pages/PreviousIssues/PreviousIssues";
@@ -72,7 +72,7 @@ const App = () => {
 
         {/* For Authors Routes */}
         <Route path="/author-guidelines" element={<AuthorGuidelines />} />
-        <Route path="/publication-process" element={<PublicationProcess />} />
+        <Route path="/publication-process" element={<PublicationTimeline />} />
 
         {/* Benefits Routes */}
         <Route path="/academic-benefits" element={<AcademicBenefits />} />

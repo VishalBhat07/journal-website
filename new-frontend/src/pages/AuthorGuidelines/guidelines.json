@@ -1,0 +1,58 @@
+[
+    {
+        "title": "Language",
+        "content": "All submissions must be written in English, formatted on standard A4-sized paper, in a double-column layout using 12-point Times New Roman font."
+    },
+    {
+        "title": "Abstract",
+        "content": "Each manuscript must include an abstract of 150 to 250 words. The abstract should avoid undefined abbreviations or unspecified references and clearly present the objectives, methodology, results, and significance of the research."
+    },
+    {
+        "title": "Keywords",
+        "content": "Provide five keywords for indexing purposes, placed after the abstract."
+    },
+    {
+        "title": "Manuscript Length",
+        "content": "Manuscripts should be between 4 and 8 pages in length."
+    },
+    {
+        "title": "File Format",
+        "content": "Manuscripts should be prepared in MS Word format and saved as either a docx file (Word 2007 or higher) or a doc file (older versions). PDF submissions are not accepted."
+    },
+    {
+        "title": "Headings",
+        "content": "Avoid using more than three levels of displayed headings."
+    },
+    {
+        "title": "Mathematical Notation",
+        "content": "Italicize single letters that denote mathematical constants, variables, and unknown quantities."
+    },
+    {
+        "title": "Equations",
+        "content": "Equations should be left-aligned and numbered consecutively."
+    },
+    {
+        "title": "Tables",
+        "content": "Number tables using Arabic numerals and cite them in consecutive order within the text. Each table must include a title and, if applicable, a reference to the original source if previously published material is used."
+    },
+    {
+        "title": "Figures",
+        "content": "Figures should also be numbered using Arabic numerals and cited in consecutive order within the text. Use lowercase letters (a, b, c, etc.) to denote different parts of a figure. Provide a title for each figure explaining its components."
+    },
+    {
+        "title": "References",
+        "content": "Only include works cited in the text that have been published or accepted for publication."
+    },
+    {
+        "title": "Conclusions",
+        "content": "Clearly state the most significant findings of the paper and their practical implications."
+    },
+    {
+        "title": "Acknowledgments",
+        "content": "Acknowledgments for individuals, grants, or funding sources should be included in a separate section on the title page. Funding organizations must be written out in full."
+    },
+    {
+        "title": "Review Process",
+        "content": "The reviewers' decisions are final, and any attempts at canvassing will disqualify the author(s) from future submissions."
+    }
+]
