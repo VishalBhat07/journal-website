@@ -10,229 +10,104 @@ import {
   Phone,
   Home,
 } from "lucide-react";
-import "./Footer.css";
 
 const Footer = () => {
-  // Scroll to top function
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
-  };
+  const scrollToTop = () => window.scrollTo(0, 0);
 
-  // Use effect to handle scroll on navigation
   useEffect(() => {
     const handleLinkClick = (event) => {
-      if (event.target.closest("a")) {
-        scrollToTop();
-      }
+      if (event.target.closest("a")) scrollToTop();
     };
-
     window.addEventListener("click", handleLinkClick);
-
-    return () => {
-      window.removeEventListener("click", handleLinkClick);
-    };
+    return () => window.removeEventListener("click", handleLinkClick);
   }, []);
 
   return (
-    <footer
-      style={{ backgroundColor: "var(--primary-color)" }}
-      className="footer-container"
-    >
-      {/* Social Links Section */}
-      <section className="social-section">
-        <div className="social-text">
-          <span style={{ color: "var(--text-color)" }}>
-            Get connected with us on social networks:
-          </span>
-        </div>
+    <footer className="relative text-center bg-cover bg-center bg-no-repeat bg-background text-foreground" style={{ backgroundImage: `url('https://www.asminternational.org/wp-content/uploads/2023/03/Footer-Background-Image.png')` }}>
+      <div className="absolute inset-0 bg-background/80 z-0" />
 
-        <div className="social-icons">
-          <a
-            href="https://www.facebook.com/"
-            aria-label="Facebook"
-            className="social-link"
-          >
-            <Facebook size={20} style={{ color: "var(--accent-color)" }} />
-          </a>
-          <a
-            href="https://twitter.com/"
-            aria-label="Twitter"
-            className="social-link"
-          >
-            <Twitter size={20} style={{ color: "var(--accent-color)" }} />
-          </a>
-          <a
-            href="https://www.instagram.com/"
-            aria-label="Instagram"
-            className="social-link"
-          >
-            <Instagram size={20} style={{ color: "var(--accent-color)" }} />
-          </a>
-          <a
-            href="https://www.linkedin.com/"
-            aria-label="LinkedIn"
-            className="social-link"
-          >
-            <Linkedin size={20} style={{ color: "var(--accent-color)" }} />
-          </a>
-          <a
-            href="https://github.com/VishalBhat07/journal-website"
-            aria-label="GitHub"
-            className="social-link"
-          >
-            <Github size={20} style={{ color: "var(--accent-color)" }} />
-          </a>
+      <section className="relative z-10 flex flex-col md:flex-row justify-between items-center px-8 py-4 border-y border-foreground/20">
+        <div className="hidden md:block">
+          Get connected with us on social networks:
+        </div>
+        <div className="flex gap-4 mx-auto md:mx-0">
+          {[
+            { href: "https://www.facebook.com/", Icon: Facebook },
+            { href: "https://twitter.com/", Icon: Twitter },
+            { href: "https://www.instagram.com/", Icon: Instagram },
+            { href: "https://www.linkedin.com/", Icon: Linkedin },
+            { href: "https://github.com/VishalBhat07/journal-website", Icon: Github },
+          ].map(({ href, Icon }, i) => (
+            <a key={i} href={href} aria-label={Icon.name} className="text-foreground hover:text-white transition duration-300">
+              <Icon size={20} className="drop-shadow hover:drop-shadow-md" />
+            </a>
+          ))}
         </div>
       </section>
 
-      {/* Main Content Section */}
-      <section className="main-content">
-        <div className="footer-grid">
-          {/* Company Info */}
-          <div className="footer-column">
-            <h6 className="footer-heading">ASM India</h6>
-
-            <p className="footer-text">
-              Published by the ASM India National Council Trust (INC), Materials
-              and Processing is a biannual open-access journal that provides a
-              platform for the latest research, technical insights, and case
-              studies in engineering and manufacturing.
+      <section className="relative z-10 px-8 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto text-left">
+          <div>
+            <h6 className="font-bold uppercase mb-4 text-sm">ASM India</h6>
+            <p className="text-sm leading-relaxed text-foreground/80">
+              Published by the ASM India National Council Trust (INC), Materials and Processing is a biannual open-access journal that provides a platform for the latest research, technical insights, and case studies in engineering and manufacturing.
             </p>
           </div>
 
-          {/* About ASM Links */}
-          <div className="footer-column">
-            <h6 className="footer-heading">About ASM</h6>
-            <div className="footer-links">
-              <p>
-                <Link
-                  to="/contact"
-                  className="footer-link"
-                  onClick={scrollToTop}
-                >
-                  Contact Us
+          <div>
+            <h6 className="font-bold uppercase mb-4 text-sm">About ASM</h6>
+            <div className="flex flex-col gap-2 text-sm text-foreground/80">
+              {["contact", "about", "strategic-plan", "advertise", "technical-support", "legal"].map((path) => (
+                <Link key={path} to={`/${path}`} onClick={scrollToTop} className="hover:text-foreground transition">
+                  {path.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
                 </Link>
-              </p>
-              <p>
-                <Link to="/about" className="footer-link" onClick={scrollToTop}>
-                  About ASM
-                </Link>
-              </p>
-              <p>
-                <Link
-                  to="/strategic-plan"
-                  className="footer-link"
-                  onClick={scrollToTop}
-                >
-                  Strategic Plan
-                </Link>
-              </p>
-              <p>
-                <Link
-                  to="/advertise"
-                  className="footer-link"
-                  onClick={scrollToTop}
-                >
-                  Advertise with Us
-                </Link>
-              </p>
-              <p>
-                <Link
-                  to="/technical-support"
-                  className="footer-link"
-                  onClick={scrollToTop}
-                >
-                  Technical Support
-                </Link>
-              </p>
-              <p>
-                <Link to="/legal" className="footer-link" onClick={scrollToTop}>
-                  Legal
-                </Link>
-              </p>
+              ))}
             </div>
           </div>
 
-          {/* Membership Links */}
-          <div className="footer-column">
-            <h6 className="footer-heading">Membership</h6>
-            <div className="footer-links">
-              <p>
-                <Link to="/join" className="footer-link" onClick={scrollToTop}>
-                  Join
+          <div>
+            <h6 className="font-bold uppercase mb-4 text-sm">Membership</h6>
+            <div className="flex flex-col gap-2 text-sm text-foreground/80">
+              {["join", "benefits", "awards", "career-center"].map((path) => (
+                <Link key={path} to={`/${path}`} onClick={scrollToTop} className="hover:text-foreground transition">
+                  {path.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
                 </Link>
-              </p>
-              <p>
-                <Link
-                  to="/benefits"
-                  className="footer-link"
-                  onClick={scrollToTop}
-                >
-                  Benefits
-                </Link>
-              </p>
-              <p>
-                <Link
-                  to="/awards"
-                  className="footer-link"
-                  onClick={scrollToTop}
-                >
-                  Awards
-                </Link>
-              </p>
-              <p>
-                <Link
-                  to="/career-center"
-                  className="footer-link"
-                  onClick={scrollToTop}
-                >
-                  Career Center
-                </Link>
-              </p>
+              ))}
             </div>
           </div>
 
-          {/* Contact Information */}
-          <div className="footer-column">
-            <h6 className="footer-heading">Contact</h6>
-
-            <div className="contact-item">
-              <Mail size={16} style={{ color: "var(--accent-color)" }} />
-              <span className="footer-text">asmincjournal@gmail.com</span>
-            </div>
-
-            <div className="contact-item">
-              <Phone size={16} style={{ color: "var(--accent-color)" }} />
-              <span className="footer-text">080 2839 5327</span>
-            </div>
-
-            <div className="contact-item">
-              <Home size={16} style={{ color: "var(--accent-color)" }} />
-              <span className="footer-text">
-                C/O Process pumps (I) Pvt. Ltd.
-              </span>
-            </div>
-
-            <div className="address-text">
-              Plot No. 86, Phase 3, Peenya, Bengaluru, Karnataka 560058.
+          <div>
+            <h6 className="font-bold uppercase mb-4 text-sm">Contact</h6>
+            <div className="flex flex-col gap-3 text-sm text-foreground/80">
+              <div className="flex items-center gap-2">
+                <Mail size={16} className="text-primary" />
+                <span>asmincjournal@gmail.com</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone size={16} className="text-primary" />
+                <span>080 2839 5327</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <Home size={16} className="text-primary mt-1" />
+                <span>
+                  C/O Process pumps (I) Pvt. Ltd.<br />
+                  Plot No. 86, Phase 3, Peenya, Bengaluru, Karnataka 560058.
+                </span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Who We Are Section */}
-        <div className="who-we-are-section">
-          <h6 className="footer-heading">Who We Are</h6>
-          <p className="footer-description">
-            ASM International is the world's largest association of
-            materials-centric engineers and scientists. We are dedicated to
-            informing, educating, and connecting the materials community to
-            solve problems and stimulate innovation around the world.
+        <div className="border-t border-foreground/20 mt-8 pt-6 text-center">
+          <h6 className="font-bold uppercase mb-4 text-sm">Who We Are</h6>
+          <p className="text-sm max-w-3xl mx-auto leading-relaxed text-foreground/80">
+            ASM International is the world's largest association of materials-centric engineers and scientists. We are dedicated to informing, educating, and connecting the materials community to solve problems and stimulate innovation around the world.
           </p>
         </div>
       </section>
 
-      <div className="footer-bottom">
-        © 2024 <b>ASM INC</b> (All copyrights reserved)
+      <div className="relative z-10 bg-background/80 text-foreground text-center py-4 backdrop-blur-md">
+        © 2024 <strong>ASM INC</strong> (All copyrights reserved)
       </div>
     </footer>
   );

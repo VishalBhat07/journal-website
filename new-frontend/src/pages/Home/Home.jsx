@@ -5,15 +5,15 @@ import HomeHeroSection from "./HomeHeroSection/HomeHeroSection";
 const Home = () => {
   return (
     <div className="flex flex-col justify-center items-center p-8 pt-16">
-      <div className="flex flex-col w-[75vw] sm:w-[70vw] items-center gap-8">
-        <h1 className="text-center text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl roboto-slab">
+      <div className="flex flex-col w-full md:w-[75vw] items-center gap-8">
+        <h1 className="text-center text-foreground text-4xl md:text-5xl roboto-slab">
           ASM-India: Materials and Processing
         </h1>
 
         <CarouselDemo />
 
-        <div className="text-sm sm:text-base md:text-lg text-white text-center flex flex-col gap-4">
-          <p className="leading-7 [&:not(:first-child)]:mt-6">
+        <div className="text-sm md:text-base text-foreground text-center flex flex-col gap-6">
+          <p className="leading-7">
             Materials and Processing, a journal from ASM India, is a biannual
             open access research journal featuring peer-reviewed original
             research articles, technical papers, reviews, case studies, and
@@ -21,7 +21,7 @@ const Home = () => {
             advancement of engineering and manufacturing processes globally.
           </p>
 
-          <p className="leading-7 [&:not(:first-child)]:mt-6">
+          <p className="leading-7">
             This journal invites high-quality scientific research, case studies,
             and technical papers discussing industrial practices, providing a
             platform for students, academicians, scholars, industrialists,

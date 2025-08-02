@@ -17,7 +17,7 @@ export default function CarouselDemo() {
       <CarouselContent>
         {images.map((image, index) => (
           <CarouselItem key={index}>
-            <div className="p-1">
+            <div className="">
               <Card>
                 <CardContent className="flex aspect-square items-center justify-center">
                     <img src={image} alt={index+1}  className="w-full h-full object-contain rounded-lg" />

@@ -14,7 +14,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const BoardOfMember = () => {
   const renderTable = (data, title, variant = "default") => (
     <Card
-      className={`w-full max-w-6xl mx-auto border-l-4 backdrop-blur-md bg-white/20 dark:bg-gray-900/20 shadow-lg border border-white/20 ${
+      className={`w-full max-w-6xl mx-auto border-l-4 backdrop-blur-md bg-transparent shadow-lg border border-muted-foreground ${
         variant === "international" ? "border-l-blue-500" : "border-l-green-500"
       }`}
     >

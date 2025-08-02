@@ -34,7 +34,7 @@ const AuthorGuidelines = () => {
           <AccordionItem
             key={index}
             value={`${accordionValue}-${index}`}
-            className="border-white/20"
+            className=""
           >
             <AccordionTrigger className="text-left font-semibold text-foreground hover:text-foreground/80">
               {item.title}
@@ -56,7 +56,7 @@ const AuthorGuidelines = () => {
       </div>
 
       {/* Overview Section */}
-      <div className="w-full max-w-7xl mx-auto backdrop-blur-md bg-white/20 dark:bg-gray-900/20 shadow-lg border border-white/20 rounded-lg p-6 mb-8">
+      <div className="w-full max-w-7xl mx-auto backdrop-blur-md rounded-lg p-6 mb-8">
         <p className="text-foreground/90 leading-relaxed">
           <strong className="text-foreground">
             Materials and Processing,{" "}
@@ -73,9 +73,9 @@ const AuthorGuidelines = () => {
       </div>
 
       {/* Two-Column Accordion Layout */}
-      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 justify-items-center">
         {/* Guidelines Section */}
-        <Card className="backdrop-blur-md bg-white/20 dark:bg-gray-900/20 shadow-lg border border-white/20">
+        <Card className="backdrop-blur-md p-4 pt-8 w-full sm:w-[400px] md:w-[600px]">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-foreground text-center">
               Guidelines
@@ -85,7 +85,7 @@ const AuthorGuidelines = () => {
         </Card>
 
         {/* Responsibilities Section */}
-        <Card className="backdrop-blur-md bg-white/20 dark:bg-gray-900/20 shadow-lg border border-white/20">
+        <Card className="backdrop-blur-md p-4 pt-8 w-full sm:w-[400px] md:w-[600px]">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-foreground text-center">
               Responsibilities

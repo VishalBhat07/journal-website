@@ -1,0 +1,5 @@
+Heading: text-4xl md:text-5xl 
+
+Subheading: text-xl md:text-2xl 
+
+Text: 	text-sm md:text-base 

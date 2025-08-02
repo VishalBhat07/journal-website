@@ -29,7 +29,6 @@ const App = () => {
   const path = useLocation().pathname;
   return (
     <>
-    <VantaBackground/>
       {!isMobile && path !== "/login" && path !== "/signup" ? (
         <Navbar />
       ) : (
