@@ -2,15 +2,30 @@ import React from "react";
 import Tabs from "./Tabs";
 import InputDemo from "../Input/Input";
 import styles from "./Navbar.module.css";
-import { Moon } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { Toggle } from "@/components/ui/toggle";
 import { Button } from "../ui/button";
 import { Link, useNavigate } from "react-router-dom";
+import { useTheme } from "@/components/theme-provider"; // Adjust the import path as needed
 
 export function ToggleDemo() {
+  const { theme, setTheme } = useTheme();
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
   return (
-    <Toggle aria-label="Toggle italic">
-      <Moon className="h-4 w-4" />
+    <Toggle
+      aria-label="Toggle theme"
+      pressed={theme === "dark"}
+      onPressedChange={toggleTheme}
+    >
+      {theme === "light" ? (
+        <Moon className="h-4 w-4" />
+      ) : (
+        <Sun className="h-4 w-4" />
+      )}
     </Toggle>
   );
 }

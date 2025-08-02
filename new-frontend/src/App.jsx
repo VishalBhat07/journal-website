@@ -24,6 +24,7 @@ import AppSidebar from "./components/AppSidebar/AppSidebar";
 import { SidebarTrigger } from "./components/ui/sidebar";
 import { LoginForm } from "./pages/Login/Login";
 import { SignupForm } from "./pages/Signup/Signup";
+import { ThemeProvider } from "./components/theme-provider";
 
 const App = () => {
   const isMobile = useIsMobile();
@@ -33,60 +34,68 @@ const App = () => {
   const isAuthRoute = path === "/login" || path === "/signup";
   return (
     <>
-    {!isMobile && !isTab && !isAuthRoute && <Navbar />}
+      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+        {!isMobile && !isTab && !isAuthRoute && <Navbar />}
 
-    {(isMobile || isTab) && !isAuthRoute && (
-      <div>
-        <AppSidebar />
-        <SidebarTrigger />
-      </div>
-    )}
-      <Routes>
-        {/* Main Routes */}
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/login"
-          element={
-            <div className="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
-              <div className="w-full max-w-sm md:max-w-3xl">
-                <LoginForm />
+        {(isMobile || isTab) && !isAuthRoute && (
+          <div>
+            <AppSidebar />
+            <SidebarTrigger />
+          </div>
+        )}
+        <Routes>
+          {/* Main Routes */}
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/login"
+            element={
+              <div className="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
+                <div className="w-full max-w-sm md:max-w-3xl">
+                  <LoginForm />
+                </div>
               </div>
-            </div>
-          }
-        />
+            }
+          />
 
-        <Route
-          path="/signup"
-          element={
-            <div className="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
-              <div className="w-full max-w-sm md:max-w-3xl">
-                <SignupForm />
+          <Route
+            path="/signup"
+            element={
+              <div className="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
+                <div className="w-full max-w-sm md:max-w-3xl">
+                  <SignupForm />
+                </div>
               </div>
-            </div>
-          }
-        />
+            }
+          />
 
-        <Route path="/board-of-members" element={<BoardOfMembers />} />
+          <Route path="/board-of-members" element={<BoardOfMembers />} />
 
-        {/* For Authors Routes */}
-        <Route path="/author-guidelines" element={<AuthorGuidelines />} />
-        <Route path="/publication-process" element={<PublicationTimeline />} />
+          {/* For Authors Routes */}
+          <Route path="/author-guidelines" element={<AuthorGuidelines />} />
+          <Route
+            path="/publication-process"
+            element={<PublicationTimeline />}
+          />
 
-        {/* Benefits Routes */}
-        <Route path="/academic-benefits" element={<AcademicBenefits />} />
-        <Route path="/industry-benefits" element={<IndustryBenefits />} />
+          {/* Benefits Routes */}
+          <Route path="/academic-benefits" element={<AcademicBenefits />} />
+          <Route path="/industry-benefits" element={<IndustryBenefits />} />
 
-        {/* Journal Archive Routes */}
-        <Route path="/previous-issues" element={<PreviousIssues />} />
+          {/* Journal Archive Routes */}
+          <Route path="/previous-issues" element={<PreviousIssues />} />
 
-        {/* Sponsors & Payments Routes */}
-        <Route path="/bank-details" element={<BankDetails />} />
-        <Route path="/advertisement-tariff" element={<AdvertisementTariff />} />
+          {/* Sponsors & Payments Routes */}
+          <Route path="/bank-details" element={<BankDetails />} />
+          <Route
+            path="/advertisement-tariff"
+            element={<AdvertisementTariff />}
+          />
 
-        {/* 404 Route - Optional */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      {path !== "/login" && path !== "/signup" ? <Footer /> : null}
+          {/* 404 Route - Optional */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        {path !== "/login" && path !== "/signup" ? <Footer /> : null}
+      </ThemeProvider>
     </>
   );
 };
