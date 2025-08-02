@@ -13,7 +13,7 @@ const images = ["/vol1issue1.png", "/vol1issue2.png"]
 
 export default function CarouselDemo() {
   return (
-    <Carousel className="w-full max-w-xl min-w-[250px] sm:min-w-[300px]">
+    <Carousel className="w-[90%] max-w-xl min-w-[250px] sm:min-w-[300px]">
       <CarouselContent>
         {images.map((image, index) => (
           <CarouselItem key={index}>

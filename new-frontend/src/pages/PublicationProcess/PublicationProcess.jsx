@@ -60,17 +60,15 @@ const PublicationTimeline = () => {
   return (
     <div className="p-6 pt-20 min-h-screen relative bg-background text-foreground">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
           Publication Process
         </h2>
 
         <div className="relative">
-          {/* Timeline Line for Desktop */}
           {!isMobile && (
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-muted-foreground" />
           )}
 
-          {/* Steps */}
           <div className="space-y-8">
             {publication.map((step, index) => (
               <div
@@ -81,12 +79,7 @@ const PublicationTimeline = () => {
                     : "flex-row items-start gap-6"
                 }`}
               >
-                {/* Timeline Node */}
-                <div
-                  className={`relative z-10 flex-shrink-0 ${
-                    isMobile ? "" : ""
-                  }`}
-                >
+                <div className="relative z-10 flex-shrink-0">
                   <div
                     className={`w-12 h-12 rounded-full border-4 flex items-center justify-center transition-all duration-500 ${
                       index <= activeStep
@@ -108,7 +101,6 @@ const PublicationTimeline = () => {
                   </Badge>
                 </div>
 
-                {/* Content Card */}
                 <Card
                   className={`flex-1 backdrop-blur-md border transition-all duration-500 bg-background ${
                     index <= activeStep ? "border-foreground" : "border-muted"

@@ -16,14 +16,21 @@ const AuthorGuidelines = () => {
       return (
         <ul className="space-y-2">
           {content.map((item, index) => (
-            <li key={index} className="text-foreground/90 leading-relaxed">
+            <li
+              key={index}
+              className="text-foreground/90 leading-relaxed text-sm md:text-base"
+            >
               {item}
             </li>
           ))}
         </ul>
       );
     }
-    return <div className="text-foreground/90 leading-relaxed">{content}</div>;
+    return (
+      <div className="text-foreground/90 leading-relaxed text-sm md:text-base">
+        {content}
+      </div>
+    );
   };
 
   // Function to create accordion from data
@@ -31,12 +38,8 @@ const AuthorGuidelines = () => {
     return (
       <Accordion type="single" collapsible className="w-full">
         {data.map((item, index) => (
-          <AccordionItem
-            key={index}
-            value={`${accordionValue}-${index}`}
-            className=""
-          >
-            <AccordionTrigger className="text-left font-semibold text-foreground hover:text-foreground/80">
+          <AccordionItem key={index} value={`${accordionValue}-${index}`}>
+            <AccordionTrigger className="text-left font-semibold text-foreground hover:text-foreground/80 text-sm md:text-base">
               {item.title}
             </AccordionTrigger>
             <AccordionContent>{renderContent(item.content)}</AccordionContent>
@@ -50,14 +53,14 @@ const AuthorGuidelines = () => {
     <div className="space-y-8 p-6 pt-20 min-h-screen">
       {/* Main Title */}
       <div className="w-full max-w-7xl mx-auto text-center mb-8">
-        <h3 className="text-3xl font-bold text-foreground mb-6">
+        <h3 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
           Author Guidelines and Responsibilities
         </h3>
       </div>
 
       {/* Overview Section */}
       <div className="w-full max-w-7xl mx-auto backdrop-blur-md rounded-lg p-6 mb-8">
-        <p className="text-foreground/90 leading-relaxed">
+        <p className="text-foreground/90 leading-relaxed text-sm md:text-base">
           <strong className="text-foreground">
             Materials and Processing,{" "}
           </strong>
@@ -77,7 +80,7 @@ const AuthorGuidelines = () => {
         {/* Guidelines Section */}
         <Card className="backdrop-blur-md p-4 pt-8 w-full sm:w-[400px] md:w-[600px]">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-foreground text-center">
+            <CardTitle className="text-xl md:text-2xl font-bold text-foreground text-center">
               Guidelines
             </CardTitle>
           </CardHeader>
@@ -87,7 +90,7 @@ const AuthorGuidelines = () => {
         {/* Responsibilities Section */}
         <Card className="backdrop-blur-md p-4 pt-8 w-full sm:w-[400px] md:w-[600px]">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-foreground text-center">
+            <CardTitle className="text-xl md:text-2xl font-bold text-foreground text-center">
               Responsibilities
             </CardTitle>
           </CardHeader>

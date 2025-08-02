@@ -14,27 +14,29 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const BoardOfMember = () => {
   const renderTable = (data, title, variant = "default") => (
     <Card
-      className={`w-full max-w-6xl mx-auto border-l-4 backdrop-blur-md bg-transparent shadow-lg border border-muted-foreground ${
+      className={`w-full max-w-6xl mx-auto border-l-4 backdrop-blur-md bg-transparent border border-muted-foreground pt-8 ${
         variant === "international" ? "border-l-blue-500" : "border-l-green-500"
       }`}
     >
       <CardHeader className="text-center">
-        <CardTitle className="text-2xl text-foreground">{title}</CardTitle>
+        <CardTitle className="text-xl md:text-2xl text-foreground">
+          {title}
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
             <TableRow className="bg-primary/80 backdrop-blur hover:bg-primary/90">
-              <TableHead className="text-primary-foreground font-bold text-center w-16">
+              <TableHead className="text-primary-foreground font-bold text-center w-16 text-sm md:text-base">
                 #
               </TableHead>
-              <TableHead className="text-primary-foreground font-bold text-center">
+              <TableHead className="text-primary-foreground font-bold text-center text-sm md:text-base">
                 Name
               </TableHead>
-              <TableHead className="text-primary-foreground font-bold text-center">
+              <TableHead className="text-primary-foreground font-bold text-center text-sm md:text-base">
                 Institution
               </TableHead>
-              <TableHead className="text-primary-foreground font-bold text-center">
+              <TableHead className="text-primary-foreground font-bold text-center text-sm md:text-base">
                 Location
               </TableHead>
             </TableRow>
@@ -45,14 +47,18 @@ const BoardOfMember = () => {
                 key={index}
                 className="hover:bg-white/10 dark:hover:bg-gray-800/20 transition-colors backdrop-blur"
               >
-                <TableCell className="font-medium text-center">
+                <TableCell className="font-medium text-center text-sm md:text-base">
                   {index + 1}
                 </TableCell>
-                <TableCell className="text-center">{entry.name}</TableCell>
-                <TableCell className="text-center">
+                <TableCell className="text-center text-sm md:text-base">
+                  {entry.name}
+                </TableCell>
+                <TableCell className="text-center text-sm md:text-base">
                   {entry.institution}
                 </TableCell>
-                <TableCell className="text-center">{entry.location}</TableCell>
+                <TableCell className="text-center text-sm md:text-base">
+                  {entry.location}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
