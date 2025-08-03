@@ -1,17 +1,11 @@
 import React from "react";
 import academicBenefits from "./AcademicBenefits.json";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 const AcademicBenefits = () => {
   const renderContent = (content) => {
     if (Array.isArray(content)) {
       return (
-        <ul className="space-y-2">
+        <ul className="space-y-2 list-disc pl-5">
           {content.map((item, index) => (
             <li
               key={index}
@@ -30,28 +24,22 @@ const AcademicBenefits = () => {
     );
   };
 
-  const createAccordion = (data, accordionValue) => {
-    return (
-      <Accordion type="single" collapsible className="w-full">
-        {data.map((item, index) => (
-          <AccordionItem key={index} value={`${accordionValue}-${index}`}>
-            <AccordionTrigger className="text-left font-semibold text-foreground hover:text-foreground/80 text-sm md:text-base">
-              {item.title}
-            </AccordionTrigger>
-            <AccordionContent>{renderContent(item.content)}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    );
-  };
-
   return (
-    <div className="space-y-8 p-6 pt-20 min-h-screen">
-      <div className="w-full max-w-5xl mx-auto backdrop-blur-md shadow-lg border rounded-lg p-8">
-        <h3 className="text-xl md:text-2xl  font-bold text-foreground mb-8 text-center">
+    <div className="space-y-8 md:p-8 min-h-screen bg-background text-foreground">
+      <div className="w-full max-w-5xl mx-auto backdrop-blur-md shadow-lg border rounded-lg p-8 bg-background text-foreground">
+        <h3 className="text-xl md:text-2xl font-bold mb-8 text-center">
           Academic Benefits
         </h3>
-        {createAccordion(academicBenefits, "academic-benefits")}
+        <div className="space-y-6">
+          {academicBenefits.map((item, index) => (
+            <div key={index}>
+              <h4 className="font-semibold text-sm md:text-base mb-1">
+                {item.title}
+              </h4>
+              {renderContent(item.content)}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
