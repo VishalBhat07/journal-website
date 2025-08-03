@@ -14,10 +14,8 @@ archiveRouter.get("/fetch", async (req, res) => {
       sortOrder = "desc",
     } = req.query;
 
-    // Build query object
     const query = {};
 
-    // Search functionality
     if (search) {
       query.$or = [
         { title: { $regex: search, $options: "i" } },
@@ -25,24 +23,20 @@ archiveRouter.get("/fetch", async (req, res) => {
       ];
     }
 
-    // Tag filtering
     if (tags) {
       const tagArray = Array.isArray(tags) ? tags : tags.split(",");
       query.tags = { $in: tagArray };
     }
 
-    // Sort options
     const sortOptions = {};
     sortOptions[sortBy] = sortOrder === "desc" ? -1 : 1;
 
-    // Execute query with pagination
     const archives = await Archive.find(query)
       .sort(sortOptions)
       .limit(parseInt(limit))
       .skip((parseInt(page) - 1) * parseInt(limit))
-      .lean(); // Use lean() for better performance when just reading
+      .lean(); 
 
-    // Get total count for pagination
     const totalCount = await Archive.countDocuments(query);
     const totalPages = Math.ceil(totalCount / parseInt(limit));
 
@@ -191,6 +185,53 @@ archiveRouter.patch("/:id", async (req, res) => {
     res.status(500).json({
       success: false,
       error: "Failed to update archive",
+      message: error.message,
+    });
+  }
+});
+
+archiveRouter.delete("/:id", async (req, res) => {
+  try {
+    const archiveId = req.params.id;
+
+    if (!mongoose.Types.ObjectId.isValid(archiveId)) {
+      return res.status(400).json({
+        success: false,
+        error: "Invalid archive ID format",
+      });
+    }
+
+    const archive = await Archive.findById(archiveId);
+    if (!archive) {
+      return res.status(404).json({
+        success: false,
+        error: "Archive not found",
+      });
+    }
+
+    await Archive.findByIdAndDelete(archiveId);
+    res.json({
+      success: true,
+      message: "Archive deleted successfully",
+      deletedArchive: {
+        id: archive._id,
+        title: archive.title,
+        deletedAt: new Date(),
+      },
+    });
+  } catch (error) {
+    console.error("Error deleting archive:", error);
+
+    if (error.name === "CastError") {
+      return res.status(400).json({
+        success: false,
+        error: "Invalid archive ID format",
+      });
+    }
+
+    res.status(500).json({
+      success: false,
+      error: "Failed to delete archive",
       message: error.message,
     });
   }

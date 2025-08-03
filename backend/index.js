@@ -3,12 +3,14 @@ import fileRouter from "./routes/fileRouter.js";
 import archiveRouter from "./routes/archiveRouter.js";
 import connectDB from "./utils/db.js";
 import dotenv from "dotenv";
+import cors from "cors";
 dotenv.config();
-     
+
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 const PORT = process.env.PORT;
 
@@ -24,4 +26,3 @@ app.use("/api/archive", archiveRouter);
 app.listen(PORT, () => {
   console.log("Server running on port:", PORT);
 });
-      

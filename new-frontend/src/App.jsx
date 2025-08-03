@@ -26,6 +26,7 @@ import { LoginForm } from "./pages/Login/Login";
 import { SignupForm } from "./pages/Signup/Signup";
 import { ThemeProvider } from "./components/theme-provider";
 import { SignIn, SignUp, useAuth, useUser } from "@clerk/clerk-react";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   const isMobile = useIsMobile();
@@ -93,6 +94,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
         {!isAuthRoute ? <Footer /> : null}
+        <ToastContainer />
       </ThemeProvider>
     </>
   );
