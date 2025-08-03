@@ -25,6 +25,7 @@ import { SidebarTrigger } from "./components/ui/sidebar";
 import { LoginForm } from "./pages/Login/Login";
 import { SignupForm } from "./pages/Signup/Signup";
 import { ThemeProvider } from "./components/theme-provider";
+import { SignIn, SignUp, useAuth, useUser } from "@clerk/clerk-react";
 
 const App = () => {
   const isMobile = useIsMobile();
@@ -32,6 +33,7 @@ const App = () => {
   const path = useLocation().pathname;
 
   const isAuthRoute = path === "/login" || path === "/signup";
+
   return (
     <>
       <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
@@ -49,10 +51,8 @@ const App = () => {
           <Route
             path="/login"
             element={
-              <div className="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
-                <div className="w-full max-w-sm md:max-w-3xl">
-                  <LoginForm />
-                </div>
+              <div className="bg-muted flex min-h-svh flex-col items-center justify-center">
+                <SignIn />
               </div>
             }
           />
@@ -60,10 +60,8 @@ const App = () => {
           <Route
             path="/signup"
             element={
-              <div className="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
-                <div className="w-full max-w-sm md:max-w-3xl">
-                  <SignupForm />
-                </div>
+              <div className="bg-muted flex min-h-svh flex-col items-center justify-center">
+                <SignUp />
               </div>
             }
           />

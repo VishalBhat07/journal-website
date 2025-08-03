@@ -7,6 +7,7 @@ import { Toggle } from "@/components/ui/toggle";
 import { Button } from "../ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { useTheme } from "@/components/theme-provider"; // Adjust the import path as needed
+import { useAuth, UserButton } from "@clerk/clerk-react";
 
 export function ToggleDemo() {
   const { theme, setTheme } = useTheme();
@@ -32,6 +33,9 @@ export function ToggleDemo() {
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { isSignedIn } = useAuth();
+  console.log(isSignedIn);
+
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
@@ -49,9 +53,13 @@ const Navbar = () => {
       </div>
       <div className={styles.extraBtn}>
         <ToggleDemo />
-        <Button>
-          <Link to={"/signup"}>Signup</Link>
-        </Button>
+        {!isSignedIn ? (
+          <Button>
+            <Link to={"/signup"}>Signup</Link>
+          </Button>
+        ) : (
+          <UserButton afterSignOutUrl="/" />
+        )}
       </div>
     </div>
   );
