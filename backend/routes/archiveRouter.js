@@ -194,40 +194,26 @@ archiveRouter.delete("/:id", async (req, res) => {
   try {
     const archiveId = req.params.id;
 
-    if (!mongoose.Types.ObjectId.isValid(archiveId)) {
-      return res.status(400).json({
-        success: false,
-        error: "Invalid archive ID format",
-      });
-    }
+    const deletedArchive = await Archive.findByIdAndDelete(archiveId);
 
-    const archive = await Archive.findById(archiveId);
-    if (!archive) {
+    if (!deletedArchive) {
       return res.status(404).json({
         success: false,
         error: "Archive not found",
       });
     }
 
-    await Archive.findByIdAndDelete(archiveId);
     res.json({
       success: true,
       message: "Archive deleted successfully",
       deletedArchive: {
-        id: archive._id,
-        title: archive.title,
+        id: deletedArchive._id,
+        title: deletedArchive.title,
         deletedAt: new Date(),
       },
     });
   } catch (error) {
     console.error("Error deleting archive:", error);
-
-    if (error.name === "CastError") {
-      return res.status(400).json({
-        success: false,
-        error: "Invalid archive ID format",
-      });
-    }
 
     res.status(500).json({
       success: false,
@@ -236,5 +222,6 @@ archiveRouter.delete("/:id", async (req, res) => {
     });
   }
 });
+
 
 export default archiveRouter;
