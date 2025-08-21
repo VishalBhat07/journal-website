@@ -12,6 +12,7 @@ import {
   BuildingIcon,
   FolderIcon,
   BanknoteIcon,
+  UploadCloudIcon,
 } from "lucide-react";
 
 import {
@@ -40,6 +41,12 @@ const forAuthorsItems = [
     description:
       "Step-by-step process from submission to publication, including review stages and timelines.",
     icon: <SettingsIcon className="h-4 w-4" />,
+  },
+  {
+    title: "Upload Article",
+    href: "/upload",
+    description: "Upload your article here.",
+    icon: <UploadCloudIcon className="h-4 w-4" />,
   },
 ];
 

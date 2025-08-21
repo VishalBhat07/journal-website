@@ -27,6 +27,7 @@ import { SignupForm } from "./pages/Signup/Signup";
 import { ThemeProvider } from "./components/theme-provider";
 import { SignIn, SignUp, useAuth, useUser } from "@clerk/clerk-react";
 import { ToastContainer } from "react-toastify";
+import UploadArticle from "./pages/UploadArticle/UploadArticle";
 
 const App = () => {
   const isMobile = useIsMobile();
@@ -75,6 +76,7 @@ const App = () => {
             path="/publication-process"
             element={<PublicationTimeline />}
           />
+          <Route path="/upload" element={<UploadArticle />} />
 
           {/* Benefits Routes */}
           <Route path="/academic-benefits" element={<AcademicBenefits />} />
