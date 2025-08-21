@@ -5,6 +5,7 @@ import cors from "cors";
 
 import articleRouter from "./routes/articleRouter.js";
 import archiveRouter from "./routes/archiveRouter.js";
+import adminRouter from "./routes/adminRouter.js";
 
 dotenv.config();
 
@@ -22,8 +23,9 @@ app.get("/", (req, res) => {
   res.send("Hello world");
 });
 
-app.use("/api/files", articleRouter);
+app.use("/api/article", articleRouter);
 app.use("/api/archive", archiveRouter);
+app.use("/api/admin", adminRouter);
 
 app.listen(PORT, () => {
   console.log("Server running on port:", PORT);

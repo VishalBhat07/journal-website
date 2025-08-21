@@ -1,5 +1,5 @@
 import express from "express";
-import { Article } from "../models/articleModel";
+import { Article } from "../models/articleModel.js";
 const articleRouter = express.Router();
 
 articleRouter.get("/fetch", async (req, res) => {
@@ -41,7 +41,7 @@ articleRouter.post("/upload", async (req, res) => {
 
     await newArticle.save();
 
-    res.status(201).json({ message: "Upload successful", article: newArticle });
+    res.status(201).json({ message: "Upload successful" });
   } catch (error) {
     res.status(500).json({ message: "Error uploading article", error });
   }
