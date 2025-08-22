@@ -34,7 +34,7 @@ export function ToggleDemo() {
 const Navbar = () => {
   const navigate = useNavigate();
   const { isSignedIn } = useAuth();
-  console.log(isSignedIn);
+  // console.log(isSignedIn);
 
   return (
     <div className={styles.container}>

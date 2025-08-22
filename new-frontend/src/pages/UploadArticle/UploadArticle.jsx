@@ -1,17 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/clerk-react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Spinner = () => (
@@ -19,54 +10,36 @@ const Spinner = () => (
 );
 
 const UploadArticlePage = () => {
-  const backend_url = import.meta.env.VITE_BACKEND_URL;
   const { user, isSignedIn, isLoaded } = useUser();
 
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [articles, setArticles] = useState([]);
   const [uploading, setUploading] = useState(false);
 
-  // Form state
+  // Article form states
   const [title, setTitle] = useState("");
   const [file, setFile] = useState(null);
   const [tags, setTags] = useState("");
 
-  // Redirect to login if not signed in
+  // Author list and single author inputs
+  const [authors, setAuthors] = useState([]);
+  const [authorName, setAuthorName] = useState("");
+  const [authorEmail, setAuthorEmail] = useState("");
+  const [authorPhone, setAuthorPhone] = useState("");
+  const [authorORCID, setAuthorORCID] = useState("");
+
   useEffect(() => {
     if (isLoaded && !isSignedIn) {
       window.location.href = "/login";
     }
   }, [isLoaded, isSignedIn]);
 
-  // Check if user is admin
-  useEffect(() => {
-    if (user) {
-      const checkAdmin = async () => {
-        try {
-          const res = await fetch(backend_url + `/api/admin/check/${user.id}`);
-          const data = await res.json();
-          console.log(data.isAdmin);
-          setIsAdmin(data.isAdmin);
-        } catch {
-          setIsAdmin(false);
-        } finally {
-          setLoading(false);
-        }
-      };
-      checkAdmin();
-    }
-  }, [user]);
-
-  // Fetch articles based on role
   useEffect(() => {
     if (!loading && user) {
       const fetchArticles = async () => {
         try {
-          const url = isAdmin
-            ? `/api/article/fetch`
-            : `/api/article/fetch/${user.id}`;
-          const res = await fetch(backend_url + url);
+          console.log(user.id);
+          const res = await fetch(`/api/article/fetch/${user.id}`);
           const data = await res.json();
           setArticles(data);
         } catch {
@@ -75,33 +48,68 @@ const UploadArticlePage = () => {
       };
       fetchArticles();
     }
-  }, [loading, isAdmin, user]);
+  }, [isLoaded, user]);
 
-  // Upload article handler
+  const handleAddAuthor = () => {
+    // Basic validation for required fields
+    if (!authorName.trim() || !authorEmail.trim() || !authorPhone.trim()) {
+      alert("Please fill in Name, Email, and Phone for the author.");
+      return;
+    }
+
+    // Add new author
+    setAuthors((prev) => [
+      ...prev,
+      {
+        name: authorName.trim(),
+        email: authorEmail.trim().toLowerCase(),
+        phone: authorPhone.trim(),
+        ORCID: authorORCID.trim() || undefined,
+      },
+    ]);
+
+    // Reset author input fields
+    setAuthorName("");
+    setAuthorEmail("");
+    setAuthorPhone("");
+    setAuthorORCID("");
+  };
+
   const handleUpload = async (e) => {
     e.preventDefault();
-    if (!title || !file) return;
+
+    if (!title || !file) {
+      alert("Please provide a title and select a file.");
+      return;
+    }
+
+    if (authors.length === 0) {
+      alert("Please add at least one author.");
+      return;
+    }
 
     setUploading(true);
 
     try {
       console.log(user, user.id);
-      const res = await fetch(backend_url + "/api/article/upload", {
+      const res = await fetch("/api/article/upload", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           title,
           userId: user.id,
           tags: tags.split(",").map((tag) => tag.trim().toLowerCase()),
+          authors, // send authors array
         }),
       });
-      console.log("hello", res);
+
       if (res.ok) {
         const newArticle = await res.json();
         setArticles((prev) => [...prev, newArticle.article]);
         setTitle("");
         setFile(null);
         setTags("");
+        setAuthors([]);
       } else {
         alert("Upload failed");
       }
@@ -112,92 +120,10 @@ const UploadArticlePage = () => {
     setUploading(false);
   };
 
-  // Admin approve/reject
-  const handleApprove = async (articleId) => {
-    try {
-      await fetch(backend_url + `/api/article/update/${articleId}`, {
-        method: "POST",
-      });
-      setArticles((prev) =>
-        prev.map((a) =>
-          a._id === articleId ? { ...a, status: "approved" } : a
-        )
-      );
-    } catch {
-      alert("Failed to approve");
-    }
-  };
-
-  const handleReject = async (articleId) => {
-    try {
-      await fetch(backend_url + `/api/articles/delete/${articleId}`, {
-        method: "DELETE",
-      });
-      setArticles((prev) => prev.filter((a) => a._id !== articleId));
-    } catch {
-      alert("Failed to reject");
-    }
-  };
-
   if (loading || !isLoaded || !user) {
     return (
       <div className="flex justify-center items-center h-full">
         <Spinner />
-      </div>
-    );
-  }
-
-  if (isAdmin) {
-    return (
-      <div className="p-6">
-        <h1 className="mb-4 text-2xl font-semibold">
-          All Articles (Admin View)
-        </h1>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Title</TableHead>
-              <TableHead>User ID</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Uploaded Date</TableHead>
-              <TableHead>File Size</TableHead>
-              <TableHead>Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {articles.map((article) => (
-              <TableRow key={article._id}>
-                <TableCell>{article.title}</TableCell>
-                <TableCell>{article.userId}</TableCell>
-                <TableCell>{article.status}</TableCell>
-                <TableCell>
-                  {new Date(article.createdAt).toLocaleString()}
-                </TableCell>
-                <TableCell>{article.fileSize ?? "N/A"}</TableCell>
-                <TableCell className="space-x-2">
-                  {article.status !== "approved" && (
-                    <>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        onClick={() => handleApprove(article._id)}
-                      >
-                        Approve
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="destructive"
-                        onClick={() => handleReject(article._id)}
-                      >
-                        Reject
-                      </Button>
-                    </>
-                  )}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
       </div>
     );
   }
@@ -249,6 +175,71 @@ const UploadArticlePage = () => {
             onChange={(e) => setTitle(e.target.value)}
             required
           />
+        </div>
+
+        {/* Authors input section */}
+        <div className="p-4 border rounded space-y-3">
+          <h3 className="font-semibold text-lg">Add Authors</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div>
+              <Label htmlFor="authorName">Name *</Label>
+              <Input
+                id="authorName"
+                type="text"
+                value={authorName}
+                onChange={(e) => setAuthorName(e.target.value)}
+                placeholder="Author full name"
+              />
+            </div>
+            <div>
+              <Label htmlFor="authorEmail">Email *</Label>
+              <Input
+                id="authorEmail"
+                type="email"
+                value={authorEmail}
+                onChange={(e) => setAuthorEmail(e.target.value)}
+                placeholder="author@example.com"
+              />
+            </div>
+            <div>
+              <Label htmlFor="authorPhone">Phone *</Label>
+              <Input
+                id="authorPhone"
+                type="tel"
+                value={authorPhone}
+                onChange={(e) => setAuthorPhone(e.target.value)}
+                placeholder="+123456789"
+              />
+            </div>
+            <div>
+              <Label htmlFor="authorORCID">ORCID</Label>
+              <Input
+                id="authorORCID"
+                type="text"
+                value={authorORCID}
+                onChange={(e) => setAuthorORCID(e.target.value)}
+                placeholder="Optional ORCID"
+              />
+            </div>
+          </div>
+          <Button type="button" onClick={handleAddAuthor}>
+            Add Author
+          </Button>
+
+          {/* Show added authors */}
+          {authors.length > 0 && (
+            <div className="mt-4">
+              <h4 className="font-semibold">Authors Added:</h4>
+              <ul className="list-disc pl-5 space-y-1">
+                {authors.map((author, index) => (
+                  <li key={index}>
+                    {author.name} | {author.email} | {author.phone}{" "}
+                    {author.ORCID ? `| ORCID: ${author.ORCID}` : ""}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         <div>

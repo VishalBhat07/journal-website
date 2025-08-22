@@ -28,6 +28,7 @@ import { ThemeProvider } from "./components/theme-provider";
 import { SignIn, SignUp, useAuth, useUser } from "@clerk/clerk-react";
 import { ToastContainer } from "react-toastify";
 import UploadArticle from "./pages/UploadArticle/UploadArticle";
+import ManageArticles from "./pages/ManageArticles/ManageArticles";
 
 const App = () => {
   const isMobile = useIsMobile();
@@ -77,6 +78,7 @@ const App = () => {
             element={<PublicationTimeline />}
           />
           <Route path="/upload" element={<UploadArticle />} />
+          <Route path="/manage-articles" element={<ManageArticles />} />
 
           {/* Benefits Routes */}
           <Route path="/academic-benefits" element={<AcademicBenefits />} />

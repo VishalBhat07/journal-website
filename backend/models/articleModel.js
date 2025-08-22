@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { authorSchema } from "./authorSchema.js";
 
 const articleSchema = new mongoose.Schema(
   {
@@ -11,6 +12,17 @@ const articleSchema = new mongoose.Schema(
 
     userId: {
       type: String,
+      required: true,
+    },
+
+    authors: {
+      type: [authorSchema],
+      validate: {
+        validator: function (v) {
+          return Array.isArray(v) && v.length > 0;
+        },
+        message: "There must be at least one author",
+      },
       required: true,
     },
 

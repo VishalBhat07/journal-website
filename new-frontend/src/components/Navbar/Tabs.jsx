@@ -15,6 +15,8 @@ import {
   UploadCloudIcon,
 } from "lucide-react";
 
+import { Settings2Icon } from "lucide-react"; // Import Settings2Icon for manage articles tab
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -26,6 +28,8 @@ import {
 } from "@/components/ui/navigation-menu";
 
 import { Link } from "react-router-dom";
+
+import { useUser } from "@clerk/clerk-react"; // Clerk hook to get currently logged-in user
 
 const forAuthorsItems = [
   {
@@ -95,6 +99,36 @@ const sponsorsPaymentsItems = [
 ];
 
 export default function Tabs() {
+  const { user } = useUser();
+  const [isAdmin, setIsAdmin] = React.useState(false);
+
+  React.useEffect(() => {
+    if (user) {
+      fetch(`/api/admin/check/${user.id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setIsAdmin(data.isAdmin);
+        })
+        .catch(() => {
+          setIsAdmin(false);
+        });
+    }
+  }, [user]);
+
+  // Conditionally add the "Manage Articles" tab for admin users
+  const adminForAuthorsItem = isAdmin
+    ? [
+        {
+          title: "Manage Articles",
+          href: "/manage-articles",
+          description: "Manage articles uploaded by authors.",
+          icon: <Settings2Icon className="h-4 w-4" />,
+        },
+      ]
+    : [];
+
+  const combinedForAuthorsItems = [...forAuthorsItems, ...adminForAuthorsItem];
+
   return (
     <>
       <NavigationMenu viewport={false} className="hidden md:flex">
@@ -128,7 +162,7 @@ export default function Tabs() {
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1 lg:w-[600px]">
-                {forAuthorsItems.map((item) => (
+                {combinedForAuthorsItems.map((item) => (
                   <ListItemWithIcon
                     key={item.title}
                     title={item.title}

@@ -23,12 +23,19 @@ articleRouter.get("/fetch/:userId", async (req, res) => {
 
 articleRouter.post("/upload", async (req, res) => {
   try {
-    // Expect req.body to contain at least title, userId, tags
-    const { title, userId, tags } = req.body;
+    // Expect req.body to contain at least title, userId, tags, authors
+    const { title, userId, tags, authors } = req.body;
 
     let cloudStorageUrl = "testurl";
 
-    if (!title || !userId || !cloudStorageUrl) {
+    // Validate required fields including authors array with at least one author
+    if (
+      !title ||
+      !userId ||
+      !cloudStorageUrl ||
+      !Array.isArray(authors) ||
+      authors.length === 0
+    ) {
       return res.status(400).json({ message: "Missing required fields" });
     }
 
@@ -37,11 +44,17 @@ articleRouter.post("/upload", async (req, res) => {
       userId,
       cloudStorageUrl,
       tags: tags ? tags.map((tag) => tag.trim().toLowerCase()) : [],
+      authors: authors.map((author) => ({
+        name: author.name.trim(),
+        email: author.email.trim().toLowerCase(),
+        phone: author.phone.trim(),
+        ORCID: author.ORCID ? author.ORCID.trim() : undefined,
+      })),
     });
 
     await newArticle.save();
 
-    res.status(201).json({ message: "Upload successful" });
+    res.status(201).json({ message: "Upload successful", article: newArticle });
   } catch (error) {
     res.status(500).json({ message: "Error uploading article", error });
   }
