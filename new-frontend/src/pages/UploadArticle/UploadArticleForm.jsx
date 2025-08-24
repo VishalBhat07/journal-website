@@ -15,7 +15,6 @@ export default function UploadArticleForm({
   const [title, setTitle] = useState("");
   const [file, setFile] = useState(null);
   const [tags, setTags] = useState("");
-  const [uploading, setUploading] = useState(false);
 
   const [authors, setAuthors] = useState([]);
   const [authorName, setAuthorName] = useState("");
@@ -59,29 +58,37 @@ export default function UploadArticleForm({
     }
     setUploading(true);
     try {
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("userId", userId);
+      formData.append("file", file);
+      formData.append(
+        "tags",
+        tags
+          .split(",")
+          .map((tag) => tag.trim().toLowerCase())
+          .join(",") // Join tags as comma separated string for backend parsing
+      );
+      formData.append("authors", JSON.stringify(authors)); // Serialize authors array as JSON string
+
       const res = await fetch("/api/article/upload", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          title,
-          userId,
-          tags: tags.split(",").map((tag) => tag.trim().toLowerCase()),
-          authors,
-        }),
+        body: formData, // multipart/form-data with file
       });
       if (!res.ok) throw new Error("Upload failed");
       const newArticle = await res.json();
-      setTimeout(() => {
-        setUploading(false);
-        toast.success("Article uploaded successfully");
-        onUploadSuccess(newArticle.article);
-        onClose();
-      }, 5000);
+      console.log(newArticle);
+      setUploading(false);
+      toast.success("Article uploaded successfully");
+      onUploadSuccess(newArticle.article);
+      onClose();
     } catch (error) {
       setUploading(false);
       toast.error(`Upload error: ${error.message || "Something went wrong"}`);
     }
   };
+
+  const [uploading, setUploading] = useState(false);
 
   return (
     <>

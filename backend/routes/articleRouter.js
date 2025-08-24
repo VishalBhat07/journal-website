@@ -1,6 +1,23 @@
 import express from "express";
 import { Article } from "../models/articleModel.js";
 const articleRouter = express.Router();
+import multer from "multer";
+import { Storage } from "megajs";
+import path from "path";
+import fs from "fs";
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/"); // make sure this directory exists or create it
+  },
+  filename: (req, file, cb) => {
+    // Unique filename with timestamp + original extension
+    const ext = path.extname(file.originalname);
+    cb(null, Date.now() + ext);
+  },
+});
+
+const upload = multer({ storage });
 
 articleRouter.get("/fetch", async (req, res) => {
   try {
@@ -21,30 +38,76 @@ articleRouter.get("/fetch/:userId", async (req, res) => {
   }
 });
 
-articleRouter.post("/upload", async (req, res) => {
+articleRouter.post("/upload", upload.single("file"), async (req, res) => {
   try {
-    // Expect req.body to contain at least title, userId, tags, authors
     const { title, userId, tags, authors } = req.body;
 
-    let cloudStorageUrl = "testurl";
+    console.log(req.file);
+    // multer puts the uploaded file info in req.file
+    if (!req.file) {
+      return res.status(400).json({ message: "Article file is required" });
+    }
+
+    // Initialize MEGA storage client
+    const storage = await new Storage({
+      email: process.env.MEGA_EMAIL,
+      password: process.env.MEGA_PASS,
+    }).ready;
+
+    // Read file buffer from multer saved file on disk
+    const fileBuffer = fs.readFileSync(req.file.path);
+
+    // Upload file to MEGA root folder
+    const megaFile = storage.upload({
+      name: req.file.originalname,
+      size: req.file.size,
+    });
+
+    // Pipe buffer to mega upload stream
+    megaFile.write(fileBuffer);
+    megaFile.end();
+
+    // Wait for upload complete
+    await new Promise((resolve, reject) => {
+      megaFile.on("complete", resolve);
+      megaFile.on("error", reject);
+    });
+
+    console.log("Hello");
+    // Get the URL of uploaded file
+    const cloudStorageUrl = await megaFile.link(); // Public MEGA link
 
     // Validate required fields including authors array with at least one author
-    if (
-      !title ||
-      !userId ||
-      !cloudStorageUrl ||
-      !Array.isArray(authors) ||
-      authors.length === 0
-    ) {
+    if (!title || !userId || !cloudStorageUrl || !authors) {
       return res.status(400).json({ message: "Missing required fields" });
+    }
+
+    console.log("Cloud:", cloudStorageUrl);
+    // authors come as JSON string usually, parse it
+    let parsedAuthors;
+    try {
+      parsedAuthors =
+        typeof authors === "string" ? JSON.parse(authors) : authors;
+    } catch {
+      return res.status(400).json({ message: "Invalid authors format" });
+    }
+
+    if (!Array.isArray(parsedAuthors) || parsedAuthors.length === 0) {
+      return res
+        .status(400)
+        .json({ message: "Authors must be a non-empty array" });
     }
 
     const newArticle = new Article({
       title: title.trim(),
       userId,
       cloudStorageUrl,
-      tags: tags ? tags.map((tag) => tag.trim().toLowerCase()) : [],
-      authors: authors.map((author) => ({
+      tags: tags
+        ? typeof tags === "string"
+          ? tags.split(",").map((tag) => tag.trim().toLowerCase())
+          : tags.map((tag) => tag.trim().toLowerCase())
+        : [],
+      authors: parsedAuthors.map((author) => ({
         name: author.name.trim(),
         email: author.email.trim().toLowerCase(),
         phone: author.phone.trim(),
@@ -56,7 +119,9 @@ articleRouter.post("/upload", async (req, res) => {
 
     res.status(201).json({ message: "Upload successful", article: newArticle });
   } catch (error) {
-    res.status(500).json({ message: "Error uploading article", error });
+    res
+      .status(500)
+      .json({ message: "Error uploading article", error: error.message });
   }
 });
 
