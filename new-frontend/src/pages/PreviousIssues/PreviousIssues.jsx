@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Table,
   TableBody,
@@ -29,16 +29,20 @@ import {
 } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import ConfirmationDialog from "@/components/ConfirmationDialog/ConfirmationDialog";
+import { useUser } from "@clerk/clerk-react";
+import ArchiveTable from "./ArchiveTable";
 
 const PreviousIssues = () => {
-  const [issues, setIssues] = React.useState([]);
+  const { user } = useUser();
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [issues, setIssues] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    // Fetch archives
     const fetchArchives = async () => {
       try {
         const res = await fetch("/api/archive/fetch");
         const data = await res.json();
-        console.log("Fetched Archives:", data);
         if (data.success) {
           setIssues(data.data.archives);
         }
@@ -47,15 +51,32 @@ const PreviousIssues = () => {
       }
     };
 
+    // Check admin status
+    const checkAdmin = async () => {
+      if (!user?.id) {
+        setIsAdmin(false);
+        return;
+      }
+      try {
+        const res = await fetch(`/api/admin/check/${user.id}`);
+        const data = await res.json();
+        setIsAdmin(data.isAdmin);
+      } catch (err) {
+        console.error("Error checking admin status:", err);
+        setIsAdmin(false);
+      }
+    };
+
+    checkAdmin();
     fetchArchives();
-  }, []);
+  }, [user]);
 
   return (
     <div className="space-y-8 p-6 pt-20 pb-20 min-h-screen bg-background text-foreground">
       <div className="flex justify-end max-w-6xl mx-auto">
         <AddJournalDialog />
       </div>
-      <ArchiveCard issues={issues} />
+      <ArchiveCard issues={issues} isAdmin={isAdmin} />
     </div>
   );
 };
@@ -96,8 +117,6 @@ function AddJournalDialog() {
         return;
       }
 
-      console.log("Success:", data);
-
       // Reset form
       setTitle("");
       setLink("");
@@ -107,7 +126,6 @@ function AddJournalDialog() {
       // Close dialog programmatically
       document.querySelector("[data-dialog-close]")?.click();
       window.location.reload();
-
     } catch (error) {
       console.error("Request failed:", error);
     }
@@ -169,11 +187,11 @@ function AddJournalDialog() {
   );
 }
 
-
-
 function EditArchiveDialog({ archive }) {
   const [calendarOpen, setCalendarOpen] = useState(false);
-  const [date, setDate] = useState(archive?.publishedDate ? new Date(archive.publishedDate) : null);
+  const [date, setDate] = useState(
+    archive?.publishedDate ? new Date(archive.publishedDate) : null
+  );
   const [title, setTitle] = useState(archive?.title || "");
   const [link, setLink] = useState(archive?.cloudStorageUrl || "");
   const [tags, setTags] = useState(archive?.tags?.join(", ") || "");
@@ -188,7 +206,10 @@ function EditArchiveDialog({ archive }) {
           title,
           cloudStorageUrl: link,
           publishedDate: date,
-          tags: tags.split(",").map((t) => t.trim()).filter(Boolean),
+          tags: tags
+            .split(",")
+            .map((t) => t.trim())
+            .filter(Boolean),
         }),
       });
 
@@ -257,9 +278,6 @@ function EditArchiveDialog({ archive }) {
   );
 }
 
-
-
-
 function InputField({ label, id, value, onChange, placeholder }) {
   return (
     <div className="grid gap-2">
@@ -271,7 +289,7 @@ function InputField({ label, id, value, onChange, placeholder }) {
         onChange={onChange}
       />
     </div>
-  )
+  );
 }
 
 function DatePickerField({ calendarOpen, setCalendarOpen, date, setDate }) {
@@ -307,7 +325,7 @@ function DatePickerField({ calendarOpen, setCalendarOpen, date, setDate }) {
   );
 }
 
-function ArchiveCard({ issues }) {
+function ArchiveCard({ issues, isAdmin }) {
   return (
     <Card className="w-full max-w-6xl mx-auto border-l-4 border-l-purple-500 border border-muted-foreground backdrop-blur-md bg-background text-foreground pt-8">
       <CardHeader className="text-center">
@@ -316,127 +334,10 @@ function ArchiveCard({ issues }) {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <ArchiveTable issues={issues} />
+        <ArchiveTable issues={issues} isAdmin={isAdmin} />
       </CardContent>
     </Card>
   );
 }
-
-async function deleteArchive(archiveId) {
-  try {
-    const res = await fetch(`/api/archive/${archiveId}`, {
-      method: "DELETE",
-    });
-
-    if (!res.ok) {
-      const data = await res.json();
-      throw new Error(data.error || "Failed to delete archive");
-    }
-
-    return await res.json();
-  } catch (error) {
-    console.error("Error deleting archive:", error);
-    throw error;
-  }
-}
-
-function ArchiveTable({ issues }) {
-  return (
-    <Table>
-      <TableHeader>
-        <TableRow className="bg-primary/80 backdrop-blur hover:bg-primary/90">
-          <TableHead className="text-primary-foreground font-bold text-center text-sm md:text-base">
-            Title
-          </TableHead>
-          <TableHead className="text-primary-foreground font-bold text-center text-sm md:text-base">
-            Date
-          </TableHead>
-          <TableHead className="text-primary-foreground font-bold text-center text-sm md:text-base">
-            File
-          </TableHead>
-          <TableHead className="text-primary-foreground font-bold text-center text-sm md:text-base">
-            Tags
-          </TableHead>
-          <TableHead className="text-primary-foreground font-bold text-center text-sm md:text-base">
-            Last Updated
-          </TableHead>
-          <TableHead className="text-primary-foreground font-bold text-center text-sm md:text-base">
-            Actions
-          </TableHead>
-        </TableRow>
-      </TableHeader>
-
-      <TableBody>
-        {issues.map((issue) => (
-          <TableRow
-            key={issue._id}
-            className="hover:bg-white/10 dark:hover:bg-gray-800/20 transition-colors backdrop-blur"
-          >
-            {/* Title */}
-            <TableCell className="text-center text-sm md:text-base text-foreground">
-              {issue.title}
-                            {console.log(issue._id, issue._id.length)}
-
-            </TableCell>
-
-            {/* Published Date */}
-            <TableCell className="text-center text-sm md:text-base text-foreground">
-              {new Date(issue.publishedDate).toLocaleDateString()}
-            </TableCell>
-
-            {/* Cloud Storage Link */}
-            <TableCell className="text-center text-sm md:text-base">
-              <a
-                href={issue.cloudStorageUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:underline text-sm md:text-base"
-              >
-                View Article
-              </a>
-            </TableCell>
-
-            {/* Tags */}
-            <TableCell className="text-center text-sm md:text-base text-foreground">
-              {issue.tags && issue.tags.length > 0 ? (
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {issue.tags.map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-xs rounded-full text-foreground"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              ) : (
-                <span className="text-gray-500 italic">No tags</span>
-              )}
-            </TableCell>
-
-            {/* Last Updated */}
-            <TableCell className="text-center text-sm md:text-base text-foreground">
-              {new Date(issue.updatedAt).toLocaleDateString()}
-            </TableCell>
-
-            {/* Actions */}
-            <TableCell className="flex justify-center gap-4 items-center text-sm md:text-base">
-              <EditArchiveDialog archive={issue} />
-              <ConfirmationDialog
-                onConfirm={async () => {
-                  await deleteArchive(issue._id);
-
-                  window.location.reload(); // ensures UI refresh
-                }}
-                confirmText="Are you sure you want to delete this archive? This action cannot be undone."
-              />
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  );
-}
-
 
 export default PreviousIssues;
