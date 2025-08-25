@@ -40,9 +40,10 @@ articleRouter.post("/upload", upload.single("file"), async (req, res) => {
     }).ready;
 
     // Upload to MEGA (use in-memory buffer from multer)
-    const uploadedFile = await storage
-      .upload(req.file.originalname, req.file.buffer)
-      .complete;
+    const uploadedFile = await storage.upload(
+      req.file.originalname,
+      req.file.buffer
+    ).complete;
 
     // Generate public link
     const cloudStorageUrl = await uploadedFile.link();
